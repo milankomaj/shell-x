@@ -72,7 +72,7 @@ runs:
        sudo timedatectl set-timezone ${{ inputs.timezone }}
        exit
        chmod +x ${{ github.action_path }}/goodbye.sh
-       ${{ github.action_path }}/goodbye.sh
+       bash ${{ github.action_path }}/goodbye.sh
       shell: ${{ inputs.shell }}
 
     - name: is-macOS
@@ -84,7 +84,7 @@ runs:
        sudo systemsetup -gettimezone
        exit
        chmod +x ${{ github.action_path }}/goodbye.sh
-       ${{ github.action_path }}/goodbye.sh
+       bash ${{ github.action_path }}/goodbye.sh
       shell: ${{ inputs.shell }}
 
     - name: is-Windows
