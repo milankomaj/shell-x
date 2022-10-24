@@ -19,14 +19,14 @@ runs:
       shell: bash
 
     - name: not win
-      if: ${{ runner.os }} != 'Windows'
+      if: ${{ matrix.os }} != 'Windows'
       run: |
        chmod +x ${{ github.action_path }}/goodbye.sh
        ${{ github.action_path }}/goodbye.sh
       shell: bash
 
     - name: win
-      if: ${{ runner.os }} == 'Windows'
+      if: ${{ matrix.os }} == 'Windows'
       run: |
        Get-TimeZone
        Get-Date -UFormat "%A %m/%d/%Y %R %Z"
