@@ -67,9 +67,9 @@ runs:
       id: is-Linux
       if: runner.os == 'Linux'
       run: |
-       sudo locale-gen sk_SK.utf8
-       sudo update-locale LANG=sk_SK.utf8
-       sudo timedatectl set-timezone Europe/Bratislava
+       sudo locale-gen ${{ inputs.locale }}
+       sudo update-locale LANG=${{ inputs.locale }}
+       sudo timedatectl set-timezone ${{ inputs.timezone }}
        exit
        chmod +x ${{ github.action_path }}/goodbye.sh
        ${{ github.action_path }}/goodbye.sh
@@ -80,7 +80,7 @@ runs:
       if: runner.os == 'macOS'
       run: |
        echo ${{ runner.os }}
-       sudo systemsetup -settimezone Europe/Bratislava
+       sudo systemsetup -settimezone ${{ inputs.timezone }}
        sudo systemsetup -gettimezone
       shell: ${{ inputs.shell }}
 
@@ -89,9 +89,9 @@ runs:
       if: runner.os == 'Windows' && inputs.shell != 'cmd'
       run: |
        echo ${{ runner.os }}
-       Set-WinSystemLocale -SystemLocale sk-SK
-       Set-Culture sk-SK
-       Set-TimeZone -Id "Central Europe Standard Time"
+       Set-WinSystemLocale -SystemLocale ${{ inputs.locale }}
+       Set-Culture ${{ inputs.locale }}
+       Set-TimeZone -Id '${{ inputs.timezone }}'
        Get-TimeZone
        Get-Date -UFormat "%A %m/%d/%Y %R %Z"
       shell: ${{ inputs.shell }}
@@ -100,6 +100,6 @@ runs:
       id: is-Windows-cmd
       if: inputs.shell == 'cmd'
       run: |
-        tzutil /s "Central Europe Standard Time"
+        tzutil /s '${{ inputs.timezone }}'
         tzutil /g
       shell: ${{ inputs.shell }}

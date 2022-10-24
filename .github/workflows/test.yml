@@ -18,9 +18,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - id: foo
-        uses: milankomaj/shell-x@v0.47
+        uses: milankomaj/shell-x@v0.48
         with:
           shell: 'cmd'
+          locale: ''
+          timezone: 'Central Europe Standard Time'
 
       - run: echo random-number ${{ steps.foo.outputs.random-number }}
         shell: bash
