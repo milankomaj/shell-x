@@ -7,6 +7,7 @@ jobs:
   hello_world_job:
 
     name: A job to say hello
+    continue-on-error: true
     strategy:
       max-parallel: 3
       matrix:
