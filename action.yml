@@ -25,9 +25,9 @@ runs:
        ${{ github.action_path }}/goodbye.sh
       shell: bash
 
-    - name: not win
-      if: runner.os != 'Windows'
+    - name: win
+      if: runner.os == 'Windows'
     - run: |
        Get-TimeZone
        Get-Date -UFormat "%A %m/%d/%Y %R %Z"
-      shell: bash
+      shell: powershell
