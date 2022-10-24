@@ -21,7 +21,7 @@ jobs:
         uses: milankomaj/shell-x@v0.52
         with:
           shell: ''
-          locale: 'sk_SK.utf8'
+          locale: 'sk_SK'
           timezone: 'Europe/Bratislava'
 
       - run: echo random-number ${{ steps.foo.outputs.random-number }}
