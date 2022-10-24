@@ -57,7 +57,7 @@ runs:
       run: echo "random-number=$(echo $RANDOM)" >> $GITHUB_OUTPUT
       shell: bash
 
-   - name: inputs-outputs
+    - name: inputs-outputs
       id: inputs-outputs
       run: echo "inputs-outputs=$(echo $runner.os - inputs.shell - $inputs.locale - inputs.timezone )" >> $GITHUB_OUTPUT
       shell: bash
