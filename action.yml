@@ -27,6 +27,11 @@ runs:
       run: echo Hello ${{ inputs.who-to-greet }}.
       shell: bash
 
+    - name: inputs
+      id: inputs
+      run: echo Hello ${{ inputs.shell }}.
+      shell: ${{ inputs.shell }}
+
     - name: random-number-generator
       id: random-number-generator
       run: echo "random-number=$(echo $RANDOM)" >> $GITHUB_OUTPUT
