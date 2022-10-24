@@ -33,17 +33,17 @@ runs:
 
     - name: inputs.who-to-greet
       id: who
-      run: echo inputs.who-to-greet ${{ inputs.who-to-greet }}.
+      run: echo who-to-greet ${{ inputs.who-to-greet }}.
       shell: bash
 
     - name: inputs.shell
       id: shell
-      run: echo inputs.shell ${{ inputs.shell }}.
+      run: echo shell ${{ inputs.shell }}.
       shell: ${{ inputs.shell }}
 
     - name: inputs.locale
       id: locale
-      run: echo inputs.locale ${{ inputs.locale }}.
+      run: echo locale ${{ inputs.locale }}.
       shell: ${{ inputs.locale }}
 
     - name: inputs.timezone
@@ -58,7 +58,7 @@ runs:
 
     - name: use-os
       id: use-os
-      run: echo "use-os=$(echo runner.os)" >> $GITHUB_OUTPUT
+      run: echo "use-os=$(echo $runner.os)" >> $GITHUB_OUTPUT
       shell: ${{ inputs.shell }}
 
 
