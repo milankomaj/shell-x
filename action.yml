@@ -10,14 +10,7 @@ inputs:
     description: 'Use shell'
     required: false
     default: ''
-  locale:  # id of input
-    description: 'Use locale'
-    required: false
-    default: ''
-  timezone:  # id of input
-    description: 'Use timezone'
-    required: false
-    default: ''
+
 
 outputs:
   random-number:
@@ -36,18 +29,10 @@ runs:
 
     - name: inputs.shell
       id: shell
-      run: echo Hello ${{ inputs.shell }}.
+      run: echo Shell is ${{ inputs.shell }}.
       shell: ${{ inputs.shell }}
 
-    - name: inputs.locale
-      id: locale
-      run: echo Hello ${{ inputs.locale }}.
-      shell: ${{ inputs.locale }}
 
-    - name: inputs.timezone
-      id: timezone
-      run: echo Hello ${{ inputs.timezone }}.
-      shell: ${{ inputs.timezone }}
 
     - name: random-number-generator
       id: random-number-generator

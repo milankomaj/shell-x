@@ -20,7 +20,6 @@ jobs:
       - id: foo
         uses: milankomaj/shell-x@v0.25
         with:
-          who-to-greet: ''
           shell: 'bash'
 
       - run: echo random-number ${{ steps.foo.outputs.random-number }}
