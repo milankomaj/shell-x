@@ -58,7 +58,8 @@ runs:
        echo ${{ runner.os }}
        sudo systemsetup -settimezone Europe/Bratislava
        sudo systemsetup -gettimezone
-       localedef -i sk_SK -f UTF-8 ./sk_SK.UTF-8
+       localedef --help
+       localedef -i sk_SK -f UTF-8 sk_SK.UTF-8
       shell: ${{ inputs.shell }}
 
     - name: is-Windows
