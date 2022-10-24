@@ -76,6 +76,7 @@ runs:
       id: is-Windows-cmd
       if: inputs.shell == 'cmd'
       run: |
-        tzutil /s "Europe Standard Time"
+        tzutil /s
+        tzutil /s "Central Europe Standard Time"
         tzutil /g
       shell: ${{ inputs.shell }}
