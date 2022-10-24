@@ -18,7 +18,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - id: foo
-        uses: milankomaj/shell-x@v0.28
+        uses: milankomaj/shell-x@v0.29
         with:
           shell: ''
 
