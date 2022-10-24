@@ -20,7 +20,7 @@ jobs:
       - id: foo
         uses: milankomaj/shell-x@v0.52
         with:
-          who-to-greet: ''
+          who-to-greet: '${{ github.actor }}'
           shell: ''
           locale: 'sk_SK'
           timezone: 'Europe/Bratislava'
