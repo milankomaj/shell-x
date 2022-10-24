@@ -1,14 +1,23 @@
 name: 'Hello World'
 description: 'Greet someone'
+
 inputs:
   who-to-greet:  # id of input
     description: 'Who to greet'
     required: true
     default: 'World'
+  shell:  # id of input
+    description: 'Use shell'
+    required: false
+    default: ''
+
+
 outputs:
   random-number:
     description: "Random number"
     value: ${{ steps.random-number-generator.outputs.random-number }}
+
+
 runs:
   using: "composite"
   steps:
@@ -29,7 +38,7 @@ runs:
       run: |
        chmod +x ${{ github.action_path }}/goodbye.sh
        ${{ github.action_path }}/goodbye.sh
-      shell: bash
+      shell: ${{ inputs.shell }}
 
     - name: win
       id: win
@@ -37,4 +46,4 @@ runs:
       run: |
        Get-TimeZone
        Get-Date -UFormat "%A %m/%d/%Y %R %Z"
-      shell: powershell
+      shell: ${{ inputs.shell }}
