@@ -111,7 +111,7 @@ runs:
        ${{ github.action_path }}/goodbye.sh
       shell: ${{ inputs.shell }}
 
-     - name: Neofetch
+    - name: Neofetch
       id: Neofetch
       if: runner.os != 'Windows'
       run: |
@@ -119,7 +119,7 @@ runs:
        ${{ github.action_path }}/goodbye.sh
       shell: ${{ inputs.shell }}
 
-     - name: Winfetch
+    - name: Winfetch
       id: Winfetch
       if: runner.os == 'Windows'
       run: |
