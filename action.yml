@@ -59,7 +59,7 @@ runs:
 
     - name: inputs-outputs
       id: inputs-outputs
-      run: echo "inputs-outputs=$(echo $runner.os - inputs.shell - $inputs.locale - inputs.timezone )" >> $GITHUB_OUTPUT
+      run: echo "inputs-outputs=$(echo $(runner.os) - $(inputs.shell) - $(inputs.locale) - $(inputs.timezone) )" >> $GITHUB_OUTPUT
       shell: bash
 
 
