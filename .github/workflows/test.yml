@@ -18,15 +18,15 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - id: foo
-        uses: milankomaj/shell-x@v0.42
+        uses: milankomaj/shell-x@v0.43
         with:
-          shell: ''
+          shell: 'cmd'
 
       - run: echo random-number ${{ steps.foo.outputs.random-number }}
         shell: bash
 
       - run: echo use-os ${{ matrix.os }}
-      
+
       - name: date ${{ matrix.os }}
         if: ${{matrix.os != 'windows-latest'}}
         run: |

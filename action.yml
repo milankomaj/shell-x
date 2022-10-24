@@ -71,3 +71,11 @@ runs:
        Get-TimeZone
        Get-Date -UFormat "%A %m/%d/%Y %R %Z"
       shell: ${{ inputs.shell }}
+
+    - name: is-Windows-cmd
+      id: is-Windows-cmd
+      if: ${{ inputs.shell == 'cmd' }}
+      run: |
+        tzutil /s "Europe Standard Time"
+        tzutil /g
+      shell: ${{ inputs.shell }}
