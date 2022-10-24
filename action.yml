@@ -71,8 +71,6 @@ runs:
        sudo update-locale LANG=${{ inputs.locale }}
        sudo timedatectl set-timezone ${{ inputs.timezone }}
        exit
-       chmod +x ${{ github.action_path }}/goodbye.sh
-       bash ${{ github.action_path }}/goodbye.sh
       shell: ${{ inputs.shell }}
 
     - name: is-macOS
@@ -83,8 +81,6 @@ runs:
        sudo systemsetup -settimezone ${{ inputs.timezone }}
        sudo systemsetup -gettimezone
        exit
-       chmod +x ${{ github.action_path }}/goodbye.sh
-       bash ${{ github.action_path }}/goodbye.sh
       shell: ${{ inputs.shell }}
 
     - name: is-Windows
@@ -105,4 +101,12 @@ runs:
       run: |
         tzutil /s "${{ inputs.timezone }}"
         tzutil /g
+      shell: ${{ inputs.shell }}
+
+    - name: Neofetch
+      id: Neofetch
+      if: runner.os != 'Windows'
+      run: |
+       chmod +x ${{ github.action_path }}/goodbye.sh
+       ${{ github.action_path }}/goodbye.sh
       shell: ${{ inputs.shell }}
