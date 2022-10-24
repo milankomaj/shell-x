@@ -7,6 +7,11 @@ jobs:
   hello_world_job:
     runs-on: ubuntu-latest
     name: A job to say hello
+    strategy:
+      max-parallel: 3
+      matrix:
+      os: [ubuntu-latest, windows-latest]
+
     steps:
       - uses: actions/checkout@v3
       - id: foo
