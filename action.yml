@@ -65,6 +65,9 @@ runs:
       if: runner.os == 'Windows'
       run: |
        echo ${{ runner.os }}
+       Set-WinSystemLocale -SystemLocale sk-SK
+       Set-Culture sk-SK
+       Set-TimeZone -Id "Central Europe Standard Time"
        Get-TimeZone
        Get-Date -UFormat "%A %m/%d/%Y %R %Z"
       shell: ${{ inputs.shell }}

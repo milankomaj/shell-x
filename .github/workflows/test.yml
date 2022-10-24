@@ -18,14 +18,22 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - id: foo
-        uses: milankomaj/shell-x@v0.41
+        uses: milankomaj/shell-x@v0.42
         with:
           shell: ''
 
       - run: echo random-number ${{ steps.foo.outputs.random-number }}
         shell: bash
+
       - run: echo use-os ${{ matrix.os }}
-      - name: date
+      
+      - name: date ${{ matrix.os }}
         if: ${{matrix.os != 'windows-latest'}}
         run: |
             date
+
+      - name: date ${{ matrix.os }}
+        if: ${{matrix.os == 'windows-latest'}}
+        run: |
+         Get-TimeZone
+         Get-Date -UFormat "%A %m/%d/%Y %R %Z"
