@@ -24,7 +24,7 @@ jobs:
 
       - run: echo random-number ${{ steps.foo.outputs.random-number }}
         shell: bash
-      - run: echo use-os ${{ steps.foo.outputs.use-os }}
+      - run: echo use-os ${{ matrix.os }}
       - name: date
         if: ${{matrix.os != 'windows-latest'}}
         run: |
