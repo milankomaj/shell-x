@@ -47,6 +47,14 @@ runs:
        ${{ github.action_path }}/goodbye.sh
       shell: ${{ inputs.shell }}
 
+    - name: not-win2
+      id: not-win2
+      if: runner.os != 'Windows'
+      run: |
+        locale -a
+        timedatectl
+      shell: ${{ inputs.shell }}
+
     - name: win
       id: win
       if: runner.os == 'Windows'
