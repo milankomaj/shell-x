@@ -56,6 +56,9 @@ runs:
       if: runner.os == 'macOS'
       run: |
        echo ${{ runner.os }}
+       sudo localedef -i sk_SK -f UTF-8 sk_SK.UTF-8
+       sudo systemsetup -settimezone Europe/Bratislava
+       sudo systemsetup -gettimezone
       shell: ${{ inputs.shell }}
 
     - name: is-Windows

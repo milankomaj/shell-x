@@ -18,9 +18,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - id: foo
-        uses: milankomaj/shell-x@v0.27
+        uses: milankomaj/shell-x@v0.28
         with:
-          shell: 'bash'
+          shell: ''
 
       - run: echo random-number ${{ steps.foo.outputs.random-number }}
         shell: bash
@@ -29,4 +29,3 @@ jobs:
         if: ${{matrix.os != 'windows-latest'}}
         run: |
             date
-            locale -a
