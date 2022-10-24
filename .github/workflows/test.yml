@@ -18,7 +18,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - id: foo
-        uses: milankomaj/shell-x@v0.14
+        uses: milankomaj/shell-x@v0.15
         with:
           who-to-greet: 'Mona the Octocat'
           shell: ''
@@ -27,3 +27,7 @@ jobs:
       - run: echo random-number ${{ steps.foo.outputs.random-number }}
         shell: bash
       - run: echo use-os ${{ steps.foo.outputs.use-os }}
+      - name: date
+        if: ${{matrix.os != 'windows-latest'}}
+        run: |
+            date
