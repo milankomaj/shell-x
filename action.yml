@@ -59,7 +59,7 @@ runs:
     - name: use-os
       id: use-os
       run: echo "use-os=$(echo runner.os)" >> $GITHUB_OUTPUT
-
+      shell: ${{ inputs.shell }}
 
 
     - name: Linux
