@@ -21,7 +21,7 @@ jobs:
         uses: milankomaj/shell-x@v0.16
         with:
           who-to-greet: 'Mona the Octocat'
-          shell: ''
+          shell: 'bash'
           locale: 'sk_SK.utf8'
           timezone: 'Europe/Bratislava'
       - run: echo random-number ${{ steps.foo.outputs.random-number }}
