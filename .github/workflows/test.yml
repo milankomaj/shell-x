@@ -16,9 +16,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - id: foo
-        uses: milankomaj/shell-x@v0.12
+        uses: milankomaj/shell-x@v0.13
         with:
           who-to-greet: 'Mona the Octocat'
       - run: echo random-number ${{ steps.foo.outputs.random-number }}
         shell: bash
-
