@@ -12,16 +12,6 @@ jobs:
       max-parallel: 3
       matrix:
        os: [ubuntu-latest, windows-latest, macOS-latest]
-       include:
-        - shell: sh
-        - shell: bash
-        - shell: pwsh
-        - shell: powershell
-        - shell: cmd
-        - shell: python
-        - shell: ''
-
-
 
 
     runs-on: ${{ matrix.os }}
@@ -31,7 +21,9 @@ jobs:
         uses: milankomaj/shell-x@v0.14
         with:
           who-to-greet: 'Mona the Octocat'
-          shell: ${{ inputs.shell }}
-
+          shell: ''
+          locale: 'sk_SK.utf8'
+          timezone: 'Europe/Bratislava'
       - run: echo random-number ${{ steps.foo.outputs.random-number }}
         shell: bash
+      - run: echo use-os ${{ steps.foo.outputs.use-os }}

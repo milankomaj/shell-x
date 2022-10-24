@@ -10,45 +10,81 @@ inputs:
     description: 'Use shell'
     required: false
     default: ''
-
+  locale:  # id of input
+    description: 'Use locale'
+    required: false
+    default: ''
+  timezone:  # id of input
+    description: 'Use timezone'
+    required: false
+    default: ''
 
 outputs:
   random-number:
     description: "Random number"
     value: ${{ steps.random-number-generator.outputs.random-number }}
-
+  use-os:
+    description: "use-os"
+    value: ${{ steps.use-os.outputs.use-os }}
 
 runs:
   using: "composite"
   steps:
 
     - name: inputs.who-to-greet
-      id: inputs1
+      id: who
       run: echo Hello ${{ inputs.who-to-greet }}.
       shell: bash
 
     - name: inputs.shell
-      id: inputs2
+      id: shell
       run: echo Hello ${{ inputs.shell }}.
       shell: ${{ inputs.shell }}
+
+    - name: inputs.locale
+      id: locale
+      run: echo Hello ${{ inputs.locale }}.
+      shell: ${{ inputs.locale }}
+
+    - name: inputs.timezone
+      id: timezone
+      run: echo Hello ${{ inputs.timezone }}.
+      shell: ${{ inputs.timezone }}
 
     - name: random-number-generator
       id: random-number-generator
       run: echo "random-number=$(echo $RANDOM)" >> $GITHUB_OUTPUT
       shell: bash
 
-    - name: not-win
-      id: not-win
-      if: runner.os != 'Windows'
+    - name: use-os
+      id: use-os
+      run: echo "use-os=$(echo runner.os)" >> $GITHUB_OUTPUT
+
+
+
+    - name: Linux
+      id: Linux
+      if: runner.os == 'Linux'
       run: |
        chmod +x ${{ github.action_path }}/goodbye.sh
        ${{ github.action_path }}/goodbye.sh
+       timedatectl
+       sudo locale-gen sk_SK.utf8
+       sudo update-locale LANG=sk_SK.utf8
+       sudo timedatectl set-timezone Europe/Bratislav
       shell: ${{ inputs.shell }}
 
-    - name: win
-      id: win
+    - name: Windows
+      id: Windows
       if: runner.os == 'Windows'
       run: |
        Get-TimeZone
        Get-Date -UFormat "%A %m/%d/%Y %R %Z"
+      shell: ${{ inputs.shell }}
+
+    - name: macOS
+      id: macOS
+      if: runner.os == 'macOS'
+      run: |
+        date
       shell: ${{ inputs.shell }}
