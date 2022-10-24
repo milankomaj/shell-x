@@ -39,26 +39,30 @@ runs:
       run: echo "random-number=$(echo $RANDOM)" >> $GITHUB_OUTPUT
       shell: bash
 
-    - name: not-win
-      id: not-win
-      if: runner.os != 'Windows'
+    - name: is-Linux
+      id: is-Linux
+      if: runner.os == 'Linux'
       run: |
+       sudo locale-gen sk_SK.utf8
+       sudo update-locale LANG=sk_SK.utf8
+       sudo timedatectl set-timezone Europe/Bratislava
+       exit
        chmod +x ${{ github.action_path }}/goodbye.sh
        ${{ github.action_path }}/goodbye.sh
       shell: ${{ inputs.shell }}
 
-    - name: not-win2
-      id: not-win2
-      if: runner.os != 'Windows'
+    - name: is-macOS
+      id: is-macOS
+      if: runner.os == 'macOS'
       run: |
-        locale -a
-        timedatectl
+       echo ${{ runner.os }}
       shell: ${{ inputs.shell }}
 
-    - name: win
-      id: win
+    - name: is-Windows
+      id: is-Windows
       if: runner.os == 'Windows'
       run: |
+       echo ${{ runner.os }}
        Get-TimeZone
        Get-Date -UFormat "%A %m/%d/%Y %R %Z"
       shell: ${{ inputs.shell }}

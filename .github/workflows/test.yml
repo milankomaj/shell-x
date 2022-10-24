@@ -18,7 +18,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - id: foo
-        uses: milankomaj/shell-x@v0.26
+        uses: milankomaj/shell-x@v0.27
         with:
           shell: 'bash'
 
@@ -29,3 +29,4 @@ jobs:
         if: ${{matrix.os != 'windows-latest'}}
         run: |
             date
+            locale -a
