@@ -10,13 +10,23 @@ inputs:
     description: 'Use shell'
     required: false
     default: ''
+  locale:  # id of input
+    description: 'Use locale'
+    required: false
+    default: ''
+  timezone:  # id of input
+    description: 'Use timezone'
+    required: false
+    default: ''
 
 
 outputs:
   random-number:
     description: "Random number"
     value: ${{ steps.random-number-generator.outputs.random-number }}
-
+  inputs-outputs:
+    description: "inputs-outputs"
+    value: ${{ steps.inputs-outputs.outputs.inputs-outputs }}
 
 runs:
   using: "composite"
@@ -32,12 +42,26 @@ runs:
       run: echo Shell is ${{ inputs.shell }}.
       shell: ${{ inputs.shell }}
 
+    - name: inputs.locale
+      id: shelocalell
+      run: echo Locale is ${{ inputs.locale }}.
+      shell: ${{ inputs.shell }}
 
+    - name: inputs.timezone
+      id: timezone
+      run: echo Timezone is ${{ inputs.timezone }}.
+      shell: ${{ inputs.shell }}
 
     - name: random-number-generator
       id: random-number-generator
       run: echo "random-number=$(echo $RANDOM)" >> $GITHUB_OUTPUT
       shell: bash
+
+   - name: inputs-outputs
+      id: inputs-outputs
+      run: echo "inputs-outputs=$(echo $runner.os - inputs.shell - $inputs.locale - inputs.timezone )" >> $GITHUB_OUTPUT
+      shell: bash
+
 
     - name: is-Linux
       id: is-Linux
