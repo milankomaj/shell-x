@@ -22,13 +22,13 @@ runs:
   using: "composite"
   steps:
 
-    - name: inputs
-      id: inputs
+    - name: inputs.who-to-greet
+      id: inputs1
       run: echo Hello ${{ inputs.who-to-greet }}.
       shell: bash
 
-    - name: inputs
-      id: inputs
+    - name: inputs.shell
+      id: inputs2
       run: echo Hello ${{ inputs.shell }}.
       shell: ${{ inputs.shell }}
 
