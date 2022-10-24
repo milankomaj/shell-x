@@ -23,7 +23,7 @@ jobs:
           who-to-greet: '${{ github.actor }}'
           shell: 'powershell'
           locale: 'sk_SK'
-          timezone: 'Europe/Bratislava'
+          timezone: 'Central Europe Standard Time'
 
       - run: echo random-number ${{ steps.foo.outputs.random-number }}
         shell: bash
