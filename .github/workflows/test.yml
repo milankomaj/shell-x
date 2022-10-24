@@ -21,7 +21,7 @@ jobs:
         uses: milankomaj/shell-x@v0.58
         with:
           who-to-greet: '${{ github.actor }}'
-          shell: 'pwsh'
+          shell: 'powershell'
           locale: 'sk_SK'
           timezone: 'Europe/Bratislava'
 
