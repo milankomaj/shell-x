@@ -23,13 +23,7 @@ runs:
       run: echo "random-number=$(echo $RANDOM)" >> $GITHUB_OUTPUT
       shell: bash
 
-    - name: not-win
-      id: not-win
-      if: RUNNER_OS != 'Windows'
-      run: |
-       chmod +x ${{ github.action_path }}/goodbye.sh
-       ${{ github.action_path }}/goodbye.sh
-      shell: bash
+
 
     - name: win
       id: win
