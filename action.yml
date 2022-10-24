@@ -62,7 +62,7 @@ runs:
 
     - name: is-Windows
       id: is-Windows
-      if: runner.os == 'Windows'
+      if: runner.os == 'Windows' && inputs.shell != 'cmd'
       run: |
        echo ${{ runner.os }}
        Set-WinSystemLocale -SystemLocale sk-SK
@@ -74,7 +74,7 @@ runs:
 
     - name: is-Windows-cmd
       id: is-Windows-cmd
-      if: ${{ inputs.shell == 'cmd' }}
+      if: inputs.shell == 'cmd'
       run: |
         tzutil /s "Europe Standard Time"
         tzutil /g
