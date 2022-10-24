@@ -23,9 +23,7 @@ outputs:
   random-number:
     description: "Random number"
     value: ${{ steps.random-number-generator.outputs.random-number }}
-  use-os:
-    description: "use-os"
-    value: ${{ steps.use-os.outputs.use-os }}
+
 
 runs:
   using: "composite"
@@ -33,22 +31,22 @@ runs:
 
     - name: inputs.who-to-greet
       id: who
-      run: echo who-to-greet ${{ inputs.who-to-greet }}.
+      run: echo Hello ${{ inputs.who-to-greet }}.
       shell: bash
 
     - name: inputs.shell
       id: shell
-      run: echo shell ${{ inputs.shell }}.
+      run: echo Hello ${{ inputs.shell }}.
       shell: ${{ inputs.shell }}
 
     - name: inputs.locale
       id: locale
-      run: echo locale ${{ inputs.locale }}.
+      run: echo Hello ${{ inputs.locale }}.
       shell: ${{ inputs.locale }}
 
     - name: inputs.timezone
       id: timezone
-      run: echo inputs.timezone ${{ inputs.timezone }}.
+      run: echo Hello ${{ inputs.timezone }}.
       shell: ${{ inputs.timezone }}
 
     - name: random-number-generator
@@ -56,31 +54,18 @@ runs:
       run: echo "random-number=$(echo $RANDOM)" >> $GITHUB_OUTPUT
       shell: bash
 
-    - name: use-os
-      id: use-os
-      run: echo "use-os=$(echo $runner.os)" >> $GITHUB_OUTPUT
-      shell: ${{ inputs.shell }}
-
-
-    - name: Linux
-      id: Linux
-      if: runner.os == 'Linux'
+    - name: not-win
+      id: not-win
+      if: runner.os != 'Windows'
       run: |
        chmod +x ${{ github.action_path }}/goodbye.sh
        ${{ github.action_path }}/goodbye.sh
       shell: ${{ inputs.shell }}
 
-    - name: Windows
-      id: Windows
+    - name: win
+      id: win
       if: runner.os == 'Windows'
       run: |
        Get-TimeZone
        Get-Date -UFormat "%A %m/%d/%Y %R %Z"
-      shell: ${{ inputs.shell }}
-
-    - name: macOS
-      id: macOS
-      if: runner.os == 'macOS'
-      run: |
-        date
       shell: ${{ inputs.shell }}
