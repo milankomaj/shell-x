@@ -33,22 +33,22 @@ runs:
 
     - name: inputs.who-to-greet
       id: who
-      run: echo Hello ${{ inputs.who-to-greet }}.
+      run: echo inputs.who-to-greet ${{ inputs.who-to-greet }}.
       shell: bash
 
     - name: inputs.shell
       id: shell
-      run: echo Hello ${{ inputs.shell }}.
+      run: echo inputs.shell ${{ inputs.shell }}.
       shell: ${{ inputs.shell }}
 
     - name: inputs.locale
       id: locale
-      run: echo Hello ${{ inputs.locale }}.
+      run: echo inputs.locale ${{ inputs.locale }}.
       shell: ${{ inputs.locale }}
 
     - name: inputs.timezone
       id: timezone
-      run: echo Hello ${{ inputs.timezone }}.
+      run: echo inputs.timezone ${{ inputs.timezone }}.
       shell: ${{ inputs.timezone }}
 
     - name: random-number-generator
@@ -68,7 +68,6 @@ runs:
       run: |
        chmod +x ${{ github.action_path }}/goodbye.sh
        ${{ github.action_path }}/goodbye.sh
-       timedatectl
        sudo locale-gen ${{ inputs.locale }}
        sudo update-locale LANG=${{ inputs.locale }}
        sudo timedatectl set-timezone ${{ inputs.locale }}
