@@ -1,6 +1,7 @@
-name: test
+
 on:
   workflow_dispatch:
+
 
 jobs:
   hello_world_job:
@@ -11,6 +12,6 @@ jobs:
       - id: foo
         uses: actions/shell-x@v0.1
         with:
-          who-to-greet: 'i'
+          who-to-greet: 'Mona the Octocat'
       - run: echo random-number ${{ steps.foo.outputs.random-number }}
         shell: bash
