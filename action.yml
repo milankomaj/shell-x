@@ -59,7 +59,7 @@ runs:
 
     - name: inputs-outputs
       id: inputs-outputs
-      run: echo "inputs-outputs=$(echo $(runner.os) - $(inputs.shell) - $(inputs.locale) - $(inputs.timezone) )" >> $GITHUB_OUTPUT
+      run: echo "inputs-outputs=$(echo ${{runner.os} - ${{inputs.shell} - ${{inputs.locale} - ${{inputs.timezone}} )" >> $GITHUB_OUTPUT
       shell: bash
 
 
@@ -91,7 +91,7 @@ runs:
        echo ${{ runner.os }}
        Set-WinSystemLocale -SystemLocale ${{ inputs.locale }}
        Set-Culture ${{ inputs.locale }}
-       Set-TimeZone -Id '${{ inputs.timezone }}'
+       Set-TimeZone -Id "${{ inputs.timezone }}"
        Get-TimeZone
        Get-Date -UFormat "%A %m/%d/%Y %R %Z"
       shell: ${{ inputs.shell }}
@@ -100,6 +100,6 @@ runs:
       id: is-Windows-cmd
       if: inputs.shell == 'cmd'
       run: |
-        tzutil /s '${{ inputs.timezone }}'
+        tzutil /s "${{ inputs.timezone }}"
         tzutil /g
       shell: ${{ inputs.shell }}
