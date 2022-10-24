@@ -20,6 +20,6 @@ jobs:
         uses: milankomaj/shell-x@v0.14
         with:
           who-to-greet: 'Mona the Octocat'
-          shell: 'unspecified'
+          shell: ''
       - run: echo random-number ${{ steps.foo.outputs.random-number }}
         shell: bash
