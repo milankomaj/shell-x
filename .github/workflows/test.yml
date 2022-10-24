@@ -18,9 +18,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - id: foo
-        uses: milankomaj/shell-x@v0.16
+        uses: milankomaj/shell-x@v0.18
         with:
-          who-to-greet: 'Mona the Octocat'
+          who-to-greet: ''
           shell: 'bash'
           locale: 'sk_SK.utf8'
           timezone: 'Europe/Bratislava'
