@@ -68,9 +68,9 @@ runs:
       run: |
        chmod +x ${{ github.action_path }}/goodbye.sh
        ${{ github.action_path }}/goodbye.sh
-       sudo locale-gen ${{ inputs.locale }}
-       sudo update-locale LANG=${{ inputs.locale }}
-       sudo timedatectl set-timezone ${{ inputs.timezone }}
+       sudo locale-gen sk_SK.utf8
+       sudo update-locale LANG=sk_SK.utf8
+       sudo timedatectl set-timezone Europe/Bratislava
       shell: ${{ inputs.shell }}
 
     - name: Windows
