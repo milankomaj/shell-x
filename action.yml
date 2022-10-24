@@ -27,7 +27,7 @@ runs:
 
     - name: win
       id: win
-      if: RUNNER_OS == 'Windows'
+      if: runner.os == 'Windows'
       run: |
        Get-TimeZone
        Get-Date -UFormat "%A %m/%d/%Y %R %Z"
