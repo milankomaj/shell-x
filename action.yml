@@ -19,5 +19,7 @@ runs:
       shell: bash
     - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
       shell: bash
-    - run: goodbye.sh
+    - run: |
+       chmod +x ./goodbye.sh
+       goodbye.sh
       shell: bash
