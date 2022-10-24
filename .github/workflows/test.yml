@@ -22,7 +22,7 @@ jobs:
         with:
           who-to-greet: ''
           shell: 'bash'
-          locale: 'sk_SK.utf8'
+          locale: 'sk_SK'
           timezone: 'Europe/Bratislava'
       - run: echo random-number ${{ steps.foo.outputs.random-number }}
         shell: bash
