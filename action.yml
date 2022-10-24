@@ -59,9 +59,6 @@ runs:
        sudo systemsetup -settimezone Europe/Bratislava
        sudo systemsetup -gettimezone
        echo "$LC_CTYPE"
-       ~/.profile
-       export LC_ALL=en_US.UTF-8
-       export LANG=en_US.UTF-8
        sudo localedef -c -i sk_SK -f UTF-8 sk_SK.UTF-8
        locale
       shell: ${{ inputs.shell }}
