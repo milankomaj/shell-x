@@ -18,7 +18,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - id: foo
-        uses: milankomaj/shell-x@v0.18
+        uses: milankomaj/shell-x@v0.19
         with:
           who-to-greet: ''
           shell: 'bash'
