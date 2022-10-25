@@ -1,0 +1,88 @@
+name: windows-latest
+run-name: ${{ github.workflow }} ✅ ${{ github.actor }} ✅ ${{ github.event_name}}
+on:
+  workflow_dispatch:
+
+jobs:
+  cmd:
+    name: Shell cmd
+    continue-on-error: true
+    strategy:
+      max-parallel: 3
+      matrix:
+       os: [windows-latest]
+
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v3
+      - id: foo
+        uses: milankomaj/shell-x@v0.3
+        with:
+          who-to-greet: '${{ github.actor }}'
+          neofetch: 'true'
+          shell: 'cmd'
+          locale: 'sk-SK'
+          timezone: 'Central Europe Standard Time'
+
+      - run: echo 💡 ${{ steps.foo.outputs.random-number }}
+        shell: cmd
+      - run: echo 💡 ${{ steps.foo.outputs.inputs-outputs }}
+        shell: cmd
+      - run: date
+        shell: cmd
+
+  powershell:
+    name: Shell powershell
+    continue-on-error: true
+    strategy:
+      max-parallel: 3
+      matrix:
+       os: [windows-latest]
+
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v3
+      - id: foo
+        uses: milankomaj/shell-x@v0.3
+        with:
+          who-to-greet: '${{ github.actor }}'
+          neofetch: 'true'
+          shell: 'powershell'
+          locale: 'sk_SK.utf8'
+          timezone: 'Europe/Bratislava'
+
+      - run: echo 💡 ${{ steps.foo.outputs.random-number }}
+        shell: powershell
+      - run: echo 💡 ${{ steps.foo.outputs.inputs-outputs }}
+        shell: powershell
+      - run: |
+         Get-TimeZone
+         Get-Date
+        shell: powershell
+
+  pwsh:
+    name: Shell pwsh
+    continue-on-error: true
+    strategy:
+      max-parallel: 3
+      matrix:
+       os: [windows-latest]
+
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v3
+      - id: foo
+        uses: milankomaj/shell-x@v0.3
+        with:
+          who-to-greet: '${{ github.actor }}'
+          neofetch: 'true'
+          shell: 'pwsh'
+          locale: 'sk_SK.utf8'
+          timezone: 'Europe/Bratislava'
+
+      - run: echo 💡 ${{ steps.foo.outputs.random-number }}
+        shell: pwsh
+      - run: echo 💡 ${{ steps.foo.outputs.inputs-outputs }}
+        shell: pwsh
+      - run: Get-Date
+        shell: pwsh

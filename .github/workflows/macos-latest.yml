@@ -1,0 +1,86 @@
+name: macos-latest
+run-name: ${{ github.workflow }} ✅ ${{ github.actor }} ✅ ${{ github.event_name}}
+on:
+  workflow_dispatch:
+
+jobs:
+  bash:
+    name: Shell bash
+    continue-on-error: true
+    strategy:
+      max-parallel: 3
+      matrix:
+       os: [macos-latest]
+
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v3
+      - id: foo
+        uses: milankomaj/shell-x@v0.3
+        with:
+          who-to-greet: '${{ github.actor }}'
+          neofetch: 'true'
+          shell: 'bash'
+          locale: 'sk_SK.utf8'
+          timezone: 'Europe/Bratislava'
+
+      - run: echo 💡 ${{ steps.foo.outputs.random-number }}
+        shell: bash
+      - run: echo 💡 ${{ steps.foo.outputs.inputs-outputs }}
+        shell: bash
+      - run: date
+        shell: bash
+
+  sh:
+    name: Shell sh
+    continue-on-error: true
+    strategy:
+      max-parallel: 3
+      matrix:
+       os: [macos-latest]
+
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v3
+      - id: foo
+        uses: milankomaj/shell-x@v0.3
+        with:
+          who-to-greet: '${{ github.actor }}'
+          neofetch: 'true'
+          shell: 'sh'
+          locale: 'sk_SK.utf8'
+          timezone: 'Europe/Bratislava'
+
+      - run: echo 💡 ${{ steps.foo.outputs.random-number }}
+        shell: sh
+      - run: echo 💡 ${{ steps.foo.outputs.inputs-outputs }}
+        shell: sh
+      - run: date
+        shell: sh
+
+  pwsh:
+    name: Shell pwsh
+    continue-on-error: true
+    strategy:
+      max-parallel: 3
+      matrix:
+       os: [macos-latest]
+
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v3
+      - id: foo
+        uses: milankomaj/shell-x@v0.3
+        with:
+          who-to-greet: '${{ github.actor }}'
+          neofetch: 'true'
+          shell: 'pwsh'
+          locale: 'sk_SK.utf8'
+          timezone: 'Europe/Bratislava'
+
+      - run: echo 💡 ${{ steps.foo.outputs.random-number }}
+        shell: pwsh
+      - run: echo 💡 ${{ steps.foo.outputs.inputs-outputs }}
+        shell: pwsh
+      - run: date
+        shell: pwsh
