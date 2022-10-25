@@ -6,7 +6,7 @@ on:
 jobs:
   cmd:
     name: Shell cmd
-    continue-on-error: true
+    continue-on-error: false
     strategy:
       max-parallel: 3
       matrix:
@@ -16,7 +16,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - id: foo
-        uses: milankomaj/shell-x@v0.3
+        uses: milankomaj/shell-x@v0.1
         with:
           who-to-greet: '${{ github.actor }}'
           neofetch: 'true'
@@ -33,7 +33,7 @@ jobs:
 
   powershell:
     name: Shell powershell
-    continue-on-error: true
+    continue-on-error: false
     strategy:
       max-parallel: 3
       matrix:
@@ -43,7 +43,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - id: foo
-        uses: milankomaj/shell-x@v0.3
+        uses: milankomaj/shell-x@v0.1
         with:
           who-to-greet: '${{ github.actor }}'
           neofetch: 'true'
@@ -62,7 +62,7 @@ jobs:
 
   pwsh:
     name: Shell pwsh
-    continue-on-error: true
+    continue-on-error: false
     strategy:
       max-parallel: 3
       matrix:
@@ -72,7 +72,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - id: foo
-        uses: milankomaj/shell-x@v0.3
+        uses: milankomaj/shell-x@v0.1
         with:
           who-to-greet: '${{ github.actor }}'
           neofetch: 'true'
