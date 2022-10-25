@@ -93,7 +93,7 @@ runs:
 
     - name: is-Windows
       id: is-Windows
-      if: runner.os == 'Windows' && inputs.shell != 'cmd'
+      if: runner.os == 'Windows' && inputs.shell ! 'cmd'
       run: |
        echo ${{ runner.os }}
        Set-WinSystemLocale -SystemLocale ${{ inputs.locale }}
@@ -113,7 +113,7 @@ runs:
 
     - name: Neofetch
       id: Neofetch
-      if: runner.os != 'Windows' && inputs.neofetch != 'false'
+      if: runner.os ! 'Windows' && inputs.neofetch ! 'false'
       run: |
        chmod +x ${{ github.action_path }}/neofetch.sh
        ${{ github.action_path }}/neofetch.sh
@@ -121,14 +121,14 @@ runs:
 
     - name: Winfetch-ps1
       id: Winfetch-ps1
-      if: runner.os == 'Windows' && inputs.shell != 'cmd' && inputs.neofetch != 'false'
+      if: runner.os == 'Windows' && inputs.shell ! 'cmd' && inputs.neofetch ! 'false'
       run: |
        ${{ github.action_path }}/winfetch.ps1
       shell: ${{ inputs.shell }}
 
     - name: Winfetch-bat
       id: Winfetch-bat
-      if: runner.os == 'Windows' && inputs.shell == 'cmd' && inputs.neofetch != 'false'
+      if: runner.os == 'Windows' && inputs.shell == 'cmd' && inputs.neofetch ! 'false'
       run: |
        ${{ github.action_path }}/winfetch.bat
       shell: ${{ inputs.shell }}
