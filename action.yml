@@ -21,7 +21,7 @@ inputs:
   neofetch:  # id of input
     description: 'Use neofetch'
     required: true
-    default: false
+    default: 'false'
 
 
 outputs:
