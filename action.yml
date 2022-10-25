@@ -20,8 +20,8 @@ inputs:
     default: ''
   neofetch:  # id of input
     description: 'Use neofetch'
-    required: false
-    default: 'false'
+    required: true
+    default: false
 
 
 outputs:
