@@ -1,5 +1,5 @@
-name: 'shell-x'
-description: 'Locale shell'
+name: 'Hello World'
+description: 'Greet someone'
 
 inputs:
   who-to-greet:  # id of input
@@ -31,6 +31,9 @@ outputs:
   inputs-outputs:
     description: "inputs-outputs"
     value: ${{ steps.inputs-outputs.outputs.inputs-outputs }}
+  shell-outputs:
+    description: "shell-outputs"
+    value: ${{ steps.shell-outputs.outputs.shell-outputs }}
 
 runs:
   using: "composite"
@@ -39,37 +42,42 @@ runs:
     - name: inputs.neofetch
       id: neo
       run: echo "Neofetch is ${{ inputs.neofetch }}."
-      shell: ${{ inputs.shell }}
+      shell: bash
 
     - name: inputs.who-to-greet
       id: who
       run: echo "Hello ${{ inputs.who-to-greet }}."
-      shell: ${{ inputs.shell }}
+      shell: bash
 
     - name: inputs.shell
       id: shell
       run: echo "Shell is ${{ inputs.shell }}."
-      shell: ${{ inputs.shell }}
+      shell: bash
 
     - name: inputs.locale
       id: locale
       run: echo "Locale is ${{ inputs.locale }}."
-      shell: ${{ inputs.shell }}
+      shell: bash
 
     - name: inputs.timezone
       id: timezone
       run: echo "Timezone is ${{ inputs.timezone }}."
-      shell: ${{ inputs.shell }}
+      shell: bash
 
     - name: random-number-generator
       id: random-number-generator
       run: echo "random-number=$(echo $RANDOM)" >> $GITHUB_OUTPUT
-      shell: ${{ inputs.shell }}
+      shell: bash
 
     - name: inputs-outputs
       id: inputs-outputs
       run: echo "inputs-outputs=$(echo ${{runner.os}} - ${{inputs.neofetch}} - ${{inputs.shell}} - ${{inputs.locale}} - ${{inputs.timezone}} )" >> $GITHUB_OUTPUT
-      shell: ${{ inputs.shell }}
+      shell: bash
+
+    - name: shell-outputs
+      id: shell-outputs
+      run: echo "shell-outputs=$(echo ${{inputs.shell}})" >> $GITHUB_OUTPUT
+      shell: bash
 
     - name: is-Linux
       id: is-Linux
