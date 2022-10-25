@@ -20,8 +20,8 @@ inputs:
     default: ''
   neofetch:  # id of input
     description: 'Use neofetch'
-    required: true
-    default: 'false'
+    required: false
+    default: ''
 
 
 outputs:
@@ -31,9 +31,6 @@ outputs:
   inputs-outputs:
     description: "inputs-outputs"
     value: ${{ steps.inputs-outputs.outputs.inputs-outputs }}
-  is-fetch-win-neo:
-    description: "is-fetch-win-neo"
-    value: ${{ steps.is-fetch-win-neo.outputs.is-fetch-win-neo }}
 
 runs:
   using: "composite"
@@ -68,13 +65,6 @@ runs:
       id: inputs-outputs
       run: echo "inputs-outputs=$(echo ${{runner.os}} - ${{inputs.neofetch}} - ${{inputs.shell}} - ${{inputs.locale}} - ${{inputs.timezone}} )" >> $GITHUB_OUTPUT
       shell: bash
-
-
-    - name: is-fetch-win-neo
-      id: is-fetch-win-neo
-      if: inputs.neofetch == 'false'
-      run: echo "is-fetch-win-neo=$(echo ${{inputs.neofetch = 'false'}})" >> $GITHUB_OUTPUT
-      shell: ${{ inputs.shell }}
 
     - name: is-Linux
       id: is-Linux
