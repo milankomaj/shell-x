@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  ubuntu-latest:
+  bash:
     name: Shell bash
     continue-on-error: true
     strategy:
@@ -31,7 +31,7 @@ jobs:
       - run: date
         shell: bash
 
-  ubuntu-latest:
+  sh:
     name: Shell sh
     continue-on-error: true
     strategy:
@@ -58,7 +58,7 @@ jobs:
       - run: date
         shell: sh
 
-  ubuntu-latest:
+  pwsh:
     name: Shell pwsh
     continue-on-error: true
     strategy:
