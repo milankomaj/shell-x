@@ -21,7 +21,7 @@ inputs:
   neofetch:  # id of input
     description: 'Use neofetch'
     required: false
-    default: ''
+    default: 'false'
 
 
 outputs:
@@ -38,7 +38,7 @@ runs:
 
     - name: inputs.neofetch
       id: neofetch
-      run: echo Hello ${{ inputs.neofetch }}.
+      run: echo Neofetch is ${{ inputs.neofetch }}.
       shell: bash
 
     - name: inputs.who-to-greet
