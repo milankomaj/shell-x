@@ -1,2 +1,2 @@
 # shell-x
-## Creating a composite action
+### Creating a composite action.
