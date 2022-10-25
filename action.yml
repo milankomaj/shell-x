@@ -36,6 +36,11 @@ runs:
   using: "composite"
   steps:
 
+    - name: inputs.neofetch
+      id: neofetch
+      run: echo Hello ${{ inputs.neofetch }}.
+      shell: bash
+
     - name: inputs.who-to-greet
       id: who
       run: echo Hello ${{ inputs.who-to-greet }}.
