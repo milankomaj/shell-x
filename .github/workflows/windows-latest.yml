@@ -49,7 +49,7 @@ jobs:
           neofetch: 'true'
           shell: 'powershell'
           locale: 'sk_SK'
-          timezone: 'Europe/Bratislava'
+          timezone: 'Central Europe Standard Time'
 
       - run: echo 💡 ${{ steps.foo.outputs.random-number }}
         shell: powershell
@@ -78,7 +78,7 @@ jobs:
           neofetch: 'true'
           shell: 'pwsh'
           locale: 'sk_SK'
-          timezone: 'Europe/Bratislava'
+          timezone: 'Central Europe Standard Time'
 
       - run: echo 💡 ${{ steps.foo.outputs.random-number }}
         shell: pwsh
