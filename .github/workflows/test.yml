@@ -25,10 +25,10 @@ jobs:
           locale: 'sk_SK'
           timezone: 'Central Europe Standard Time'
 
-      - run: echo ":rocket:" ${{ steps.foo.outputs.random-number }}
+      - run: echo 💡 ${{ steps.foo.outputs.random-number }}
         shell: bash
 
-      - run: echo inputs-outputs ${{ steps.foo.outputs.inputs-outputs }}
+      - run: echo 💡 ${{ steps.foo.outputs.inputs-outputs }}
         shell: bash
 
 
