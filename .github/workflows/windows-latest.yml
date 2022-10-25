@@ -51,13 +51,13 @@ jobs:
           locale: 'sk_SK'
           timezone: 'Central Europe Standard Time'
 
-      - run: echo "💡 ${{ steps.foo.outputs.random-number }}"
+      - run: echo '💡 ${{ steps.foo.outputs.random-number }}'
         shell: powershell
-      - run: echo "💡 ${{ steps.foo.outputs.inputs-outputs }}"
+      - run: echo '💡 ${{ steps.foo.outputs.inputs-outputs }}'
         shell: powershell
       - run: |
          Get-TimeZone
-         Get-Date
+         Get-Date -UFormat "%A %m/%d/%Y %R %Z"
         shell: powershell
 
   pwsh:
