@@ -33,4 +33,4 @@ jobs:
         shell: bash
 
       - run: date
-        shell: ${{ steps.foo.outputs.shell-outputs }}
+        shell: bash
