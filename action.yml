@@ -34,7 +34,9 @@ runs:
 
     - name: inputs.who-to-greet
       id: who
-      run: echo Hello ${{ inputs.who-to-greet }}.
+      run: |
+       echo ${{ inputs.who-to-greet }}
+       echo Hello ${{ inputs.who-to-greet }}.
       shell: bash
 
     - name: inputs.shell
