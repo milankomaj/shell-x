@@ -28,7 +28,7 @@ jobs:
         shell: cmd
       - run: echo 💡 ${{ steps.foo.outputs.inputs-outputs }}
         shell: cmd
-      - run: date
+      - run: echo 💡 %date%-%time%
         shell: cmd
 
   powershell:
@@ -48,7 +48,7 @@ jobs:
           who-to-greet: '${{ github.actor }}'
           neofetch: 'true'
           shell: 'powershell'
-          locale: 'sk_SK.utf8'
+          locale: 'sk_SK'
           timezone: 'Europe/Bratislava'
 
       - run: echo 💡 ${{ steps.foo.outputs.random-number }}
@@ -77,7 +77,7 @@ jobs:
           who-to-greet: '${{ github.actor }}'
           neofetch: 'true'
           shell: 'pwsh'
-          locale: 'sk_SK.utf8'
+          locale: 'sk_SK'
           timezone: 'Europe/Bratislava'
 
       - run: echo 💡 ${{ steps.foo.outputs.random-number }}
