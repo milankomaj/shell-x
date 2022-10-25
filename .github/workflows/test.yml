@@ -11,18 +11,20 @@ jobs:
     strategy:
       max-parallel: 3
       matrix:
-       os: [ubuntu-latest, windows-latest, macOS-latest]
+       os: [ubuntu-latest]
 
 
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v3
       - id: foo
-        uses: milankomaj/shell-x@v0.2
+        uses: milankomaj/shell-x@v0.3
         with:
           who-to-greet: '${{ github.actor }}'
           neofetch: 'true'
-
+          shell: 'bash'
+          locale: 'sk_SK.utf8'
+          timezone: 'Europe/Bratislava'
 
       - run: echo 💡 ${{ steps.foo.outputs.random-number }}
         shell: bash
@@ -30,15 +32,5 @@ jobs:
       - run: echo 💡 ${{ steps.foo.outputs.inputs-outputs }}
         shell: bash
 
-
-      - name: date ${{ matrix.os }}
-        if: ${{matrix.os != 'windows-latest'}}
-        run: |
-            date
-
-      - name: date ${{ matrix.os }}
-        if: ${{matrix.os == 'windows-latest'}}
-        run: |
-         Get-TimeZone
-         Get-Date -UFormat "%A %m/%d/%Y %R %Z"
-         date
+      - run: date
+        shell: ${{ steps.foo.outputs.shell-outputs }}

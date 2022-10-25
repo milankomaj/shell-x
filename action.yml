@@ -31,6 +31,9 @@ outputs:
   inputs-outputs:
     description: "inputs-outputs"
     value: ${{ steps.inputs-outputs.outputs.inputs-outputs }}
+  shell-outputs:
+    description: "shell-outputs"
+    value: ${{ steps.shell-outputs.outputs.shell-outputs }}
 
 runs:
   using: "composite"
@@ -69,6 +72,11 @@ runs:
     - name: inputs-outputs
       id: inputs-outputs
       run: echo "inputs-outputs=$(echo ${{runner.os}} - ${{inputs.neofetch}} - ${{inputs.shell}} - ${{inputs.locale}} - ${{inputs.timezone}} )" >> $GITHUB_OUTPUT
+      shell: bash
+
+    - name: shell-outputs
+      id: shell-outputs
+      run: echo "shell-outputs=$(echo ${{inputs.shell}})" >> $GITHUB_OUTPUT
       shell: bash
 
     - name: is-Linux
