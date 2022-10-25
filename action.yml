@@ -1,5 +1,5 @@
-name: 'Hello World'
-description: 'Greet someone'
+name: 'shell-x'
+description: 'Locale shell'
 
 inputs:
   who-to-greet:  # id of input
@@ -42,12 +42,12 @@ runs:
     - name: inputs.neofetch
       id: neo
       run: echo "Neofetch is ${{ inputs.neofetch }}."
-      shell: bash
+      shell: ${{ inputs.shell }}
 
     - name: inputs.who-to-greet
       id: who
       run: echo "Hello ${{ inputs.who-to-greet }}."
-      shell: bash
+      shell: ${{ inputs.shell }}
 
     - name: inputs.shell
       id: shell
@@ -67,17 +67,17 @@ runs:
     - name: random-number-generator
       id: random-number-generator
       run: echo "random-number=$(echo $RANDOM)" >> $GITHUB_OUTPUT
-      shell: bash
+      shell: ${{ inputs.shell }}
 
     - name: inputs-outputs
       id: inputs-outputs
       run: echo "inputs-outputs=$(echo ${{runner.os}} - ${{inputs.neofetch}} - ${{inputs.shell}} - ${{inputs.locale}} - ${{inputs.timezone}} )" >> $GITHUB_OUTPUT
-      shell: bash
+      shell: ${{ inputs.shell }}
 
     - name: shell-outputs
       id: shell-outputs
       run: echo "shell-outputs=$(echo ${{inputs.shell}})" >> $GITHUB_OUTPUT
-      shell: bash
+      shell: ${{ inputs.shell }}
 
     - name: is-Linux
       id: is-Linux
