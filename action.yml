@@ -38,27 +38,27 @@ runs:
 
     - name: inputs.neofetch
       id: neo
-      run: echo Neofetch is ${{ inputs.neofetch }}.
+      run: echo "Neofetch is ${{ inputs.neofetch }}."
       shell: bash
 
     - name: inputs.who-to-greet
       id: who
-      run: echo Hello ${{ inputs.who-to-greet }}.
+      run: echo "Hello ${{ inputs.who-to-greet }}."
       shell: bash
 
     - name: inputs.shell
       id: shell
-      run: echo Shell is ${{ inputs.shell }}.
+      run: echo "Shell is ${{ inputs.shell }}."
       shell: ${{ inputs.shell }}
 
     - name: inputs.locale
       id: locale
-      run: echo Locale is ${{ inputs.locale }}.
+      run: echo "Locale is ${{ inputs.locale }}."
       shell: ${{ inputs.shell }}
 
     - name: inputs.timezone
       id: timezone
-      run: echo Timezone is ${{ inputs.timezone }}.
+      run: echo "Timezone is ${{ inputs.timezone }}."
       shell: ${{ inputs.shell }}
 
     - name: random-number-generator
