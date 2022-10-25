@@ -21,7 +21,7 @@ jobs:
         uses: milankomaj/shell-x@v0.3
         with:
           who-to-greet: '${{ github.actor }}'
-          neofetch: 'false'
+          neofetch: 'true'
           shell: 'pwsh'
           locale: 'sk_SK'
           timezone: 'Central Europe Standard Time'
