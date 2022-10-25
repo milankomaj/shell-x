@@ -73,7 +73,7 @@ runs:
     - name: is-fetch-win-neo
       id: is-fetch-win-neo
       if: inputs.neofetch == 'false'
-      run: echo "is-fetch-win-neo=$(echo ${{inputs.neofetch}})" >> $GITHUB_OUTPUT
+      run: echo "is-fetch-win-neo=$(echo ${{inputs.neofetch == 'false'}})" >> $GITHUB_OUTPUT
       shell: ${{ inputs.shell }}
 
     - name: is-Linux
