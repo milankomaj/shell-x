@@ -47,7 +47,7 @@ runs:
       shell: ${{ inputs.shell }}
 
     - name: inputs.locale
-      id: shelocalell
+      id: locale
       run: echo Locale is ${{ inputs.locale }}.
       shell: ${{ inputs.shell }}
 
