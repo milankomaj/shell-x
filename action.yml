@@ -21,8 +21,8 @@ inputs:
   neofetch:  # id of input
     description: 'Use neofetch'
     required: false
-    default: false
-    type: boolean
+    default: 'false'
+
 
 outputs:
   random-number:

@@ -21,15 +21,15 @@ jobs:
         uses: milankomaj/shell-x@v0.1
         with:
           who-to-greet: '${{ github.actor }}'
-          neofetch: false
+          neofetch: 'false'
           shell: 'pwsh'
           locale: 'sk_SK'
           timezone: 'Central Europe Standard Time'
 
-      - run: echo 💡 ${{ steps.foo.outputs.random-number }}
+      - run: 💡 ${{ steps.foo.outputs.random-number }}
         shell: bash
 
-      - run: echo 💡 ${{ steps.foo.outputs.inputs-outputs }}
+      - run: 💡 ${{ steps.foo.outputs.inputs-outputs }}
         shell: bash
 
 
