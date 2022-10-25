@@ -18,10 +18,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - id: foo
-        uses: milankomaj/shell-x@v0.6
+        uses: milankomaj/shell-x@v0.7
         with:
           who-to-greet: '${{ github.actor }}'
-          neofetch: # 'true'
           shell: 'pwsh'
           locale: 'sk_SK'
           timezone: 'Central Europe Standard Time'
