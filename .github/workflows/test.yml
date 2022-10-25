@@ -18,13 +18,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - id: foo
-        uses: milankomaj/shell-x@v0.1
+        uses: milankomaj/shell-x@v0.2
         with:
           who-to-greet: '${{ github.actor }}'
           neofetch: 'true'
-          shell: ''
-          locale: ''
-          timezone: ''
+
 
       - run: echo 💡 ${{ steps.foo.outputs.random-number }}
         shell: bash
