@@ -37,7 +37,7 @@ runs:
   steps:
 
     - name: inputs.neofetch
-      id: neofetch
+      id: neo
       run: echo Neofetch is ${{ inputs.neofetch }}.
       shell: bash
 
