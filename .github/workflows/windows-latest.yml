@@ -29,7 +29,7 @@ jobs:
       - run: echo 💡 ${{ steps.foo.outputs.inputs-outputs }}
         shell: cmd
       - name: date-time
-      - run: echo 💡 %date%-%time%
+        run: echo 💡 %date%-%time%
         shell: cmd
 
   powershell:
