@@ -107,13 +107,20 @@ runs:
       id: Neofetch
       if: runner.os != 'Windows'
       run: |
-       chmod +x ${{ github.action_path }}/goodbye.sh
-       ${{ github.action_path }}/goodbye.sh
+       chmod +x ${{ github.action_path }}/neofetch.sh
+       ${{ github.action_path }}/neofetch.sh
       shell: ${{ inputs.shell }}
 
-    - name: Winfetch
-      id: Winfetch
-      if: runner.os == 'Windows'
+    - name: Winfetch-ps1
+      id: Winfetch-ps1
+      if: runner.os == 'Windows' && inputs.shell != 'cmd'
       run: |
        ${{ github.action_path }}/winfetch.ps1
+      shell: ${{ inputs.shell }}
+
+    - name: Winfetch-bat
+      id: Winfetch-bat
+      if: runner.os == 'Windows' && inputs.shell == 'cmd'
+      run: |
+       ${{ github.action_path }}/winfetch.bat
       shell: ${{ inputs.shell }}

@@ -18,10 +18,10 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - id: foo
-        uses: milankomaj/shell-x@v0.58
+        uses: milankomaj/shell-x@v0.59
         with:
-          who-to-greet: '${{ github.actor }}'
-          shell: 'powershell'
+          who-to-greet: # '${{ github.actor }}'
+          shell: 'cmd'
           locale: 'sk_SK'
           timezone: 'Central Europe Standard Time'
 
