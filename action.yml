@@ -35,6 +35,8 @@ outputs:
     description: "shell-outputs"
     value: ${{ steps.shell-outputs.outputs.shell-outputs }}
 
+
+
 runs:
   using: "composite"
   steps:
@@ -56,7 +58,9 @@ runs:
 
     - name: inputs.locale
       id: locale
-      run: echo "Locale is ${{ inputs.locale }}."
+      run:  |
+       echo "Locale is ${{ inputs.locale }}."
+       echo "LANG=${inputs.locale}" >> $GITHUB_ENV
       shell: bash
 
     - name: inputs.timezone
