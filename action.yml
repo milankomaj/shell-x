@@ -35,7 +35,8 @@ outputs:
     description: "shell-outputs"
     value: ${{ steps.shell-outputs.outputs.shell-outputs }}
 
-
+env:
+   LANG: "sk_SK.utf8"
 
 runs:
   using: "composite"
