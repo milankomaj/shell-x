@@ -56,9 +56,9 @@ runs:
 
     - name: inputs.locale
       id: locale
-      run:  |
+      run: |
        echo "Locale is ${{ inputs.locale }}."
-       echo "locale=${inputs.locale}" >> $GITHUB_ENV
+       echo "locale=$(echo ${{ inputs.locale }})" >> $GITHUB_ENV
       shell: bash
 
     - name: inputs.timezone
