@@ -3,7 +3,7 @@ run-name: ${{ github.workflow }} ✅ ${{ github.actor }} ✅ ${{ github.event_na
 on:
   workflow_dispatch:
 
-        
+
 jobs:
   bash:
     name: Shell bash
@@ -25,6 +25,8 @@ jobs:
           locale: 'sk_SK.utf8'
           timezone: 'Europe/Bratislava'
 
+      - run: echo 💡 ${{ env.locale}}
+        shell: bash
       - run: echo 💡 ${{ steps.foo.outputs.random-number }}
         shell: bash
       - run: echo 💡 ${{ steps.foo.outputs.inputs-outputs }}
