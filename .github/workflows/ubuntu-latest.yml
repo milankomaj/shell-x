@@ -53,7 +53,7 @@ jobs:
           locale: 'sk_SK.utf8'
           timezone: 'Europe/Bratislava'
 
-      - run: sudo Languagesetup
+      - run: echo 💡 ${{ steps.foo.outputs.random-number }}
         shell: sh
       - run: echo 💡 ${{ steps.foo.outputs.inputs-outputs }}
         shell: sh
