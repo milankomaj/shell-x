@@ -24,6 +24,8 @@ inputs:
     default: 'false'
     type: boolean
 
+
+
 outputs:
   random-number:
     description: "Random number"
@@ -89,6 +91,8 @@ runs:
        sudo update-locale LANG=${{ inputs.locale }}
        sudo timedatectl set-timezone ${{ inputs.timezone }}
        exit
+      env:
+       LANG: ${{ inputs.locale }}
       shell: ${{ inputs.shell }}
 
     - name: is-macOS
