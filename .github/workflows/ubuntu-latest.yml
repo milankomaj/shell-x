@@ -18,17 +18,14 @@ jobs:
       - uses: actions/checkout@v3
       - id: foo
         uses: milankomaj/shell-x@v0.1
+        run: echo ${{ env.locale }}
         with:
           who-to-greet: '${{ github.actor }}'
           neofetch: 'true'
           shell: 'bash'
           locale: 'sk_SK.utf8'
           timezone: 'Europe/Bratislava'
-        env:
-          LANG: ${{ env.locale }}
-          
-      - run: echo 💡 ${{ env.locale }}
-        shell: bash
+
       - run: echo 💡 ${{ steps.foo.outputs.random-number }}
         shell: bash
       - run: echo 💡 ${{ steps.foo.outputs.inputs-outputs }}
