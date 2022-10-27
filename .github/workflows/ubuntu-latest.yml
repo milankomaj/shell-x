@@ -16,8 +16,9 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v3
-      - id: foo
+      
       - run: echo ${{ env.locale }}
+      - id: foo
         uses: milankomaj/shell-x@v0.1
         with:
           who-to-greet: '${{ github.actor }}'
@@ -33,6 +34,7 @@ jobs:
         shell: bash
       - run: date
         shell: bash
+
 
   sh:
     name: Shell sh
