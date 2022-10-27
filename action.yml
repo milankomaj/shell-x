@@ -60,7 +60,7 @@ runs:
       id: locale
       run: |
        echo "Locale is ${{ inputs.locale }}."
-       echo "locale=$(echo ${{ inputs.locale }})" >> $GITHUB_ENV
+       echo "LANG=$(echo ${{ inputs.locale }})" >> $GITHUB_ENV
       shell: bash
 
     - name: inputs.timezone
@@ -91,8 +91,6 @@ runs:
        sudo update-locale LANG=${{ inputs.locale }}
        sudo timedatectl set-timezone ${{ inputs.timezone }}
        exit
-      env:
-       LANG: ${{ inputs.locale }}
       shell: ${{ inputs.shell }}
 
     - name: is-macOS
