@@ -2,6 +2,8 @@ name: macos-latest
 run-name: ${{ github.workflow }} ✅ ${{ github.actor }} ✅ ${{ github.event_name}}
 on:
   workflow_dispatch:
+env:
+  LANG: "sk_SK.utf8"
 
 jobs:
   bash:

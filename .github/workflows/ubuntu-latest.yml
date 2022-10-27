@@ -2,7 +2,8 @@ name: ubuntu-latest
 run-name: ${{ github.workflow }} ✅ ${{ github.actor }} ✅ ${{ github.event_name}}
 on:
   workflow_dispatch:
-
+env:
+  LANG: "sk_SK.utf8"
 
 jobs:
   bash:
@@ -16,8 +17,6 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v3
-
-
       - id: foo
         uses: milankomaj/shell-x@v0.1
         with:
@@ -26,9 +25,6 @@ jobs:
           shell: 'bash'
           locale: 'sk_SK.utf8'
           timezone: 'Europe/Bratislava'
-        env:
-         LANG: "sk_SK.utf8"
-
 
       - run: echo 💡 ${{ steps.foo.outputs.random-number }}
         shell: bash
