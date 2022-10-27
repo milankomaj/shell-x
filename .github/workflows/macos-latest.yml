@@ -25,7 +25,7 @@ jobs:
           locale: 'sk_SK.utf8'
           timezone: 'Europe/Bratislava'
 
-      - run: $HOME/.bashrc
+      - run: cat $HOME/.bashrc
         shell: bash
       - run: echo 💡 ${{ steps.foo.outputs.inputs-outputs }}
         shell: bash
