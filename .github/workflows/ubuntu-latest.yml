@@ -26,7 +26,9 @@ jobs:
           timezone: 'Europe/Bratislava'
         env:
           LANG: ${{ env.locale }}
-
+          
+      - run: echo 💡 ${{ env.locale }}
+        shell: bash
       - run: echo 💡 ${{ steps.foo.outputs.random-number }}
         shell: bash
       - run: echo 💡 ${{ steps.foo.outputs.inputs-outputs }}
