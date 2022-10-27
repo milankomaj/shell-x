@@ -100,8 +100,14 @@ runs:
        echo ${{ runner.os }}
        sudo systemsetup -settimezone ${{ inputs.timezone }}
        sudo systemsetup -gettimezone
+       echo "export LC_CTYPE=${{ inputs.locale }}" >> $HOME/.bashrc
+       echo "export LC_ALL=${{ inputs.locale }}" >> $HOME/.bashrc
+       echo "export LANG=${{ inputs.locale }}" >> $HOME/.bashrc
        exit
+
       shell: ${{ inputs.shell }}
+
+
 
     - name: is-Windows
       id: is-Windows
