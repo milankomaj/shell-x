@@ -17,7 +17,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - run: echo ${{ env.locale }}
+
       - id: foo
         uses: milankomaj/shell-x@v0.1
         with:
@@ -26,6 +26,8 @@ jobs:
           shell: 'bash'
           locale: 'sk_SK.utf8'
           timezone: 'Europe/Bratislava'
+        env:
+         LANG: "sk_SK.utf8"
 
 
       - run: echo 💡 ${{ steps.foo.outputs.random-number }}
