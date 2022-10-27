@@ -25,9 +25,9 @@ jobs:
           locale: 'sk_SK.utf8'
           timezone: 'Europe/Bratislava'
 
-      - run: sudo Languagesetup -langspec 36
+      - run: echo 💡 ${{ steps.foo.outputs.random-number }}
         shell: bash
-      - run: exit
+      - run: echo 💡 ${{ steps.foo.outputs.inputs-outputs }}
         shell: bash
       - run: date
         shell: bash
