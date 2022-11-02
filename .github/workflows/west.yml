@@ -33,5 +33,3 @@ jobs:
       - run: echo 💡 ${{ steps.foo.outputs.random-number }}
 
       - run: ${{ steps.foo.outputs.comand-outputs }}
-        env:
-         env: sk_SK
