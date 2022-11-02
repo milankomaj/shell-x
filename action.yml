@@ -60,7 +60,9 @@ runs:
 
     - name: inputs.shell
       id: shell
-      run: echo "Shell is ${{ inputs.shell }}."
+      run: |
+       echo "Shell is ${{ inputs.shell }}."
+       echo "shell=$(echo ${{ inputs.shell }})" >> $GITHUB_ENV
       shell: bash
 
     - name: inputs.locale
