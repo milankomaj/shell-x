@@ -1,0 +1,37 @@
+name: ubuntu-latest
+run-name: ${{ github.workflow }} ✅ ${{ github.actor }} ✅ ${{ github.event_name}}
+on:
+  workflow_dispatch:
+
+
+jobs:
+
+  bash:
+    name: Shell bash
+    continue-on-error: false
+    strategy:
+      max-parallel: 3
+      matrix:
+       os: [ubuntu-latest]
+
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v3
+      - run: date
+      - id: foo
+        uses: milankomaj/shell-x@v0.1
+        with:
+          who-to-greet: '${{ github.actor }}'
+          neofetch: 'false'
+          shell: 'bash'
+          locale: 'sk_SK.utf8'
+          timezone: 'Europe/Bratislava'
+
+
+      - run: date
+
+      - run: logout
+
+      - run: apt-get -y update && apt -y upgrade
+
+      - run: date
