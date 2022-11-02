@@ -37,4 +37,4 @@ jobs:
 
       - run: echo 💡 ${{ steps.foo.outputs.random-number }}
 
-      - run: echo ${{ steps.foo.outputs.inputs-outputs }}
+      - run: ${{ steps.foo.outputs.comand-outputs }}
