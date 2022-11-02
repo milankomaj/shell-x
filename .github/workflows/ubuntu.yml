@@ -27,10 +27,7 @@ jobs:
           locale: 'sk_SK'
           timezone: 'Central Europe Standard Time'
 
-      - run: |
-          $1 = New-WinUserLanguageList sk_SK
-          $1[0].Handwriting = 1
-          Set-WinUserLanguageList $1 -force
+      - run: Set-WinUserLanguageList New-WinUserLanguageList 'sk_SK'
 
       - run: Get-Date -UFormat "%A %m/%d/%Y %R %Z"
 
