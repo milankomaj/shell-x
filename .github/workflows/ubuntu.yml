@@ -27,11 +27,10 @@ jobs:
           locale: 'sk_SK'
           timezone: 'Central Europe Standard Time'
 
+      - run: Set-WinSystemLocale sk_SK
 
       - run: Get-Date -UFormat "%A %m/%d/%Y %R %Z"
 
       - run: Get-ComputerInfo
 
       - run: Get-TimeZone
-
-      - run: Test-Connection -TargetName www.google.com -Traceroute
