@@ -33,8 +33,6 @@ jobs:
 
       - run: echo ${{ steps.foo.outputs.inputs-outputs }}
         shell: powershell
-        
-      - run: |
-         Get-TimeZone
-         Get-Date -UFormat "%A %m/%d/%Y %R %Z"
+
+      - run: ${{ steps.foo.outputs.comand-outputs }}
         shell: powershell
