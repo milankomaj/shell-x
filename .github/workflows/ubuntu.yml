@@ -39,3 +39,5 @@ jobs:
       - run: Get-Host
 
       - run: Get-TimeZone
+
+      - run: Get-ComputerInfo
