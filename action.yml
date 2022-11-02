@@ -114,6 +114,7 @@ runs:
       if: runner.os == 'Windows' && inputs.shell != 'cmd'
       run: |
        echo ${{ runner.os }}
+       Set-WinSystemLocale ${{ inputs.locale }}
        Set-WinSystemLocale -SystemLocale ${{ inputs.locale }}
        Set-Culture ${{ inputs.locale }}
        Set-TimeZone -Id "${{ inputs.timezone }}"
