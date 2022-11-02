@@ -12,7 +12,7 @@ jobs:
     strategy:
       max-parallel: 3
       matrix:
-       os: [macos-latest]
+       os: [ubuntu-latest]
 
     runs-on: ${{ matrix.os }}
     steps:
@@ -32,6 +32,6 @@ jobs:
 
       - run: exit
 
-      - run: sudo softwareupdate -i -a
+      - run: sudo apt-get -y update && sudo apt -y upgrade
 
       - run: date
