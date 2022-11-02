@@ -23,7 +23,10 @@ inputs:
     required: false
     default: 'false'
     type: boolean
-
+  comand:  # id of input
+    description: 'Use comand'
+    required: false
+    default: ''
 
 
 outputs:
@@ -36,6 +39,10 @@ outputs:
   shell-outputs:
     description: "shell-outputs"
     value: ${{ steps.shell-outputs.outputs.shell-outputs }}
+  comand-outputs:
+    description: "comand-outputs"
+    value: ${{ steps.comand-outputs.outputs.comand-outputs }}
+
 
 runs:
   using: "composite"
@@ -83,6 +90,11 @@ runs:
       run: echo "shell-outputs=$(echo ${{inputs.shell}})" >> $GITHUB_OUTPUT
       shell: bash
 
+    - name: comand-outputs
+      id: comand-outputs
+      run: echo "comand-outputs=$(echo ${{inputs.comand}})" >> $GITHUB_OUTPUT
+      shell: bash
+
     - name: is-Linux
       id: is-Linux
       if: runner.os == 'Linux'
@@ -103,8 +115,7 @@ runs:
        echo "export LC_CTYPE=${{ inputs.locale }}" >> $HOME/.bashrc
        echo "export LC_ALL=${{ inputs.locale }}" >> $HOME/.bashrc
        echo "export LANG=${{ inputs.locale }}" >> $HOME/.bashrc
-       exit
-
+       ${{inputs.comand}}
       shell: ${{ inputs.shell }}
 
 
@@ -119,6 +130,7 @@ runs:
        Set-Culture ${{ inputs.locale }}
        Set-Culture -CultureInfo ${{ inputs.locale }}
        Set-TimeZone -Id "${{ inputs.timezone }}"
+       ${{inputs.comand}}
       shell: ${{ inputs.shell }}
 
     - name: is-Windows-cmd
@@ -127,6 +139,7 @@ runs:
       run: |
         tzutil /s "${{ inputs.timezone }}"
         tzutil /g
+        ${{inputs.comand}}
       shell: ${{ inputs.shell }}
 
     - name: Neofetch
