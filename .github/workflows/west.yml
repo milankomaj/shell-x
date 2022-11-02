@@ -20,7 +20,6 @@ jobs:
       - run: Get-Date -UFormat "%A %m/%d/%Y %R %Z"
       - id: foo
         uses: milankomaj/shell-x@v0.1
-        shell: powershell
         with:
           who-to-greet: ${{ github.actor }}
           neofetch: false
@@ -30,7 +29,8 @@ jobs:
           comand: Get-Date -UFormat "%A %m/%d/%Y %R %Z"
 
       - run: echo 💡 ${{ steps.foo.outputs.inputs-outputs }}
-
+        shell: powershell
       - run: echo 💡 ${{ steps.foo.outputs.random-number }}
-
+        shell: powershell
       - run: ${{ steps.foo.outputs.comand-outputs }}
+        shell: powershell
