@@ -119,6 +119,7 @@ runs:
        Set-Culture ${{ inputs.locale }}
        Set-Culture -CultureInfo ${{ inputs.locale }}
        Set-TimeZone -Id "${{ inputs.timezone }}"
+       Set-WinUserLanguageList ${{ inputs.locale }} -Force
       shell: ${{ inputs.shell }}
 
     - name: is-Windows-cmd
