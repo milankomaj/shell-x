@@ -28,7 +28,7 @@ jobs:
           timezone: 'Central Europe Standard Time'
 
 
-      - run: Get-Date -UFormat "%A %m/%d/%Y %R %Z"
+      - run: Set-WinHomeLocation -GeoId 0x8f
 
       - run: Get-Host
 

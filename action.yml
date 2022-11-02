@@ -117,9 +117,9 @@ runs:
        Set-WinSystemLocale ${{ inputs.locale }}
        Set-WinSystemLocale -SystemLocale ${{ inputs.locale }}
        Set-Culture ${{ inputs.locale }}
+       Set-Culture -CultureInfo ${{ inputs.locale }}
        Set-TimeZone -Id "${{ inputs.timezone }}"
-       Get-TimeZone
-       Get-Date -UFormat "%A %m/%d/%Y %R %Z"
+       Set-WinUILanguageOverride -Language ${{ inputs.locale }}
       shell: ${{ inputs.shell }}
 
     - name: is-Windows-cmd
