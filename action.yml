@@ -102,7 +102,6 @@ runs:
        sudo locale-gen ${{ inputs.locale }}
        sudo update-locale LANG=${{ inputs.locale }}
        sudo timedatectl set-timezone ${{ inputs.timezone }}
-       exit
       shell: ${{ inputs.shell }}
 
     - name: is-macOS
@@ -115,7 +114,6 @@ runs:
        echo "export LC_CTYPE=${{ inputs.locale }}" >> $HOME/.bashrc
        echo "export LC_ALL=${{ inputs.locale }}" >> $HOME/.bashrc
        echo "export LANG=${{ inputs.locale }}" >> $HOME/.bashrc
-       ${{inputs.comand}}
       shell: ${{ inputs.shell }}
 
 
@@ -130,7 +128,6 @@ runs:
        Set-Culture ${{ inputs.locale }}
        Set-Culture -CultureInfo ${{ inputs.locale }}
        Set-TimeZone -Id "${{ inputs.timezone }}"
-       ${{inputs.comand}}
       shell: ${{ inputs.shell }}
 
     - name: is-Windows-cmd
