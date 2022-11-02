@@ -17,7 +17,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v3
-      - run: date
+      - run: Get-Date -UFormat "%A %m/%d/%Y %R %Z"
       - id: foo
         uses: milankomaj/shell-x@v0.1
         with:
@@ -30,6 +30,6 @@ jobs:
 
       - run: Get-Date -UFormat "%A %m/%d/%Y %R %Z"
 
-      - run: Get-ComputerInfo
+      - run: Get-Host
 
       - run: Get-TimeZone
