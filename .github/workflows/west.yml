@@ -26,7 +26,7 @@ jobs:
           shell: powershell
           locale: sk_SK
           timezone: Central Europe Standard Time
-          comand: Get-Date -UFormat "%A %m/%d/%Y %R %Z"
+          comand: Get-Date
 
       - run: echo ${{ steps.foo.outputs.random-number }}
         shell: powershell
@@ -34,5 +34,5 @@ jobs:
       - run: echo ${{ steps.foo.outputs.inputs-outputs }}
         shell: powershell
 
-      - run: ${{ steps.foo.outputs.comand-outputs }}
+      - run: ${{ steps.foo.outputs.comand-outputs }} -UFormat "%A %m/%d/%Y %R %Z"
         shell: powershell
