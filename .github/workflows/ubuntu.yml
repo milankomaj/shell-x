@@ -30,7 +30,7 @@ jobs:
 
       - run: date
 
-      - run: logout
+      - run: exit
 
       - run: apt-get -y update && apt -y upgrade
 
