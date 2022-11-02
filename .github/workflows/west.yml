@@ -1,4 +1,4 @@
-name: test powershell
+name: test
 run-name: ${{ github.workflow }} ✅ ${{ github.actor }} ✅ ${{ github.event_name}}
 on:
   workflow_dispatch:
@@ -6,8 +6,8 @@ on:
 
 jobs:
 
-  bash:
-    name: Shell powershell
+  Shell:
+    name: Shell
     continue-on-error: false
     strategy:
       max-parallel: 3
@@ -26,7 +26,7 @@ jobs:
           shell: powershell
           locale: sk_SK
           timezone: Central Europe Standard Time
-          comand: Get-Date -UFormat '%A %m/%d/%Y %R %Z'
+          comand: Get-Date -UFormat "%A %m/%d/%Y %R %Z"
 
       - run: echo 💡 ${{ steps.foo.outputs.inputs-outputs }}
 
