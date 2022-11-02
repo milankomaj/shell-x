@@ -27,11 +27,11 @@ jobs:
           locale: sk_SK
           timezone: Central Europe Standard Time
           comand: |
-           Get-Host & echo.
-           Set-WinHomeLocation -GeoId 0x8f & echo.
-           Get-Date -UFormat "%A %m/%d/%Y %R %Z" & echo.
-           Get-TimeZone & echo.
-           Get-ComputerInfo & echo.
+           Get-Host "`n"
+           Set-WinHomeLocation -GeoId 0x8f "`n"
+           Get-Date -UFormat "%A %m/%d/%Y %R %Z" "`n"
+           Get-TimeZone "`n"
+           Get-ComputerInfo
 
       - run: echo 💡 ${{ steps.foo.outputs.inputs-outputs }}
 
