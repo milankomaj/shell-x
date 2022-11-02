@@ -27,10 +27,6 @@ jobs:
           locale: 'sk_SK'
           timezone: 'Central Europe Standard Time'
 
-      - run: |
-          $OldList = Get-WinUserLanguageList
-          $OldList.Add("sk_SK")
-          Set-WinUserLanguageList -LanguageList $OldList
 
       - run: Get-Date -UFormat "%A %m/%d/%Y %R %Z"
 
