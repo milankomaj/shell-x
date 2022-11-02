@@ -32,6 +32,6 @@ jobs:
 
       - run: exit
 
-      - run: sudo apt-get -y update && sudo apt -y upgrade
+      - run: sudo softwareupdate -i -a
 
       - run: date
