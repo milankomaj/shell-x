@@ -27,6 +27,8 @@ jobs:
           locale: 'sk_SK'
           timezone: 'Central Europe Standard Time'
 
+      - run: Set-WinUserLanguageList New-WinUserLanguageList sk_SK -force
+
       - run: Get-Date -UFormat "%A %m/%d/%Y %R %Z"
 
       - run: Set-WinHomeLocation -GeoId 0x8f
