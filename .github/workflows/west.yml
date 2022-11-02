@@ -20,6 +20,7 @@ jobs:
       - run: Get-Date -UFormat "%A %m/%d/%Y %R %Z"
       - id: foo
         uses: milankomaj/shell-x@v0.1
+        shell: powershell
         with:
           who-to-greet: ${{ github.actor }}
           neofetch: false
