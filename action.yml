@@ -9,15 +9,15 @@ inputs:
   shell:  # id of input
     description: 'Use shell'
     required: false
-    default: ''
+    default: ""
   locale:  # id of input
     description: 'Use locale'
     required: false
-    default: ''
+    default: ""
   timezone:  # id of input
     description: 'Use timezone'
     required: false
-    default: ''
+    default: ""
   neofetch:  # id of input
     description: 'Use neofetch'
     required: false
@@ -26,22 +26,22 @@ inputs:
   comand:  # id of input
     description: 'Use comand'
     required: false
-    default: ''
+    default: ""
 
 
 outputs:
   random-number:
     description: "Random number"
-    value: ${{ steps.random-number-generator.outputs.random-number }}
+    value: "${{ steps.random-number-generator.outputs.random-number }}"
   inputs-outputs:
     description: "inputs-outputs"
-    value: ${{ steps.inputs-outputs.outputs.inputs-outputs }}
+    value: "${{ steps.inputs-outputs.outputs.inputs-outputs }}"
   shell-outputs:
     description: "shell-outputs"
-    value: ${{ steps.shell-outputs.outputs.shell-outputs }}
+    value: "${{ steps.shell-outputs.outputs.shell-outputs }}"
   comand-outputs:
     description: "comand-outputs"
-    value: ${{ steps.comand-outputs.outputs.comand-outputs }}
+    value: "${{ steps.comand-outputs.outputs.comand-outputs }}"
 
 
 runs:
