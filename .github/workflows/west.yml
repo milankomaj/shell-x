@@ -1,0 +1,40 @@
+name: test
+run-name: ${{ github.workflow }} ✅ ${{ github.actor }} ✅ ${{ github.event_name}}
+on:
+  workflow_dispatch:
+
+
+jobs:
+
+  bash:
+    name: Shell bash
+    continue-on-error: false
+    strategy:
+      max-parallel: 3
+      matrix:
+       os: [windows-latest]
+
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v3
+      - run: Get-Date -UFormat "%A %m/%d/%Y %R %Z"
+      - id: foo
+        uses: milankomaj/shell-x@v0.1
+        with:
+          who-to-greet: ${{ github.actor }}
+          neofetch: false
+          shell: powershell
+          locale: sk_SK
+          timezone: Central Europe Standard Time
+          comand: |
+           Get-Host \
+           Set-WinHomeLocation -GeoId 0x8f \
+           Get-Date -UFormat "%A %m/%d/%Y %R %Z" \
+           Get-TimeZone \
+           Get-ComputerInfo
+
+      - run: echo 💡 ${{ steps.foo.outputs.inputs-outputs }}
+
+      - run: echo 💡 ${{ steps.foo.outputs.random-number }}
+
+      - run: echo ${{ steps.foo.outputs.inputs-outputs }
