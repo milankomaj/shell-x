@@ -12,7 +12,7 @@ jobs:
     strategy:
       max-parallel: 3
       matrix:
-       os: [ubuntu-latest]
+       os: [windows-latest]
 
     runs-on: ${{ matrix.os }}
     steps:
@@ -23,15 +23,15 @@ jobs:
         with:
           who-to-greet: '${{ github.actor }}'
           neofetch: 'false'
-          shell: 'bash'
-          locale: 'sk_SK.utf8'
-          timezone: 'Europe/Bratislava'
+          shell: 'powershell '
+          locale: 'sk_SK'
+          timezone: 'Central Europe Standard Time'
 
 
-      - run: date
+      - run: Get-Date -UFormat "%A %m/%d/%Y %R %Z"
 
-      - run: exit
+      - run: Get-ComputerInfo
 
-      - run: sudo apt-get -y update && sudo apt -y upgrade
+      - run: Get-TimeZone
 
-      - run: date
+      - run: Test-Connection -TargetName www.google.com -Traceroute
