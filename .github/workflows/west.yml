@@ -28,7 +28,7 @@ jobs:
           shell: pwsh
           locale: sk_SK
           timezone: Central Europe Standard Time
-          comand: $(echo "$D1=(Get-Date -UFormat '%Y%m%d') && $D2=(Get-Date -Format F)")
+          comand: $(echo "D1=$(Get-Date -UFormat '%Y%m%d') && D2=$(Get-Date -Format F)")
 
       - run: echo ${{ steps.foo.outputs.random-number }}
         shell: powershell
