@@ -12,7 +12,7 @@ jobs:
     strategy:
       max-parallel: 3
       matrix:
-       os: [windows-latest]
+       os: [ubuntu-latest]
 
     runs-on: ${{ matrix.os }}
     steps:
@@ -32,5 +32,4 @@ jobs:
         run: echo ${{ steps.v2.outputs.inputs-outputs }}
 
       - name: comand-outputs
-        run: (echo $(${{ steps.v2.outputs.comand-outputs }}))
-        shell: pwsh
+        run: echo $(${{ steps.v2.outputs.comand-outputs }})
