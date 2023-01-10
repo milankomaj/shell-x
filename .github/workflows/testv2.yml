@@ -22,9 +22,9 @@ jobs:
         id: v2
         uses: milankomaj/shell-x@v0.2
         with:
-          shell: bash
-          locale: sk_SK.utf8
-          timezone: Europe/Bratislava
+          shell: 'bash'
+          locale: 'sk_SK.utf8'
+          timezone: 'Europe/Bratislava'
           comand: $(echo "date && date +'%Y-%m-%d'")
 
 
