@@ -92,8 +92,6 @@ runs:
       if: runner.os == 'macOS' && inputs.shell != '' && inputs.locale != '' && inputs.timezone != '' || runner.os == 'macOS' && inputs.shell != '' && inputs.locale != '' && inputs.timezone != '' && inputs.shell == 'sh' || runner.os == 'macOS' && inputs.shell != '' && inputs.locale != '' && inputs.timezone != '' && inputs.shell == 'bash'
       run: |
        echo ${{ runner.os }}
-       sudo systemsetup -settimezone ${{ inputs.timezone }}
-       sudo defaults write .GlobalPreferences AppleLocale ${{ inputs.locale }}
        export LANG=${{ inputs.locale }}
        export LC_MESSAGES=${{ inputs.locale }}
       shell: ${{ inputs.shell }}
