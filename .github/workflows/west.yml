@@ -42,5 +42,4 @@ jobs:
       - run: |
          ::debug::{message}
          echo "::debug::Set the Octocat variable"
-         echo ${{ steps.foo.outputs.comand-outputs }}
         shell: powershell
