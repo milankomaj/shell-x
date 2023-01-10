@@ -79,7 +79,7 @@ runs:
 
     - name: is-Linux
       id: is-Linux
-      if: runner.os == 'Linux' && inputs.shell == 'sh' && inputs.shell == 'bash'  && inputs.shell == 'pwsh' && inputs.shell != '' && inputs.locale != '' && inputs.timezone != ''
+      if: runner.os == 'Linux' && inputs.shell != '' && inputs.locale != '' && inputs.timezone != '' && inputs.shell == 'bash' || inputs.shell == 'pwsh' || inputs.shell == 'sh'
       run: |
        sudo locale-gen ${{ inputs.locale }}
        sudo update-locale LANG=${{ inputs.locale }}
