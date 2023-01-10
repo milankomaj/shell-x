@@ -43,7 +43,9 @@ runs:
     - name: inputs exists
       id: exists
       if: inputs.shell != '' && inputs.locale != '' && inputs.timezone != '' && inputs.comand != ''
-      run: echo "::warning::Hey ${{ inputs.actor }}, add some inputs"
+      run:  |
+       echo "::warning::Hey ${{ inputs.actor }}, add some inputs"
+       exit
       shell: bash
 
     - name: inputs values
