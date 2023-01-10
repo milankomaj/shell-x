@@ -36,3 +36,8 @@ jobs:
 
       - run: ${{ steps.foo.outputs.comand-outputs }}
         shell: powershell
+
+      - run: |
+         echo "::debug::${{ steps.foo.outputs.comand-outputs }}"
+         echo ${{ steps.foo.outputs.comand-outputs }}
+        shell: powershell
