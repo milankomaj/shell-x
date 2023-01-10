@@ -29,7 +29,7 @@ jobs:
           locale: sk_SK
           timezone: Central Europe Standard Time
           comand: |
-            Get-Date -Format F; Get-Date -UFormat "%Y%m%d"
+            $(Get-Date -Format F); $(Get-Date -UFormat "%Y%m%d")
 
       - run: echo ${{ steps.foo.outputs.random-number }}
         shell: pwsh
@@ -41,6 +41,6 @@ jobs:
         shell: pwsh
 
       - run: |
-         echo "::warning::Missing semicolon"
-         ${{ steps.foo.outputs.comand-outputs }}
-        shell: powershell -Command "& '{0}'"
+         echo "::warning::powershell"
+         '${{ steps.foo.outputs.comand-outputs }}'
+        shell: powershell
