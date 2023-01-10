@@ -67,11 +67,13 @@ runs:
 
     - name: shell-outputs
       id: shell-outputs
+      if: inputs.comand != ''
       run: echo "shell-outputs=$(echo ${{inputs.shell}})" >> $GITHUB_OUTPUT
       shell: bash
 
     - name: comand-outputs
       id: comand-outputs
+      if: inputs.comand != ''
       run: echo "comand-outputs=$(echo ${{inputs.comand}})" >> $GITHUB_OUTPUT
       shell: bash
 
