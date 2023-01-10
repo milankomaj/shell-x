@@ -39,7 +39,8 @@ jobs:
       - run: ${{ steps.foo.outputs.comand-outputs }}
         shell: pwsh
 
-      - run: |
+      - name: pwsh notice ${{ steps.foo.outputs.comand-outputs }}
+        run: |
          echo "::notice::$(echo $(${{ steps.foo.outputs.comand-outputs }}))"
          ${{ steps.foo.outputs.comand-outputs }}
         shell: pwsh
