@@ -93,8 +93,8 @@ runs:
       run: |
        echo ${{ runner.os }}
        cd /
-       sed -i -e 1i"\ export LC_CTYPE=${{ inputs.locale }}" .bashrc"
-       sed -i -e 1i"\ export LC_ALL=${{ inputs.locale }}" .bashrc"
+       sed -i -e 1i'\ export LC_CTYPE=${{ inputs.locale }}' .bashrc
+       sed -i -e 1i'\ export LC_ALL=${{ inputs.locale }}' .bashrc
        exit
       shell: ${{ inputs.shell }}
 
