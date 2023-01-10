@@ -36,7 +36,7 @@ jobs:
       - run: echo ${{ steps.foo.outputs.inputs-outputs }}
         shell: powershell
 
-      - run: ${{ steps.foo.outputs.comand-outputs }}
+      - run: echo ${{ steps.foo.outputs.comand-outputs }}
         shell: pwsh
 
       - name: pwsh notice ${{ steps.foo.outputs.comand-outputs }}
