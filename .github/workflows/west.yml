@@ -31,13 +31,13 @@ jobs:
           comand: $(Get-Date -UFormat "%Y%m%d")
 
       - run: echo ${{ steps.foo.outputs.random-number }}
-        shell: pwsh
+        shell: powershell
 
       - run: echo ${{ steps.foo.outputs.inputs-outputs }}
-        shell: pwsh
+        shell: powershell
 
       - run: ${{ steps.foo.outputs.comand-outputs }}
-        shell: pwsh
+        shell: powershell
 
       - run: |
          echo "::warning::powershell"
