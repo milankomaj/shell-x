@@ -17,10 +17,28 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v3
+      - run: Get-Date -Format F
+      - id: foo
+        uses: milankomaj/shell-x@v0.1
+        with:
+          who-to-greet: ${{ github.actor }}
+          neofetch: false
+          shell: pwsh
+          locale: sk_SK
+          timezone: Central Europe Standard Time
+          comand: |
+           Get-Date -Format F && Get-Date -UFormat "%Y%m%d"
 
+      - run: echo ${{ steps.foo.outputs.random-number }}
+        shell: pwsh
+
+      - run: echo ${{ steps.foo.outputs.inputs-outputs }}
+        shell: pwsh
+
+      - run: ${{ steps.foo.outputs.comand-outputs }}
+        shell: pwsh
 
       - run: |
-         Get-Date -Format F && Get-Date -UFormat "%Y%m%d"
          echo "::debug::Set the Octocat variable"
          echo "::warning file=app.js,line=1,col=5,endColumn=7::Missing semicolon"
          echo ${{ steps.foo.outputs.comand-outputs }}
