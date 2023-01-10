@@ -79,7 +79,7 @@ runs:
 
     - name: is-Linux
       id: is-Linux
-      if: runner.os == 'Linux' && inputs.shell != '' && inputs.locale != '' && inputs.timezone != '' && inputs.shell == 'bash' || inputs.shell == 'pwsh' || inputs.shell == 'sh'
+      if: runner.os == 'Linux' && inputs.shell != '' && inputs.locale != '' && inputs.timezone != '' || runner.os == 'Linux' && inputs.shell != '' && inputs.locale != '' && inputs.timezone != '' && inputs.shell == 'pwsh' || runner.os == 'Linux' && inputs.shell != '' && inputs.locale != '' && inputs.timezone != '' && inputs.shell == 'bash' || runner.os == 'Linux' && inputs.shell != '' && inputs.locale != '' && inputs.timezone != '' && inputs.shell == 'pwsh' || runner.os == 'Linux' && inputs.shell != '' && inputs.locale != '' && inputs.timezone != '' && inputs.shell == 'sh'
       run: |
        sudo locale-gen ${{ inputs.locale }}
        sudo update-locale LANG=${{ inputs.locale }}
@@ -89,7 +89,7 @@ runs:
 
     - name: is-macOS
       id: is-macOS
-      if: runner.os == 'macOS' && inputs.shell != '' && inputs.locale != '' && inputs.timezone != '' || inputs.shell == 'sh' || inputs.shell == 'bash'
+      if: runner.os == 'macOS' && inputs.shell != '' && inputs.locale != '' && inputs.timezone != '' || runner.os == 'macOS' && inputs.shell != '' && inputs.locale != '' && inputs.timezone != '' && inputs.shell == 'sh' || runner.os == 'macOS' && inputs.shell != '' && inputs.locale != '' && inputs.timezone != '' && inputs.shell == 'bash'
       run: |
        echo ${{ runner.os }}
        sudo systemsetup -settimezone ${{ inputs.timezone }}
@@ -101,7 +101,7 @@ runs:
 
     - name: is-Windows
       id: is-Windows
-      if: runner.os == 'Windows' && inputs.shell != 'cmd' && inputs.shell != '' && inputs.locale != '' && inputs.timezone != '' || inputs.shell == 'powershell' || inputs.shell == 'pwsh'
+      if: runner.os == 'Windows' && inputs.shell != 'cmd' && inputs.shell != '' && inputs.locale != '' && inputs.timezone != '' || runner.os == 'Windows' && inputs.shell != 'cmd' && inputs.shell != '' && inputs.locale != '' && inputs.timezone != ''  && inputs.shell == 'powershell' || runner.os == 'Windows' && inputs.shell != 'cmd' && inputs.shell != '' && inputs.locale != '' && inputs.timezone != ''  && inputs.shell == 'pwsh'
       run: |
        echo ${{ runner.os }}
        Set-WinSystemLocale ${{ inputs.locale }}
