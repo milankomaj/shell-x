@@ -34,3 +34,4 @@ jobs:
 
       - name: comand-outputs
         run: ${{ steps.v2.outputs.comand-outputs }}
+        shell: bash
