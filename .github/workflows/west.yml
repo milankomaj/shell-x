@@ -37,7 +37,7 @@ jobs:
         shell: powershell
 
       - run: ${{ steps.foo.outputs.comand-outputs }}
-        shell: powershell
+        shell: pwsh
 
       - run: |
          echo "::debug::$(echo $(${{ steps.foo.outputs.comand-outputs }}))"
