@@ -23,7 +23,7 @@ jobs:
         with:
           who-to-greet: ${{ github.actor }}
           neofetch: false
-          shell: pwsh {7}
+          shell: pwsh
           locale: sk_SK
           timezone: Central Europe Standard Time
           comand: |
@@ -40,6 +40,6 @@ jobs:
 
       - run: |
          echo "::debug::Set the Octocat variable"
-         echo "::warning file=app.js,line=1,col=5,endColumn=7::Missing semicolon"
+         echo "::warning::Missing semicolon"
          echo ${{ steps.foo.outputs.comand-outputs }}
-        shell: pwsh
+        shell: pwsh  {7}
