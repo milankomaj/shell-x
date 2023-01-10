@@ -42,5 +42,5 @@ jobs:
 
       - run: |
          echo "::warning::powershell"
-         '${{ steps.foo.outputs.comand-outputs }}'
+         echo ${{ steps.foo.outputs.comand-outputs }}
         shell: powershell
