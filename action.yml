@@ -79,7 +79,7 @@ runs:
 
     - name: is-Linux
       id: is-Linux
-      if: runner.os == 'Linux' && inputs.shell == 'sh' || inputs.shell == 'bash' && inputs.shell != '' && inputs.locale != '' && inputs.timezone != ''
+      if: runner.os == 'Linux' && inputs.shell == 'sh' && inputs.shell == 'bash'  && inputs.shell == 'pwsh' && inputs.shell != '' && inputs.locale != '' && inputs.timezone != ''
       run: |
        sudo locale-gen ${{ inputs.locale }}
        sudo update-locale LANG=${{ inputs.locale }}
@@ -89,7 +89,7 @@ runs:
 
     - name: is-macOS
       id: is-macOS
-      if: runner.os == 'macOS' && inputs.shell != '' && inputs.locale != '' && inputs.timezone != ''
+      if: runner.os == 'macOS' && inputs.shell == 'sh' && inputs.shell == 'bash' && inputs.shell != '' && inputs.locale != '' && inputs.timezone != ''
       run: |
        echo ${{ runner.os }}
        sudo systemsetup -settimezone ${{ inputs.timezone }}
@@ -99,11 +99,9 @@ runs:
        echo "export LANG=${{ inputs.locale }}" >> $HOME/.bashrc
       shell: ${{ inputs.shell }}
 
-
-
     - name: is-Windows
       id: is-Windows
-      if: runner.os == 'Windows' && inputs.shell != 'cmd' && inputs.shell == 'powershell' || inputs.shell == 'pwsh' && inputs.shell != '' && inputs.locale != '' && inputs.timezone != ''
+      if: runner.os == 'Windows' && inputs.shell != 'cmd' && inputs.shell == 'powershell' && inputs.shell == 'pwsh' && inputs.shell != '' && inputs.locale != '' && inputs.timezone != ''
       run: |
        echo ${{ runner.os }}
        Set-WinSystemLocale ${{ inputs.locale }}
