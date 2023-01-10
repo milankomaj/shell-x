@@ -33,4 +33,4 @@ jobs:
         run: echo ${{ steps.v2.outputs.inputs-outputs }}
 
       - name: comand-outputs
-        run: echo $(${{ steps.v2.outputs.comand-outputs }})
+        run: ${{ steps.v2.outputs.comand-outputs }}
