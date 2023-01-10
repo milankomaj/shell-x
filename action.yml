@@ -93,8 +93,8 @@ runs:
       run: |
        echo ${{ runner.os }}
        cd /
-       sudo sed -i -e '$aexport LC_CTYPE=${{ inputs.locale }}' .bashrc"
-       sudo sed -i -e '$aexport LC_ALL=${{ inputs.locale }}' .bashrc"
+       sed -i 1i"export LC_CTYPE=${{ inputs.locale }}" .bashrc"
+       sed -i 1i"export LC_ALL=${{ inputs.locale }}" .bashrc"
        exit
       shell: ${{ inputs.shell }}
 
