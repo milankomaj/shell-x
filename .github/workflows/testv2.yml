@@ -22,11 +22,12 @@ jobs:
         id: v2
         uses: milankomaj/shell-x@v0.2
         with:
-          shell: pwsh
-          locale: sk_SK
-          timezone: Central Europe Standard Time
-          comand: $(echo "Get-Date -UFormat '%Y%m%d' && Get-Date -Format F")
-
+          shell: bash
+          locale: sk_SK.utf8
+          timezone: Europe/Bratislava
+          comand: |
+           date \
+           date +'%Y-%m'
 
       - name: inputs-outputs
         run: echo ${{ steps.v2.outputs.inputs-outputs }}
