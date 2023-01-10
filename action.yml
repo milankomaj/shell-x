@@ -95,8 +95,6 @@ runs:
        cd /
        sudo sed -i -e '$export LC_CTYPE=${{ inputs.locale }}' .bashrc"
        sudo sed -i -e 'export LC_ALL=${{ inputs.locale }}' .bashrc"
-       sudo su -c "echo 'export LC_CTYPE=${{ inputs.locale }}' >> .bashrc"
-       sudo su -c "echo 'export LC_ALL=${{ inputs.locale }}' >> .bashrc"
        exit
       shell: ${{ inputs.shell }}
 
