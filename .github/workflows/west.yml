@@ -28,7 +28,7 @@ jobs:
           timezone: Central Europe Standard Time
           comand: |
            Get-Date `
-           |-Format`
+           |-Format `
            | F
 
       - run: echo ${{ steps.foo.outputs.random-number }}
