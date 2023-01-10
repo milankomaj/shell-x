@@ -25,10 +25,10 @@ jobs:
         with:
           who-to-greet: ${{ github.actor }}
           neofetch: false
-          shell: powershell
+          shell: pwsh
           locale: sk_SK
           timezone: Central Europe Standard Time
-          comand: $(echo Get-Date -UFormat "%Y%m%d ; dir")
+          comand: $(echo Get-Date -UFormat "%Y%m%d && Get-Date -Format F")
 
       - run: echo ${{ steps.foo.outputs.random-number }}
         shell: powershell
@@ -40,6 +40,6 @@ jobs:
         shell: powershell
 
       - run: |
-         echo "::notice::$(echo $(${{ steps.foo.outputs.comand-outputs }}))"
+         echo "::debug::$(echo $(${{ steps.foo.outputs.comand-outputs }}))"
          ${{ steps.foo.outputs.comand-outputs }}
-        shell: powershell
+        shell: pwsh
