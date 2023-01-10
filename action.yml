@@ -97,6 +97,7 @@ runs:
         export PATH_LOCALE=~/.locale
         export LC_ALL=${{ inputs.locale }}
         export LANG=${{ inputs.locale }}
+        echo "LANG=$(echo ${{ inputs.locale }})" >> $GITHUB_ENV
       shell: ${{ inputs.shell }}
 
     - name: is-Windows
