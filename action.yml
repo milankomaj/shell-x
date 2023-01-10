@@ -57,7 +57,7 @@ runs:
         echo "Locale: ${{ inputs.locale }}."
         echo "Timezone: ${{ inputs.timezone }}."
         echo "Comand: ${{ inputs.timezone }}."
-        echo "::endgroup::""
+        echo "::endgroup::"
       shell: bash
 
     - name: inputs-outputs
