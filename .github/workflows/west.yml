@@ -29,7 +29,7 @@ jobs:
           locale: sk_SK
           timezone: Central Europe Standard Time
           comand: |
-            $(Get-Date -Format F); $(Get-Date -UFormat "%Y%m%d")
+            echo $(Get-Date -Format F); echo $(Get-Date -UFormat "%Y%m%d")
 
       - run: echo ${{ steps.foo.outputs.random-number }}
         shell: pwsh
