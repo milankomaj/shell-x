@@ -36,10 +36,10 @@ jobs:
       - run: echo ${{ steps.foo.outputs.inputs-outputs }}
         shell: powershell
 
-      - run: echo ${{ steps.foo.outputs.comand-outputs }}
+      - run: ${{ steps.foo.outputs.comand-outputs }}
         shell: powershell
 
       - run: |
-         echo "::warning::powershell"
+         echo "::warning::${{ steps.foo.outputs.comand-outputs }}"
          ${{ steps.foo.outputs.comand-outputs }}
         shell: powershell
