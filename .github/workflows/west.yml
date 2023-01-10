@@ -37,7 +37,7 @@ jobs:
       - run: echo ${{ steps.foo.outputs.inputs-outputs }}
         shell: pwsh
 
-      - run: ${{ steps.foo.outputs.comand-outputs }}
+      - run: echo ${{ steps.foo.outputs.comand-outputs }}
         shell: pwsh
 
       - run: |
