@@ -28,7 +28,7 @@ jobs:
           shell: powershell
           locale: sk_SK
           timezone: Central Europe Standard Time
-          comand: $(echo Get-Date -UFormat "%Y%m%d")
+          comand: $(echo Get-Date -UFormat "%Y%m%d;echo Get-Date -Format F")
 
       - run: echo ${{ steps.foo.outputs.random-number }}
         shell: powershell
