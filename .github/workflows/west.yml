@@ -41,7 +41,6 @@ jobs:
         shell: pwsh
 
       - run: |
-         echo "::debug::Set the Octocat variable"
          echo "::warning::Missing semicolon"
-         echo ${{ steps.foo.outputs.comand-outputs }}
+         ${{ steps.foo.outputs.comand-outputs }}
         shell: powershell -Command "& '{0}'"
