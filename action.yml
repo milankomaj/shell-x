@@ -89,7 +89,7 @@ runs:
 
     - name: is-macOS
       id: is-macOS
-      if: runner.os == 'macOS' && inputs.shell == 'sh' && inputs.shell == 'bash' && inputs.shell != '' && inputs.locale != '' && inputs.timezone != ''
+      if: runner.os == 'macOS' && inputs.shell != '' && inputs.locale != '' && inputs.timezone != '' || inputs.shell == 'sh' || inputs.shell == 'bash'
       run: |
        echo ${{ runner.os }}
        sudo systemsetup -settimezone ${{ inputs.timezone }}
@@ -101,7 +101,7 @@ runs:
 
     - name: is-Windows
       id: is-Windows
-      if: runner.os == 'Windows' && inputs.shell != 'cmd' && inputs.shell == 'powershell' && inputs.shell == 'pwsh' && inputs.shell != '' && inputs.locale != '' && inputs.timezone != ''
+      if: runner.os == 'Windows' && inputs.shell != 'cmd' && inputs.shell != '' && inputs.locale != '' && inputs.timezone != '' || inputs.shell == 'powershell' || inputs.shell == 'pwsh'
       run: |
        echo ${{ runner.os }}
        Set-WinSystemLocale ${{ inputs.locale }}
@@ -113,7 +113,7 @@ runs:
 
     - name: is-Windows-cmd
       id: is-Windows-cmd
-      if: inputs.shell == 'cmd'  && inputs.shell != '' && inputs.locale != '' && inputs.timezone != ''
+      if: inputs.shell == 'cmd'  && inputs.shell != '' && inputs.timezone != ''
       run: |
         tzutil /s "${{ inputs.timezone }}"
         tzutil /g
