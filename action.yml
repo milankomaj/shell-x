@@ -52,11 +52,11 @@ runs:
       id: values
       run: |
         echo "::group::Inputs"
-        echo "Actor: ${{ inputs.timezone }}."
+        echo "Actor: ${{ inputs.actor }}."
         echo "Shell: ${{ inputs.shell }}."
         echo "Locale: ${{ inputs.locale }}."
         echo "Timezone: ${{ inputs.timezone }}."
-        echo "Comand: ${{ inputs.timezone }}."
+        echo "Comand: ${{ inputs.comand }}."
         echo "::endgroup::"
       shell: bash
 
@@ -77,7 +77,7 @@ runs:
 
     - name: is-Linux
       id: is-Linux
-      if: runner.os == 'Linux'
+      if: runner.os == 'Linux' && inputs.shell != '' && inputs.locale != '' && inputs.timezone != ''
       run: |
        sudo locale-gen ${{ inputs.locale }}
        sudo update-locale LANG=${{ inputs.locale }}
@@ -87,7 +87,7 @@ runs:
 
     - name: is-macOS
       id: is-macOS
-      if: runner.os == 'macOS'
+      if: runner.os == 'macOS' && inputs.shell != '' && inputs.locale != '' && inputs.timezone != ''
       run: |
        echo ${{ runner.os }}
        sudo systemsetup -settimezone ${{ inputs.timezone }}
@@ -101,7 +101,7 @@ runs:
 
     - name: is-Windows
       id: is-Windows
-      if: runner.os == 'Windows' && inputs.shell != 'cmd'
+      if: runner.os == 'Windows' && inputs.shell != 'cmd'  && inputs.shell != '' && inputs.locale != '' && inputs.timezone != ''
       run: |
        echo ${{ runner.os }}
        Set-WinSystemLocale ${{ inputs.locale }}
@@ -113,9 +113,8 @@ runs:
 
     - name: is-Windows-cmd
       id: is-Windows-cmd
-      if: inputs.shell == 'cmd'
+      if: inputs.shell == 'cmd'  && inputs.shell != '' && inputs.locale != '' && inputs.timezone != ''
       run: |
         tzutil /s "${{ inputs.timezone }}"
         tzutil /g
-        ${{inputs.comand}}
       shell: ${{ inputs.shell }}
