@@ -29,7 +29,7 @@ jobs:
           locale: sk_SK
           timezone: Central Europe Standard Time
           comand: |
-            echo $(Get-Date -Format F); echo $(Get-Date -UFormat "%Y%m%d")
+            $(Get-Date -Format F); $(Get-Date -UFormat "%Y%m%d")
 
       - run: echo ${{ steps.foo.outputs.random-number }}
         shell: pwsh
@@ -37,10 +37,10 @@ jobs:
       - run: echo ${{ steps.foo.outputs.inputs-outputs }}
         shell: pwsh
 
-      - run: echo ${{ steps.foo.outputs.comand-outputs }}
+      - run: ${{ steps.foo.outputs.comand-outputs }}
         shell: pwsh
 
       - run: |
          echo "::warning::powershell"
-         echo ${{ steps.foo.outputs.comand-outputs }}
+         ${{ steps.foo.outputs.comand-outputs }}
         shell: powershell
