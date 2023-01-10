@@ -93,8 +93,9 @@ runs:
       run: |
        echo ${{ runner.os }}
        sudo systemsetup -settimezone ${{ inputs.timezone }}
-       sudo systemsetup -gettimezone
        sudo defaults write .GlobalPreferences AppleLocale ${{ inputs.locale }}
+       export LANG=${{ inputs.locale }}
+       export LC_MESSAGES=${{ inputs.locale }}
       shell: ${{ inputs.shell }}
 
     - name: is-Windows
