@@ -1,4 +1,4 @@
-name: test
+name: test v0.1
 run-name: ${{ github.workflow }} ✅ ${{ github.actor }} ✅ ${{ github.event_name}}
 on:
   workflow_dispatch:
