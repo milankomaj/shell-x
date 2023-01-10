@@ -8,7 +8,7 @@ jobs:
 
   Shell:
     name: Shell
-    continue-on-error: true
+    continue-on-error: false
     strategy:
       max-parallel: 3
       matrix:
@@ -18,10 +18,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-
+      - name: shell-x@v0.2
       - id: v2
         uses: milankomaj/shell-x@v0.2
 
-
-      - run: echo ${{ steps.v2.outputs.inputs-outputs }}
         
+
+      - name: inputs-outputs
+        run: echo ${{ steps.v2.outputs.inputs-outputs }}
