@@ -23,7 +23,7 @@ jobs:
         with:
           who-to-greet: ${{ github.actor }}
           neofetch: false
-          shell: powershell
+          shell: pwsh
           locale: sk_SK
           timezone: Central Europe Standard Time
           comand: |
