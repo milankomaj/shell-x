@@ -2,10 +2,10 @@ name: 'Hello World'
 description: 'Greet someone'
 
 inputs:
-  who-to-greet:  # id of input
+  actor:  # id of input
     description: 'Who to greet'
-    required: true
-    default: World
+    required: false
+    default: ${{ github.actor }}
   shell:  # id of input
     description: 'Use shell'
     required: false
@@ -18,11 +18,6 @@ inputs:
     description: 'Use timezone'
     required: false
     default: ""
-  neofetch:  # id of input
-    description: 'Use neofetch'
-    required: false
-    default: 'false'
-    type: boolean
   comand:  # id of input
     description: 'Use comand'
     required: false
@@ -30,9 +25,6 @@ inputs:
 
 
 outputs:
-  random-number:
-    description: "Random number"
-    value: "${{ steps.random-number-generator.outputs.random-number }}"
   inputs-outputs:
     description: "inputs-outputs"
     value: "${{ steps.inputs-outputs.outputs.inputs-outputs }}"
@@ -48,41 +40,27 @@ runs:
   using: "composite"
   steps:
 
-    - name: inputs.neofetch
-      id: neo
-      run: echo "Neofetch is ${{ inputs.neofetch }}."
+    - name: inputs exists
+      id: exists
+      if: inputs.actor != "" && inputs.shell != "" && inputs.locale != "" && inputs.timezone != "" && inputs.comand != ""
+      run: echo "::warning::Hey ${{ inputs.actor }}, add some inputs"
       shell: bash
 
-    - name: inputs.who-to-greet
-      id: who
-      run: echo "Hello ${{ inputs.who-to-greet }}."
-      shell: bash
-
-    - name: inputs.shell
-      id: shell
+    - name: inputs values
+      id: values
       run: |
-       echo "Shell is ${{ inputs.shell }}."
-      shell: bash
-
-    - name: inputs.locale
-      id: locale
-      run: |
-       echo "Locale is ${{ inputs.locale }}."
-      shell: bash
-
-    - name: inputs.timezone
-      id: timezone
-      run: echo "Timezone is ${{ inputs.timezone }}."
-      shell: bash
-
-    - name: random-number-generator
-      id: random-number-generator
-      run: echo "random-number=$(echo $RANDOM)" >> $GITHUB_OUTPUT
+        echo "::group::Inputs"
+        echo "Actor: ${{ inputs.timezone }}."
+        echo "Shell: ${{ inputs.shell }}."
+        echo "Locale: ${{ inputs.locale }}."
+        echo "Timezone: ${{ inputs.timezone }}."
+        echo "Comand: ${{ inputs.timezone }}."
+        echo "::endgroup::""
       shell: bash
 
     - name: inputs-outputs
       id: inputs-outputs
-      run: echo "inputs-outputs=$(echo ${{runner.os}} - ${{inputs.neofetch}} - ${{inputs.shell}} - ${{inputs.locale}} - ${{inputs.timezone}} )" >> $GITHUB_OUTPUT
+      run: echo "inputs-outputs=$(echo ${{runner.os}} - ${{inputs.shell}} - ${{inputs.locale}} - ${{inputs.timezone}} )" >> $GITHUB_OUTPUT
       shell: bash
 
     - name: shell-outputs
@@ -138,26 +116,4 @@ runs:
         tzutil /s "${{ inputs.timezone }}"
         tzutil /g
         ${{inputs.comand}}
-      shell: ${{ inputs.shell }}
-
-    - name: Neofetch
-      id: Neofetch
-      if: runner.os != 'Windows' && inputs.neofetch != 'false'
-      run: |
-       chmod +x ${{ github.action_path }}/neofetch.sh
-       ${{ github.action_path }}/neofetch.sh
-      shell: ${{ inputs.shell }}
-
-    - name: Winfetch-ps1
-      id: Winfetch-ps1
-      if: runner.os == 'Windows' && inputs.shell != 'cmd' && inputs.neofetch != 'false'
-      run: |
-       ${{ github.action_path }}/winfetch.ps1
-      shell: ${{ inputs.shell }}
-
-    - name: Winfetch-bat
-      id: Winfetch-bat
-      if: runner.os == 'Windows' && inputs.shell == 'cmd' && inputs.neofetch != 'false'
-      run: |
-       ${{ github.action_path }}/winfetch.bat
       shell: ${{ inputs.shell }}

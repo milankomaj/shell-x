@@ -1,0 +1,27 @@
+name: test v0.2
+run-name: ${{ github.workflow }} ✅ ${{ github.actor }} ✅ ${{ github.event_name}}
+on:
+  workflow_dispatch:
+
+
+jobs:
+
+  Shell:
+    name: Shell
+    continue-on-error: true
+    strategy:
+      max-parallel: 3
+      matrix:
+       os: [ubuntu-latest]
+
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v3
+
+
+      - id: v2
+        uses: milankomaj/shell-x@v0.2
+
+
+      - run: echo ${{ steps.v2.outputs.inputs-outputs }}
+        
