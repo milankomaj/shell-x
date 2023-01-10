@@ -27,7 +27,7 @@ jobs:
           locale: sk_SK
           timezone: Central Europe Standard Time
           comand: |
-           Get-Date -Format F `r`n
+           Get-Date -Format F `
            dir
 
       - run: echo ${{ steps.foo.outputs.random-number }}
@@ -42,4 +42,5 @@ jobs:
       - run: |
          ::debug::{message}
          echo "::debug::Set the Octocat variable"
+         echo ${{ steps.foo.outputs.comand-outputs }}
         shell: powershell
