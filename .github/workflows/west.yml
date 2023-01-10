@@ -40,6 +40,6 @@ jobs:
         shell: powershell
 
       - run: |
-         echo "::warning::$(echo $(${{ steps.foo.outputs.comand-outputs }}))"
+         echo "::notice::$(echo $(${{ steps.foo.outputs.comand-outputs }}))"
          ${{ steps.foo.outputs.comand-outputs }}
         shell: powershell
