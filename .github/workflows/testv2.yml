@@ -32,5 +32,5 @@ jobs:
         run: echo ${{ steps.v2.outputs.inputs-outputs }}
 
       - name: comand-outputs
-        run: echo $(echo $(${{ steps.v2.outputs.comand-outputs }}))
+        run: echo ${{ steps.v2.outputs.comand-outputs }}
         shell: pwsh
