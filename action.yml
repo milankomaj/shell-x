@@ -91,9 +91,12 @@ runs:
       id: is-macOS
       if: runner.os == 'macOS' && inputs.shell != '' && inputs.locale != '' && inputs.timezone != '' || runner.os == 'macOS' && inputs.shell != '' && inputs.locale != '' && inputs.timezone != '' && inputs.shell == 'sh' || runner.os == 'macOS' && inputs.shell != '' && inputs.locale != '' && inputs.timezone != '' && inputs.shell == 'bash'
       run: |
-       echo ${{ runner.os }}
-       export LANG=${{ inputs.locale }}
-       export LC_MESSAGES=${{ inputs.locale }}
+        echo ${{ runner.os }}
+        mkdir ~/.locale
+        cp -rpf /usr/share/locale/${{ inputs.locale }} ~/.locale/${{ inputs.locale }}
+        export PATH_LOCALE=~/.locale
+        export LC_ALL=${{ inputs.locale }}
+        export LANG=${{ inputs.locale }}
       shell: ${{ inputs.shell }}
 
     - name: is-Windows
