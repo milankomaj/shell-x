@@ -92,9 +92,11 @@ runs:
       if: runner.os == 'macOS' && inputs.shell != '' && inputs.locale != '' && inputs.timezone != '' || runner.os == 'macOS' && inputs.shell != '' && inputs.locale != '' && inputs.timezone != '' && inputs.shell == 'sh' || runner.os == 'macOS' && inputs.shell != '' && inputs.locale != '' && inputs.timezone != '' && inputs.shell == 'bash'
       run: |
        echo ${{ runner.os }}
+       sudo -s
        cd /
        echo "export LC_CTYPE=${{ inputs.locale }}" >> .bashrc
        echo "export LC_ALL=${{ inputs.locale }}" >> .bashrc
+       exit
       shell: ${{ inputs.shell }}
 
     - name: is-Windows
