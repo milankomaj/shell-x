@@ -29,6 +29,8 @@ jobs:
 
       - name: locale
         run: |
+          sudo su
+          cat > ~/.profile
           echo "export LC_ALL=sk_SK.UTF-8" > ~/.profile
           echo "export LANG=sk_SK.UTF-8" >> ~/.profile
           ls ~/
