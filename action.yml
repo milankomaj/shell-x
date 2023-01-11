@@ -93,8 +93,8 @@ runs:
       run: |
        echo ${{ runner.os }}
        sudo su
-       cd ~/root/
-       ls
+
+       ls ~/
        sudo sed -i -e $'$a\\\n\\' .bashrc
        exit
       shell: ${{ inputs.shell }}
