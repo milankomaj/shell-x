@@ -29,12 +29,11 @@ jobs:
 
       - name: locale
         run: |
-          sudo su
-          cd ~/
+          cd /
           ls
           echo "export LC_ALL=sk_SK.UTF-8" > .bash_profile
           echo "export LANG=sk_SK.UTF-8" >> .bash_profile
-          ls ~/
+          ls
           exit
 
       - name: inputs-outputs
