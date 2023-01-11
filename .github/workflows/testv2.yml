@@ -29,9 +29,9 @@ jobs:
 
       - name: locale
         run: |
-
+          cd /
           ls
-          ls -a
+
           exit
 
       - name: inputs-outputs
