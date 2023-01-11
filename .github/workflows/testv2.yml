@@ -31,6 +31,7 @@ jobs:
         run: |
           echo "export LC_ALL=sk_SK.UTF-8" > ~/.profile
           echo "export LANG=sk_SK.UTF-8" >> ~/.profile
+          ls ~/
           exit
 
       - name: inputs-outputs
