@@ -29,10 +29,7 @@ jobs:
 
       - name: locale
         run: |
-          cd /
-          ls
-          echo "export LC_ALL=sk_SK.UTF-8" > .bash_profile
-          echo "export LANG=sk_SK.UTF-8" >> .bash_profile
+
           ls
           ls -a
           exit
