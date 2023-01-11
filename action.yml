@@ -93,7 +93,7 @@ runs:
       run: |
        echo ${{ runner.os }}
        cd /
-       cd home
+       cd Users
        ls
        sudo sed -i -e $'$a\\\n\\' .bashrc
        exit
