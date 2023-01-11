@@ -12,7 +12,7 @@ jobs:
     strategy:
       max-parallel: 3
       matrix:
-       os: [ubuntu-latest]
+       os: [macos-latest]
 
     runs-on: ${{ matrix.os }}
     steps:
@@ -23,9 +23,9 @@ jobs:
         uses: milankomaj/shell-x@v0.2
         with:
           shell: bash
-          locale: sk_SK.utf8
+          locale: sk_SK.UTF-8
           timezone: Europe/Bratislava
-          comand: $(echo "date && date +'%s%N'")
+          comand: $(echo "date && locale")
 
 
 
