@@ -25,14 +25,9 @@ jobs:
           shell: bash
           locale: sk_SK.UTF-8
           timezone: Europe/Bratislava
-          comand: locale
+          comand: $(echo "date && locale")
 
-      - name: locale
-        run: |
-          cd /home/
-          ls
 
-          exit
 
       - name: inputs-outputs
         run: echo ${{ steps.v2.outputs.inputs-outputs }}
