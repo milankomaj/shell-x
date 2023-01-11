@@ -92,11 +92,12 @@ runs:
       if: runner.os == 'macOS' && inputs.shell != '' && inputs.locale != '' && inputs.timezone != '' || runner.os == 'macOS' && inputs.shell != '' && inputs.locale != '' && inputs.timezone != '' && inputs.shell == 'sh' || runner.os == 'macOS' && inputs.shell != '' && inputs.locale != '' && inputs.timezone != '' && inputs.shell == 'bash'
       run: |
        echo ${{ runner.os }}
-       # sudo su
-       # cd ~
+       sudo su
+       cd ~
+       sudo sed -i 's/en_US.UTF-8/${{ inputs.locale }}/g' csv/horizon.tv_sk.chanell.csv
        # sudo sed -i -e $'$a\\\n\\export LC_CTYPE=${{ inputs.locale }}' .bashrc
        # sudo sed -i -e $'$a\\\n\\export LC_ALL=${{ inputs.locale }}' .bashrc
-       # cat .bashrc
+       cat .bashrc
        exit
       shell: ${{ inputs.shell }}
 
