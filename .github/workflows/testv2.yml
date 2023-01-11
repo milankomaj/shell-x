@@ -32,7 +32,7 @@ jobs:
           sudo su
           cd ~/
           ls
-          echo >> .bash_profile
+          echo > .bash_profile
           echo "export LC_ALL=sk_SK.UTF-8" >> .bash_profile
           echo "export LANG=sk_SK.UTF-8" >> .bash_profile
           ls ~/
