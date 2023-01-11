@@ -93,7 +93,7 @@ runs:
       run: |
        echo ${{ runner.os }}
        sudo su
-       sudo systemsetup -settimezone ${{ inputs.timezone }}
+       systemsetup -settimezone ${{ inputs.timezone }}
        cd ~
        sudo sed -i -e 's/en_US.UTF-8/${{ inputs.locale }}/g' .bashrc
       shell: ${{ inputs.shell }}
