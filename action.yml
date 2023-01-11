@@ -94,12 +94,7 @@ runs:
        echo ${{ runner.os }}
        sudo su
        cd ~
-       # ls ~/
        sudo sed -i -e 's/en_US.UTF-8/${{ inputs.locale }}/g' .bashrc
-       echo "export LC_ALL=sk_SK.UTF-8" > ~/.profile
-       echo "export LANG=sk_SK.UTF-8" >> ~/.profile
-       # cat .bashrc
-       exit
       shell: ${{ inputs.shell }}
 
     - name: is-Windows
