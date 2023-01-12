@@ -67,7 +67,7 @@ runs:
 
     - name: shell-outputs
       id: shell-outputs
-      if: inputs.comand != ''
+      if: inputs.shell != ''
       run: echo -n "shell-outputs=${{inputs.shell}}" >> $GITHUB_OUTPUT
       shell: bash
 
@@ -117,4 +117,3 @@ runs:
       run: |
         tzutil /s "${{ inputs.timezone }}"
       shell: ${{ inputs.shell }}
-
