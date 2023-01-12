@@ -74,7 +74,7 @@ runs:
     - name: comand-outputs
       id: comand-outputs
       if: inputs.comand != ''
-      run: echo "comand-outputs=$(echo ${{inputs.comand}})" >> $GITHUB_OUTPUT
+      run: echo "comand-outputs=${{inputs.comand}}" >> $GITHUB_OUTPUT
       shell: bash
 
     - name: is-Linux
