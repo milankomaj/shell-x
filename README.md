@@ -3,7 +3,7 @@
 > ``` - uses: milankomaj/shell-x@v0.2 ```
 
 **with:** | *required*  | *default* [^1] | *optional*
----: | :---: | :--- | :---:
+---: | :---: | :---: | :---:
 actor:       | false  | `${{ github.actor }}` | ✅
 shell:       | false  | [^note] | ✅
 locale:      | false  | [^note] | ✅
