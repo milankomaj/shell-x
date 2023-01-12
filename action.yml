@@ -99,9 +99,9 @@ runs:
        echo "LANG=$(echo ${{ inputs.locale }})" >> $GITHUB_ENV
        cd ~/
        sudo touch .bash_profile
-       echo "export LC_CTYPE=${{ inputs.locale }}" >> .bash_profile
-       echo "export LC_ALL=${{ inputs.locale }}" >> .bash_profile
-       echo "export LANG=${{ inputs.locale }}" >> .bash_profile
+       sudo sed -i -e 1i"export LC_CTYPE=${{ inputs.locale }}" .bash_profile
+       sudo sed -i -e 1i"export LC_ALL=${{ inputs.locale }}" .bash_profile
+       sudo sed -i -e 1i""export LANG=${{ inputs.locale }}" .bash_profile
       shell: ${{ inputs.shell }}
 
     - name: is-Windows

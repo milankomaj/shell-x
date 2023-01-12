@@ -25,7 +25,7 @@ jobs:
           shell: bash
           locale: sk_SK.UTF-8
           timezone: Europe/Bratislava
-          comand: date && date +'%s%N' && sudo systemsetup -gettimezone && locale
+          comand: date && date +'%s%N' && locale
 
 
 
