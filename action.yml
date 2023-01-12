@@ -51,8 +51,7 @@ runs:
     - name: inputs values
       id: values
       run: |
-        @echo off
-        echo "::group::Inputs"
+        echo "::group::Inputs\c"
         echo "Actor: ${{ inputs.actor }}"
         echo "Shell: ${{ inputs.shell }}"
         echo "Locale: ${{ inputs.locale }}"
