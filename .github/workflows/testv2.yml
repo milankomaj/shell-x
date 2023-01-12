@@ -22,7 +22,7 @@ jobs:
         id: v2
         uses: milankomaj/shell-x@v0.2
         with:
-          shell: cmd
+          shell: powershell
           locale: sk_SK
           timezone: Central Europe Standard Time
           comand: Get-Date ; Get-Date -UFormat '%A %m/%d/%Y %R %Z'
