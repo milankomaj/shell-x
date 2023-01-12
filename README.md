@@ -30,4 +30,4 @@ comand:      | false  |      *  [^note]       | ✅
 ---
 
 
-[^note]: default Github
+[^note]: default Github workflow syntax
