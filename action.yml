@@ -96,6 +96,7 @@ runs:
        cd ~
        sudo sed -i -e 's/en_US.UTF-8/${{ inputs.locale }}/g' .bashrc
        echo "export TZ=${{ inputs.timezone }}" >> .bashrc
+       exit
       shell: ${{ inputs.shell }}
 
     - name: is-Windows
