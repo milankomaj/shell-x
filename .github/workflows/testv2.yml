@@ -25,7 +25,7 @@ jobs:
           shell: bash
           locale: sk_SK.UTF-8
           timezone: Europe/Bratislava
-          comand: date && date +'%s%N' && cat /etc/profile  && cat ~/.bash_profile && cat ~/.profile
+          comand: date && date +'%s%N' && cat /etc/profile
 
 
 
