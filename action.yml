@@ -51,6 +51,7 @@ runs:
     - name: inputs values
       id: values
       run: |
+        @echo off
         echo "::group::Inputs"
         echo "Actor: ${{ inputs.actor }}"
         echo "Shell: ${{ inputs.shell }}"
@@ -91,7 +92,6 @@ runs:
       id: is-macOS
       if: runner.os == 'macOS'  && inputs.locale != '' && inputs.timezone != '' || runner.os == 'macOS'  && inputs.locale != '' && inputs.timezone != '' && inputs.shell == 'sh' || runner.os == 'macOS'  && inputs.locale != '' && inputs.timezone != '' && inputs.shell == 'bash'
       run: |
-       echo ${{ runner.os }}
        sudo su
        sudo systemsetup -settimezone ${{ inputs.timezone }}
        cd ~
@@ -103,7 +103,6 @@ runs:
       id: is-Windows
       if: runner.os == 'Windows' && inputs.shell != 'cmd'  && inputs.locale != '' && inputs.timezone != '' || runner.os == 'Windows' && inputs.shell != 'cmd'  && inputs.locale != '' && inputs.timezone != ''  && inputs.shell == 'powershell' || runner.os == 'Windows' && inputs.shell != 'cmd' && inputs.locale != '' && inputs.timezone != ''  && inputs.shell == 'pwsh'
       run: |
-       echo ${{ runner.os }}
        Set-WinSystemLocale ${{ inputs.locale }}
        Set-WinSystemLocale -SystemLocale ${{ inputs.locale }}
        Set-Culture ${{ inputs.locale }}
@@ -113,7 +112,7 @@ runs:
 
     - name: is-Windows-cmd
       id: is-Windows-cmd
-      if: inputs.shell == 'cmd'  && inputs.timezone != ''
+      if: inputs.shell == 'cmd' && inputs.timezone != ''
       run: |
         tzutil /s "${{ inputs.timezone }}"
       shell: ${{ inputs.shell }}
