@@ -25,12 +25,12 @@ jobs:
           shell: cmd
           locale: sk_SK
           timezone: Central Europe Standard Time
-          comand: tzutil /g && echo 💡 %date%-%time%
+          comand: ipconfig && echo 💡 %date%-%time%
 
 
 
       - name: inputs-outputs
-        run: echo ${{ steps.v2.outputs.inputs-outputs }}
+        run: echo -n ${{ steps.v2.outputs.inputs-outputs }}
 
       - name: comand-outputs
         run: ${{ steps.v2.outputs.comand-outputs }}
