@@ -97,9 +97,11 @@ runs:
        sudo sed -i -e 's/en_US.UTF-8/${{ inputs.locale }}/g' .bashrc
        sudo systemsetup -settimezone ${{ inputs.timezone }}
        echo "LANG=$(echo ${{ inputs.locale }})" >> $GITHUB_ENV
-       echo "export LC_CTYPE=${{ inputs.locale }}" > ~/.bash_profile
-       echo "export LC_ALL=${{ inputs.locale }}" >> ~/.bash_profile
-       echo "export LANG=${{ inputs.locale }}" >> ~/.bash_profile
+       cd ~/
+       sudo touch .bash_profile
+       echo "export LC_CTYPE=${{ inputs.locale }}" >> .bash_profile
+       echo "export LC_ALL=${{ inputs.locale }}" >> .bash_profile
+       echo "export LANG=${{ inputs.locale }}" >> .bash_profile
       shell: ${{ inputs.shell }}
 
     - name: is-Windows
