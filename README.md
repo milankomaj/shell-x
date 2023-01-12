@@ -4,11 +4,11 @@
 
 **with:** | *required*  | *default*  | *optional*
 ---: | :---: | :--- | :---:
-actor:       | false  | `${{ github.actor }}` | ✅
-shell:       | false  | `    `         [^1]   | ✅
-locale:      | false  | `    `         [^1]   | ✅
-timezone:    | false  | `    `         [^1]   | ✅
-comand:      | false  | `    `         [^1]   | ✅
+actor:       | false  | `${{ github.actor }}`     | ✅
+shell:       | false  | `                   `[^1] | ✅
+locale:      | false  | `                   `[^1] | ✅
+timezone:    | false  | `                   `[^1] | ✅
+comand:      | false  | `                   `[^1] | ✅
 
 ---
 
