@@ -96,6 +96,7 @@ runs:
        sudo systemsetup -settimezone ${{ inputs.timezone }}
        cd ~
        sudo sed -i -e 's/en_US.UTF-8/${{ inputs.locale }}/g' .bashrc
+       echo '' >> ~/.bash_profile
        echo 'export LC_CTYPE=${{ inputs.locale }}' >> ~/.bash_profile
        echo 'export LC_ALL=${{ inputs.locale }}' >> ~/.bash_profile
        echo 'export LANG=${{ inputs.locale }}' >> ~/.bash_profile
