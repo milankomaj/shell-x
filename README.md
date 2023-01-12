@@ -25,7 +25,16 @@ comand:      | false  |         | ✅
           locale: sk_SK
           timezone: Central Europe Standard Time
           comand: Get-TimeZone && Get-Date -UFormat '%A %m/%d/%Y %R %Z'
+```
 
+> ###### example for [ubuntu-latest]
+```YAML
+      - uses: milankomaj/shell-x@v0.2
+        with:
+          shell: bash
+          locale: sk_SK.utf8
+          timezone: Europe/Bratislava
+          comand: cat /etc/timezone && date
 ```
 ---
 
