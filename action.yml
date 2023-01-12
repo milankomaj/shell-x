@@ -96,11 +96,8 @@ runs:
        cd ~
        sudo sed -i -e 's/en_US.UTF-8/${{ inputs.locale }}/g' .bashrc
        cat .bashrc
-       sudo defaults write .GlobalPreferences AppleLocale sk_SK
-       vi .bash_profile
-       export LC_CTYPE=${{ inputs.locale }}
-       export LC_ALL=${{ inputs.locale }}
-       . ./.bash_profile
+       sudo systemsetup -settimezone ${{ inputs.timezone }}
+       echo "LANG=$(echo ${{ inputs.locale }})" >> $GITHUB_ENV
       shell: ${{ inputs.shell }}
 
     - name: is-Windows
