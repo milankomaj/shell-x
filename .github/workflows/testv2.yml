@@ -30,7 +30,7 @@ jobs:
 
 
       - name: inputs-outputs
-        run: echo "::warning::${{ steps.v2.outputs.inputs-outputs }}"
+        run: echo "::notes::${{ steps.v2.outputs.inputs-outputs }}"
 
       - name: comand-outputs
         run: ${{ steps.v2.outputs.comand-outputs }}
