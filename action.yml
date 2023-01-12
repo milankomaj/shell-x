@@ -68,13 +68,13 @@ runs:
     - name: shell-outputs
       id: shell-outputs
       if: inputs.comand != ''
-      run: echo "shell-outputs=${{inputs.shell}}" >> $GITHUB_OUTPUT
+      run: echo -n "shell-outputs=${{inputs.shell}}" >> $GITHUB_OUTPUT
       shell: bash
 
     - name: comand-outputs
       id: comand-outputs
       if: inputs.comand != ''
-      run: echo "comand-outputs=${{inputs.comand}}" >> $GITHUB_OUTPUT
+      run: echo -n "comand-outputs=${{inputs.comand}}" >> $GITHUB_OUTPUT
       shell: bash
 
     - name: is-Linux
@@ -116,5 +116,4 @@ runs:
       if: inputs.shell == 'cmd'  && inputs.shell != '' && inputs.timezone != ''
       run: |
         tzutil /s "${{ inputs.timezone }}"
-        tzutil /g
       shell: ${{ inputs.shell }}
