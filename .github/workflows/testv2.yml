@@ -12,7 +12,7 @@ jobs:
     strategy:
       max-parallel: 3
       matrix:
-       os: [ubuntu-latest]
+       os: [macos-latest]
 
     runs-on: ${{ matrix.os }}
     steps:
