@@ -68,7 +68,7 @@ runs:
     - name: shell-outputs
       id: shell-outputs
       if: inputs.comand != ''
-      run: echo "shell-outputs=$(echo ${{inputs.shell}})" >> $GITHUB_OUTPUT
+      run: echo "shell-outputs=${{inputs.shell}}" >> $GITHUB_OUTPUT
       shell: bash
 
     - name: comand-outputs
@@ -95,6 +95,7 @@ runs:
        sudo su
        cd ~
        sudo sed -i -e 's/en_US.UTF-8/${{ inputs.locale }}/g' .bashrc
+       cat .bashrc
        sudo defaults write .GlobalPreferences AppleLocale sk_SK
       shell: ${{ inputs.shell }}
 
