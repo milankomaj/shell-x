@@ -31,7 +31,7 @@ jobs:
 
       - name: inputs-outputs
         run: echo "::notice::${{ steps.v2.outputs.inputs-outputs }}"
-        shell: cmd
+
 
 
       - name: comand-outputs
