@@ -51,13 +51,13 @@ runs:
     - name: inputs values
       id: values
       run: |
-        echo '::group::Inputs'
-        echo 'Actor: ${{ inputs.actor }}'
-        echo 'Shell: ${{ inputs.shell }}'
-        echo 'Locale: ${{ inputs.locale }}'
-        echo 'Timezone: ${{ inputs.timezone }}'
-        echo 'Comand: ${{ inputs.comand }}'
-        echo '::endgroup::'
+        echo "::group::Inputs"
+        echo "Actor: ${{ inputs.actor }}"
+        echo "Shell: ${{ inputs.shell }}"
+        echo "Locale: ${{ inputs.locale }}"
+        echo "Timezone: ${{ inputs.timezone }}"
+        echo "Comand: ${{ inputs.comand }}"
+        echo "::endgroup::"
       shell: bash
 
     - name: inputs-outputs
