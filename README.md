@@ -30,4 +30,4 @@ comand:      | false  |      | ✅
 ---
 
 
-[^1]: default Github workflow syntax
+[^1]: default Github runners and workflow syntax
