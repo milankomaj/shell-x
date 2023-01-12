@@ -25,7 +25,7 @@ jobs:
           shell: cmd
           locale: sk_SK
           timezone: Central Europe Standard Time
-          comand: tzutil /g  && echo 💡 %date%-%time%
+          comand: ${{ github.action_path }}/winfetch.bat
 
 
 
