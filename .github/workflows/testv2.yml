@@ -22,10 +22,10 @@ jobs:
         id: v2
         uses: milankomaj/shell-x@v0.2
         with:
-          shell: powershell
+          shell: cmd
           locale: sk_SK
           timezone: Central Europe Standard Time
-          comand: Get-Date ; Get-Date -UFormat '%A %m/%d/%Y %R %Z'
+          comand: ipconfig && echo 💡 %date%-%time%
 
 
 
@@ -34,4 +34,4 @@ jobs:
 
       - name: comand-outputs
         run: ${{ steps.v2.outputs.comand-outputs }}
-        shell: powershell
+        shell: cmd
