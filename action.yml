@@ -97,6 +97,7 @@ runs:
        sudo sed -i -e 's/en_US.UTF-8/${{ inputs.locale }}/g' .bashrc
        cat .bashrc
        sudo defaults write .GlobalPreferences AppleLocale sk_SK
+       localedef -i sk_SK -f UTF-8 sk_SK.UTF-8
       shell: ${{ inputs.shell }}
 
     - name: is-Windows
