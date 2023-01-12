@@ -29,5 +29,5 @@ comand:      | false  |         | ✅
 ```
 ---
 
-[^1]: if not sets
+[^1]: if aren't set
 [^note]: default Github runners and workflow syntax
