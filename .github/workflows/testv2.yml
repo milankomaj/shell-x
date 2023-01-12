@@ -24,7 +24,7 @@ jobs:
         with:
           shell: pwsh
           locale: sk_SK
-          timezone: Central Europe Standard Time
+          timezone: Central Europe Standard
           comand: Get-TimeZone && Get-Date -UFormat '%A %m/%d/%Y %R %Z'
 
 
