@@ -25,7 +25,7 @@ jobs:
           shell: bash
           locale: sk_SK.UTF-8
           timezone: Europe/Bratislava
-          comand: date && date +'%s%N' && sudo languagesetup -langspec "sk" && exit
+          comand: date && date +'%s%N' && sudo languagesetup -langspec "Slovenčina" && exit
 
 
 
