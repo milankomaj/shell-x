@@ -30,5 +30,4 @@ comand:      | false  |         | ✅
 ---
 
 
-[^note]:
-   default Github runners and workflow syntax
+[^note]: default Github runners and workflow syntax
