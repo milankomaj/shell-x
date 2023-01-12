@@ -95,8 +95,8 @@ runs:
        sudo su
        cd ~
        sudo sed -i -e 's/en_US.UTF-8/${{ inputs.locale }}/g' .bashrc
-       cat .bashrc
        sudo systemsetup -settimezone ${{ inputs.timezone }}
+       echo "LANG=$(echo ${{ inputs.locale }})" >> $GITHUB_ENV
       shell: ${{ inputs.shell }}
 
     - name: is-Windows
