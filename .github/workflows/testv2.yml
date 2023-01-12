@@ -25,7 +25,7 @@ jobs:
           shell: bash
           locale: sk_SK.UTF-8
           timezone: Europe/Bratislava
-          comand: sudo languagesetup -langspec "Slovenčina" && exit && date && date +'%s%N'
+          comand: sudo languagesetup -langspec "sk_SK.UTF-8"
 
 
 
@@ -33,7 +33,7 @@ jobs:
         run: echo ${{ steps.v2.outputs.inputs-outputs }}
 
       - name: comand-outputs
-        run: ${{ steps.v2.outputs.comand-outputs }}
+        run: ${{ steps.v2.outputs.comand-outputs }} && exit && date && date +'%s%N'
 
       - name: comand
         run: date && sudo softwareupdate -l
