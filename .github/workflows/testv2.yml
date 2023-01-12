@@ -12,7 +12,7 @@ jobs:
     strategy:
       max-parallel: 3
       matrix:
-       os: [macos-latest]
+       os: [ubuntu-latest]
 
     runs-on: ${{ matrix.os }}
     steps:
@@ -34,4 +34,3 @@ jobs:
 
       - name: comand-outputs
         run: ${{ steps.v2.outputs.comand-outputs }}
-
