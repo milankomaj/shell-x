@@ -117,3 +117,16 @@ runs:
       run: |
         tzutil /s "${{ inputs.timezone }}"
       shell: ${{ inputs.shell }}
+
+    - name: contains-timezone
+      id: contains-timezone
+      if: inputs.timezone == ''
+      run: |
+        if [[ ${{ inputs.timezone }} != *"/"* && runner.os != 'Windows']]
+        then
+          echo "::warning::❌ ${{ inputs.timezone }}"
+        elif [[ ${{ inputs.timezone }} != *"Time"* && runner.os == 'Windows']]
+        then
+          echo "::warning::❌ ${{ inputs.timezone }}"
+        fi
+      shell: bash
