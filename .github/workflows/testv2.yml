@@ -25,7 +25,7 @@ jobs:
           shell: bash
           locale: sk_SK.utf8
           timezone: Europe/Bratislava
-          comand: $(echo "date && date +'%s%N'")
+          comand: date
 
 
 
