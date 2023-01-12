@@ -5,10 +5,10 @@
 **with:** | *required*  | *default*  | *optional*
 ---: | :---: | :--- | :---:
 actor:       | false  | `${{ github.actor }}` | ✅
-shell:       | false  | [^1] | ✅
-locale:      | false  | [^1] | ✅
-timezone:    | false  | [^1] | ✅
-comand:      | false  |      | ✅
+shell:       | false  | [^note] | ✅
+locale:      | false  | [^note] | ✅
+timezone:    | false  | [^note] | ✅
+comand:      | false  |         | ✅
 
 ---
 
@@ -30,4 +30,5 @@ comand:      | false  |      | ✅
 ---
 
 
-[^1]: default Github runners and workflow syntax
+[^note]:
+   default Github runners and workflow syntax
