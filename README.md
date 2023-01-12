@@ -1,14 +1,14 @@
-# releases-x
+# shell-x
 > #### Composite action for localized github runners.
-> ``` - uses: milankomaj/releases-x@v0.1 ```
+> ``` - uses: milankomaj/shell-x@v0.2 ```
 
 **with:** | *required*  | *default*  | *optional*
 ---: | :---: | :--- | :---:
 actor:       | false  | `${{ github.actor }}` | ✅
-shell:       | false  | `-`                   | ✅
-locale:      | false  | `-`                   | ✅
-timezone:    | false  | `-`                   | ✅
-comand:      | false  | `-`                   | ✅
+shell:       | false  |             `-`       | ✅
+locale:      | false  |             `-`       | ✅
+timezone:    | false  |             `-`       | ✅
+comand:      | false  |             `-`       | ✅
 
 ---
 
