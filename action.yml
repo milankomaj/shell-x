@@ -95,6 +95,7 @@ runs:
        sudo su
        cd ~
        sudo sed -i -e 's/en_US.UTF-8/${{ inputs.locale }}/g' .bashrc
+       cat .bashrc
        sudo systemsetup -settimezone ${{ inputs.timezone }}
       shell: ${{ inputs.shell }}
 
