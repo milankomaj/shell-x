@@ -100,8 +100,8 @@ runs:
        cd ~/
        sudo touch .bash_profile
        sudo sed -i -e 1i"export LC_CTYPE=${{ inputs.locale }}" .bash_profile
-       sudo sed -i -e 1i"export LC_ALL=${{ inputs.locale }}" .bash_profile
-       sudo sed -i -e 1i""export LANG=${{ inputs.locale }}" .bash_profile
+       sudo sed -i -e 2i"export LC_ALL=${{ inputs.locale }}" .bash_profile
+       sudo sed -i -e 3i""export LANG=${{ inputs.locale }}" .bash_profile
       shell: ${{ inputs.shell }}
 
     - name: is-Windows
