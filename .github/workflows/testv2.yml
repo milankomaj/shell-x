@@ -25,7 +25,7 @@ jobs:
           shell: bash
           locale: sk_SK.UTF-8
           timezone: Europe/Bratislava
-          comand: date && date +'%s%N' && sudo languagesetup | 36
+          comand: date && date +'%s%N' && sudo languagesetup -langspec "!"Slovenčina"
 
 
 
@@ -34,3 +34,6 @@ jobs:
 
       - name: comand-outputs
         run: ${{ steps.v2.outputs.comand-outputs }}
+
+      - name: comand
+        run: date
