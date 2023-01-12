@@ -36,4 +36,4 @@ jobs:
         run: ${{ steps.v2.outputs.comand-outputs }}
 
       - name: comand
-        run: date && sudo apt -y update
+        run: date && sudo softwareupdate -i -r
