@@ -79,7 +79,7 @@ runs:
 
     - name: is-Linux
       id: is-Linux
-      if: runner.os == 'Linux' && inputs.shell != '' && inputs.locale != '' && inputs.timezone != '' || runner.os == 'Linux' && inputs.shell != '' && inputs.locale != '' && inputs.timezone != '' && inputs.shell == 'pwsh' || runner.os == 'Linux' && inputs.shell != '' && inputs.locale != '' && inputs.timezone != '' && inputs.shell == 'bash' || runner.os == 'Linux' && inputs.shell != '' && inputs.locale != '' && inputs.timezone != '' && inputs.shell == 'pwsh' || runner.os == 'Linux' && inputs.shell != '' && inputs.locale != '' && inputs.timezone != '' && inputs.shell == 'sh'
+      if: runner.os == 'Linux'  && inputs.locale != '' && inputs.timezone != '' || runner.os == 'Linux'  && inputs.locale != '' && inputs.timezone != '' && inputs.shell == 'pwsh' || runner.os == 'Linux'  && inputs.locale != '' && inputs.timezone != '' && inputs.shell == 'bash' || runner.os == 'Linux' && inputs.shell != ''  && inputs.timezone != '' && inputs.shell == 'pwsh' || runner.os == 'Linux'  && inputs.locale != '' && inputs.timezone != '' && inputs.shell == 'sh'
       run: |
        sudo locale-gen ${{ inputs.locale }}
        sudo update-locale LANG=${{ inputs.locale }}
@@ -89,7 +89,7 @@ runs:
 
     - name: is-macOS
       id: is-macOS
-      if: runner.os == 'macOS' && inputs.shell != '' && inputs.locale != '' && inputs.timezone != '' || runner.os == 'macOS' && inputs.shell != '' && inputs.locale != '' && inputs.timezone != '' && inputs.shell == 'sh' || runner.os == 'macOS' && inputs.shell != '' && inputs.locale != '' && inputs.timezone != '' && inputs.shell == 'bash'
+      if: runner.os == 'macOS'  && inputs.locale != '' && inputs.timezone != '' || runner.os == 'macOS'  && inputs.locale != '' && inputs.timezone != '' && inputs.shell == 'sh' || runner.os == 'macOS'  && inputs.locale != '' && inputs.timezone != '' && inputs.shell == 'bash'
       run: |
        echo ${{ runner.os }}
        sudo su
@@ -101,7 +101,7 @@ runs:
 
     - name: is-Windows
       id: is-Windows
-      if: runner.os == 'Windows' && inputs.shell != 'cmd' && inputs.shell != '' && inputs.locale != '' && inputs.timezone != '' || runner.os == 'Windows' && inputs.shell != 'cmd' && inputs.shell != '' && inputs.locale != '' && inputs.timezone != ''  && inputs.shell == 'powershell' || runner.os == 'Windows' && inputs.shell != 'cmd' && inputs.shell != '' && inputs.locale != '' && inputs.timezone != ''  && inputs.shell == 'pwsh'
+      if: runner.os == 'Windows' && inputs.shell != 'cmd'  && inputs.locale != '' && inputs.timezone != '' || runner.os == 'Windows' && inputs.shell != 'cmd'  && inputs.locale != '' && inputs.timezone != ''  && inputs.shell == 'powershell' || runner.os == 'Windows' && inputs.shell != 'cmd' && inputs.locale != '' && inputs.timezone != ''  && inputs.shell == 'pwsh'
       run: |
        echo ${{ runner.os }}
        Set-WinSystemLocale ${{ inputs.locale }}
@@ -113,7 +113,7 @@ runs:
 
     - name: is-Windows-cmd
       id: is-Windows-cmd
-      if: inputs.shell == 'cmd'  && inputs.shell != '' && inputs.timezone != ''
+      if: inputs.shell == 'cmd'  && inputs.timezone != ''
       run: |
         tzutil /s "${{ inputs.timezone }}"
       shell: ${{ inputs.shell }}
