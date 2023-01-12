@@ -95,7 +95,7 @@ runs:
        sudo su
        cd ~
        sudo sed -i -e 's/en_US.UTF-8/${{ inputs.locale }}/g' .bashrc
-       echo 'export LC_CTYPE=${{ inputs.locale }}' > ~/.bash_profile
+       echo 'export LC_CTYPE=${{ inputs.locale }}' >> ~/.bash_profile
        echo 'export LC_CTYPE=${{ inputs.locale }}' >> ~/.bash_profile
        echo 'export LC_CTYPE=${{ inputs.locale }}' >> ~/.bash_profile
       shell: ${{ inputs.shell }}
