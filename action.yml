@@ -125,7 +125,7 @@ runs:
       if: inputs.run == 'true' && inputs.comand != '' && inputs.shell != ''
       run: |
         echo "::group::Run"
-        echo "description: inputs.comand.description"
+        echo "description: $(echo $(${{ inputs.comand.description }}))"
         echo "comand: ${{ inputs.comand }}"
         ${{ inputs.comand }}
         echo "::endgroup::"
