@@ -47,6 +47,6 @@ macos  | ✅ | ✅ | ✅ | ❌ | ❌ | ✅
 ```
 ---
 
+[^note]: default Github runners and workflow syntax
 [^1]: if aren't set
 [^2]: with comand
-[^note]: default Github runners and workflow syntax
