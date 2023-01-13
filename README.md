@@ -17,7 +17,7 @@ ubuntu | ✅ | ✅ | ✅ | ❌ | ❌
 windows| ✅ | ❌ | ✅ | ✅ | ✅
 macos  | ✅ | ✅ | ✅ | ❌ | ❌
 
-> ##### [shells [:link:]](https://docs.github.com/en/enterprise-cloud@latest/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idstepsshell)
+> ##### [shells :link:](https://docs.github.com/en/enterprise-cloud@latest/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idstepsshell)
 
 ---
 
