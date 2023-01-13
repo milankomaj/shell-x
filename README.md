@@ -73,6 +73,7 @@ jobs:
           comand: date && timedatectl
           run: true
 
+      # optional
       - name: inputs-outputs
         run: echo "::notice::${{ steps.v2.outputs.inputs-outputs }}"
 
