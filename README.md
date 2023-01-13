@@ -13,9 +13,9 @@ comand:      | false  |         | ✅
 
 os:⬇️ shell:➡️ | *bash*  | *sh*  | *pwsh*  | *cmd*  | *powershell*| *custom*  [^2]
 ---: | :---: | :---: | :---: | :---: | :---: | :---:
-ubuntu | ✅ | ✅ | ✅ | ❌ | ❌ | ✅
-windows| ✅ | ❌ | ✅ | ✅ | ✅ | ✅
-macos  | ✅ | ✅ | ✅ | ❌ | ❌ | ✅
+**ubuntu** | ✅ | ✅ | ✅ | ❌ | ❌ | ✅
+**windows**| ✅ | ❌ | ✅ | ✅ | ✅ | ✅
+**macos**  | ✅ | ✅ | ✅ | ❌ | ❌ | ✅
 
 > ##### [shells :link:](https://docs.github.com/en/enterprise-cloud@latest/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idstepsshell)
 
