@@ -128,7 +128,7 @@ runs:
 
     - name: is-run-true
       id: is-run-true
-      if: inputs.run == 'true' && inputs.comand != '' && inputs.shell != ''
+      if: inputs.run == 'true' && inputs.comand != '' && inputs.shell != '' && inputs.shell == 'bash' && inputs.shell == 'sh' && inputs.shell == 'cmd' && inputs.shell == 'pwsh' && inputs.shell == 'powershell'
       run: |
         echo "::group::Run"
         echo "comand: ${{ inputs.comand }}"
