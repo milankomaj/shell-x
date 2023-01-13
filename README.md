@@ -1,5 +1,5 @@
 # shell-x
-##### for example [^4] : need time and date in your timezone, localized terminal outputs, sort files or values alfabeticaly...
+##### for example [^note] : need time and date in your timezone, localized terminal outputs, sort files or values alfabeticaly...
 > #### Composite action for localized github runners.
 > ``` - uses: milankomaj/shell-x@v0.2 ```
 
@@ -10,10 +10,10 @@ shell:       | false  | [^note] | ✅
 locale:      | false  | [^note] | ✅
 timezone:    | false  | [^note] | ✅
 comand:      | false  |         | ✅
-run: [^3]    | false  | false   | ✅
+run: [^2]    | false  | false   | ✅
 
 
-os:⬇️ shell:➡️| *bash*  | *sh*  | *pwsh*  | *cmd*  | *powershell*| *custom*  [^2]
+os:⬇️ shell:➡️| *bash*  | *sh*  | *pwsh*  | *cmd*  | *powershell*| *custom*  [^3]
 :--- | :---: | :---: | :---: | :---: | :---: | :---:
 **ubuntu** | ✅ | ✅ | ✅ | ❌ | ❌ | ✅
 **windows**| ✅ | ❌ | ✅ | ✅ | ✅ | ✅
@@ -87,8 +87,10 @@ jobs:
 
 ---
 
-[^note]: default Github runners and workflow syntax
+[^note]: options depend on the runner.os, shell ...
 [^1]: if aren't set
-[^2]: together with the command
-[^3]: run command inside shell-x
+[^2]: run command inside shell-x
+[^3]: together with the command
 [^4]: options depend on the runner.os, shell ...
+
+
