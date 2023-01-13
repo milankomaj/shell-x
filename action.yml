@@ -124,6 +124,5 @@ runs:
       id: is-run-true
       if: inputs.run == 'true' && inputs.comand != '' && inputs.shell != ''
       run: |
-        echo "Run"
         ${{ inputs.comand }}
       shell: ${{ inputs.shell }}
