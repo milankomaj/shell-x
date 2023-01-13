@@ -51,4 +51,4 @@ os:⬇️ shell:➡️| *bash*  | *sh*  | *pwsh*  | *cmd*  | *powershell*| *cust
 [^note]: default Github runners and workflow syntax
 [^1]: if aren't set
 [^2]: with comand
-[^3]: run comand into shell-x
+[^3]: run command inside shell-x
