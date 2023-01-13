@@ -46,6 +46,19 @@ os:⬇️ shell:➡️| *bash*  | *sh*  | *pwsh*  | *cmd*  | *powershell*| *cust
           timezone: Europe/Bratislava
           comand: cat /etc/timezone && date
 ```
+
+> ###### outputs
+```YAML
+      - name: inputs-outputs
+        run: echo "::notice::${{ steps.v2.outputs.inputs-outputs }}"
+
+      - name: shell-outputs
+        run: echo "::notice::${{ steps.v2.outputs.shell-outputs}}"
+
+      - name: comand-outputs
+        run: ${{ steps.v2.outputs.comand-outputs }}
+```
+
 ---
 
 [^note]: default Github runners and workflow syntax
