@@ -1,5 +1,9 @@
-name: 'Hello World'
-description: 'Greet someone'
+name: 'shell-x'
+description: 'localized github runners'
+author: "milankomaj"
+branding:
+  icon: "x-square"
+  color: "green"
 
 inputs:
   actor:  # id of input
