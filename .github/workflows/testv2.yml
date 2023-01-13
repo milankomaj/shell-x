@@ -37,3 +37,8 @@ jobs:
 
       - name: comand-outputs
         run: ${{ steps.v2.outputs.comand-outputs }}
+
+
+
+      - name: Output Inputs
+        run: echo "${{ toJSON(github.event.inputs) }}"
