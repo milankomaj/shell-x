@@ -47,7 +47,7 @@ os:⬇️ shell:➡️| *bash*  | *sh*  | *pwsh*  | *cmd*  | *powershell*| *cust
           comand: cat /etc/timezone && date
 ```
 
-> ###### example full workflow [windows-latest]
+> ###### example full workflow [ubuntu-latest]
 ```YAML
 name: test v0.2
 run-name: ${{ github.workflow }} ✅ ${{ github.actor }} ✅ ${{ github.event_name}}
@@ -60,17 +60,17 @@ jobs:
     strategy:
       max-parallel: 3
       matrix:
-       os: [windows-latest]
+       os: [ubuntu-latest]
     runs-on: ${{ matrix.os }}
     steps:
       - name: shell-x@v0.2
         id: v2
         uses: milankomaj/shell-x@v0.2
         with:
-          shell: pwsh
-          locale: sk_SK
-          timezone: Central Europe Standard Time
-          comand: Get-TimeZone && Get-Date -UFormat '%A %d/%m/%Y %R %Z'
+          shell: bash
+          locale: sk_SK.utf8
+          timezone: Europe/Bratislava
+          comand: date && timedatectl
           run: true
 
       - name: inputs-outputs
@@ -80,7 +80,7 @@ jobs:
         run: echo "::notice::${{ steps.v2.outputs.shell-outputs}}"
 
       - name: comand-outputs
-        run: ${{ steps.v2.outputs.comand-outputs }}
+        run: ${{ steps.v2.outputs.comand-outputs }} && sudo apt -y update  && sudo apt -y upgrade
 ```
 
 ---
