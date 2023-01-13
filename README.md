@@ -10,6 +10,7 @@ locale:      | false  | [^note] | ✅
 timezone:    | false  | [^note] | ✅
 comand:      | false  |         | ✅
 
+---
 
 os:⬇️ shell➡️ | *bash*  | *sh*  | *pwsh*  | *cmd*  | *powershell*
 ---: | :---: | :---: | :---:
