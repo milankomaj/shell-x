@@ -2,10 +2,7 @@ name: test v0.2
 run-name: ${{ github.workflow }} ✅ ${{ github.actor }} ✅ ${{ github.event_name}}
 on:
   workflow_dispatch:
-
-
 jobs:
-
   Shell:
     name: Shell
     continue-on-error: false
@@ -13,11 +10,8 @@ jobs:
       max-parallel: 3
       matrix:
        os: [windows-latest]
-
     runs-on: ${{ matrix.os }}
     steps:
-
-
       - name: shell-x@v0.2
         id: v2
         uses: milankomaj/shell-x@v0.2
@@ -27,7 +21,6 @@ jobs:
           timezone: Central Europe Standard Time
           comand: Get-TimeZone && Get-Date -UFormat '%A %d/%m/%Y %R %Z'
           run: true
-
 
       - name: inputs-outputs
         run: echo "::notice::${{ steps.v2.outputs.inputs-outputs }}"
