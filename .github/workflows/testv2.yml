@@ -23,7 +23,8 @@ jobs:
         uses: milankomaj/shell-x@v0.2
         with:
           shell: python
-          comand: import os print(os.environ['PATH'])
+          run: true
+          comand: import os\nprint(os.environ['PATH'])
 
 
 
