@@ -35,7 +35,7 @@ os:⬇️ shell:➡️| *bash*  | *sh*  | *pwsh*  | *cmd*  | *powershell*| *cust
           shell: pwsh
           locale: sk_SK
           timezone: Central Europe Standard Time
-          comand: Get-TimeZone && Get-Date -UFormat '%A %m/%d/%Y %R %Z'
+          comand: Get-TimeZone && Get-Date -UFormat '%A %d/%m/%Y %R %Z'
 ```
 
 > ###### example for [ubuntu-latest]
@@ -92,5 +92,3 @@ jobs:
 [^2]: default Github runners and workflow syntax
 [^3]: run command inside shell-x
 [^4]: together with the command
-
-
