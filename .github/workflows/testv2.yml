@@ -22,10 +22,10 @@ jobs:
         id: v2
         uses: milankomaj/shell-x@v0.2
         with:
-          shell: python
-          run: true
-          comand: "import os \nprint(os.environ['PATH'])"
-
+          shell: pwsh
+          locale: sk_SK
+          timezone: Central Europe Standard Time
+          comand: Get-TimeZone && Get-Date -UFormat '%A %d/%m/%Y %R %Z'
 
 
 
@@ -36,4 +36,3 @@ jobs:
 
       - name: comand-outputs
         run: ${{ steps.v2.outputs.comand-outputs }}
-        shell: python
