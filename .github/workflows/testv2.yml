@@ -24,7 +24,7 @@ jobs:
         with:
           shell: python
           run: true
-          comand: import os \n print(os.environ['PATH'])
+          comand: import os \\n print(os.environ['PATH'])
 
 
 
