@@ -26,7 +26,7 @@ jobs:
           locale: sk_SK
           timezone: Central Europe Standard Time
           comand: |
-            Get-TimeZone
+            Get-TimeZone \
             && Get-Date -UFormat '%A %d/%m/%Y %R %Z'
 
 
