@@ -120,12 +120,16 @@ runs:
         tzutil /s "${{ inputs.timezone }}"
       shell: ${{ inputs.shell }}
 
+    - name: is-custom-shell
+      id: is-custom-shell
+      if: inputs.shell == '' && inputs.comand != '' && inputs.shell != 'bash' && inputs.shell != 'sh' && inputs.shell != 'cmd' && inputs.shell != 'pwsh' && inputs.shell != 'powershell'
+      shell: ${{ inputs.shell }}
+
     - name: is-run-true
       id: is-run-true
       if: inputs.run == 'true' && inputs.comand != '' && inputs.shell != ''
       run: |
         echo "::group::Run"
-        echo "description: ${{ toJSON(["inputs"]) }}"
         echo "comand: ${{ inputs.comand }}"
         ${{ inputs.comand }}
         echo "::endgroup::"
