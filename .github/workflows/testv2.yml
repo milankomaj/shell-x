@@ -12,7 +12,7 @@ jobs:
     strategy:
       max-parallel: 3
       matrix:
-       os: [ubuntu-latest]
+       os: [windows-latest]
 
     runs-on: ${{ matrix.os }}
     steps:
@@ -23,7 +23,9 @@ jobs:
         uses: milankomaj/shell-x@v0.2
         with:
           shell: python
-          comand: python3 -c $'import os, time, locale\nprint(time.strftime("%c %B %z"))'
+          locale: sk_SK
+          timezone: Central Europe Standard Time
+          comand: Get-TimeZone && Get-Date -UFormat '%A %m/%d/%Y %R %Z'
           run: true
 
 
@@ -34,4 +36,3 @@ jobs:
 
       - name: comand-outputs
         run: ${{ steps.v2.outputs.comand-outputs }}
-        shell: python
