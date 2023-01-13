@@ -9,6 +9,7 @@ shell:       | false  | [^note] | ✅
 locale:      | false  | [^note] | ✅
 timezone:    | false  | [^note] | ✅
 comand:      | false  |         | ✅
+run: [^3]    | false  | false   | ✅
 
 
 os:⬇️ shell:➡️| *bash*  | *sh*  | *pwsh*  | *cmd*  | *powershell*| *custom*  [^2]
@@ -50,3 +51,4 @@ os:⬇️ shell:➡️| *bash*  | *sh*  | *pwsh*  | *cmd*  | *powershell*| *cust
 [^note]: default Github runners and workflow syntax
 [^1]: if aren't set
 [^2]: with comand
+[^3]: run comand into shell-x
