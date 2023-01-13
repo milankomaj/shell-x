@@ -11,11 +11,11 @@ timezone:    | false  | [^note] | ✅
 comand:      | false  |         | ✅
 
 
-os:⬇️ shell:➡️ | *bash*  | *sh*  | *pwsh*  | *cmd*  | *powershell*
----: | :---: | :---: | :---: | :---: | :---:
-ubuntu | ✅ | ✅ | ✅ | ❌ | ❌
-windows| ✅ | ❌ | ✅ | ✅ | ✅
-macos  | ✅ | ✅ | ✅ | ❌ | ❌
+os:⬇️ shell:➡️ | *bash*  | *sh*  | *pwsh*  | *cmd*  | *powershell*| *custom*  [^2]
+---: | :---: | :---: | :---: | :---: | :---: | :---:
+ubuntu | ✅ | ✅ | ✅ | ❌ | ❌ | ✅
+windows| ✅ | ❌ | ✅ | ✅ | ✅ | ✅
+macos  | ✅ | ✅ | ✅ | ❌ | ❌ | ✅
 
 > ##### [shells :link:](https://docs.github.com/en/enterprise-cloud@latest/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idstepsshell)
 
@@ -48,4 +48,5 @@ macos  | ✅ | ✅ | ✅ | ❌ | ❌
 ---
 
 [^1]: if aren't set
+[^2]: with comand
 [^note]: default Github runners and workflow syntax
