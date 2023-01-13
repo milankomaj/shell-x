@@ -27,7 +27,7 @@ inputs:
     required: false
     default: ""
   run:  # id of input
-    description: 'run comand into shell-x'
+    description: 'Run command inside shell-x'
     required: false
     default: false
     type: boolean
