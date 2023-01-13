@@ -13,7 +13,7 @@ comand:      | false  |         | ✅
 ---
 
 os:⬇️ shell➡️ | *bash*  | *sh*  | *pwsh*  | *cmd*  | *powershell*
----: | :---: | :---: | :---:
+---: | :---: | :---: | :---: | :---: | :---:
 ubuntu | ✅ | ✅ | ✅ | ❌ | ❌
 windows| ✅ | ❌ | ✅ | ✅ | ✅
 macos  | ✅ | ✅ | ✅ | ❌ | ❌
