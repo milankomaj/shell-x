@@ -10,13 +10,14 @@ locale:      | false  | [^note] | ✅
 timezone:    | false  | [^note] | ✅
 comand:      | false  |         | ✅
 
----
 
-os:⬇️ shell➡️ | *bash*  | *sh*  | *pwsh*  | *cmd*  | *powershell*
+os:⬇️ shell:➡️ | *bash*  | *sh*  | *pwsh*  | *cmd*  | *powershell*
 ---: | :---: | :---: | :---: | :---: | :---:
 ubuntu | ✅ | ✅ | ✅ | ❌ | ❌
 windows| ✅ | ❌ | ✅ | ✅ | ✅
 macos  | ✅ | ✅ | ✅ | ❌ | ❌
+
+[shells](https://docs.github.com/en/enterprise-cloud@latest/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idstepsshell)
 
 ---
 
