@@ -22,7 +22,11 @@ inputs:
     description: 'Use comand'
     required: false
     default: ""
-
+  run:  # id of input
+    description: 'run comand into shell-x'
+    required: false
+    default: false
+    type: boolean
 
 outputs:
   inputs-outputs:
@@ -114,4 +118,13 @@ runs:
       if: inputs.shell == 'cmd' && inputs.timezone != ''
       run: |
         tzutil /s "${{ inputs.timezone }}"
+      shell: ${{ inputs.shell }}
+
+    - name: is-run-true
+      id: is-run-true
+      if: inputs.run == 'true' && inputs.comand != '' && inputs.shell != ''
+      run: |
+        echo "::group::Run"
+        ${{ inputs.comand }}
+        echo "::endgroup::"
       shell: ${{ inputs.shell }}
