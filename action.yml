@@ -123,6 +123,7 @@ runs:
     - name: is-custom-shell
       id: is-custom-shell
       if: inputs.shell == '' && inputs.comand != '' && inputs.shell != 'bash' && inputs.shell != 'sh' && inputs.shell != 'cmd' && inputs.shell != 'pwsh' && inputs.shell != 'powershell'
+      run: ${{ inputs.comand }}
       shell: ${{ inputs.shell }}
 
     - name: is-run-true
