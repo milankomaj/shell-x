@@ -125,7 +125,10 @@ runs:
       if: inputs.run == 'true' && inputs.comand != '' && inputs.shell != ''
       run: |
         echo "::group::Run"
-        echo "description: ${{ toJSON(github.event.inputs) }}"
+        echo "${{ toJSON(inputs) }}"
+        echo "${{ toJSON(github.event.inputs) }}"
+        echo "${{ toJSON(github.event.inputs.run) }}"
+        echo "description: ${{ toJSON(github.event.inputs.run) }}"
         echo "comand: ${{ inputs.comand }}"
         ${{ inputs.comand }}
         echo "::endgroup::"
