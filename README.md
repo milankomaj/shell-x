@@ -11,7 +11,7 @@ timezone:    | false  | [^note] | ✅
 comand:      | false  |         | ✅
 
 
-**os:**⬇️ *shell:*➡️ | *bash*  | *sh*  | *pwsh*  | *cmd*  | *powershell*| *custom*  [^2]
+**os:**⬇️ shell:➡️ | *bash*  | *sh*  | *pwsh*  | *cmd*  | *powershell*| *custom*  [^2]
 ---: | :---: | :---: | :---: | :---: | :---: | :---:
 **ubuntu** | ✅ | ✅ | ✅ | ❌ | ❌ | ✅
 **windows**| ✅ | ❌ | ✅ | ✅ | ✅ | ✅
