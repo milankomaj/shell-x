@@ -6,14 +6,14 @@
 **with:** | *required*  | *default* [^1] | *optional*
 ---: | :---: | :---: | :---:
 actor:       | false  | `${{ github.actor }}` | ✅
-shell:       | false  | [^note] | ✅
-locale:      | false  | [^note] | ✅
-timezone:    | false  | [^note] | ✅
+shell:       | false  | [^2] | ✅
+locale:      | false  | [^2] | ✅
+timezone:    | false  | [^2] | ✅
 comand:      | false  |         | ✅
-run: [^2]    | false  | false   | ✅
+run: [^3]    | false  | false   | ✅
 
 
-os:⬇️ shell:➡️| *bash*  | *sh*  | *pwsh*  | *cmd*  | *powershell*| *custom*  [^3]
+os:⬇️ shell:➡️| *bash*  | *sh*  | *pwsh*  | *cmd*  | *powershell*| *custom*  [^4]
 :--- | :---: | :---: | :---: | :---: | :---: | :---:
 **ubuntu** | ✅ | ✅ | ✅ | ❌ | ❌ | ✅
 **windows**| ✅ | ❌ | ✅ | ✅ | ✅ | ✅
@@ -89,8 +89,8 @@ jobs:
 
 [^note]: options depend on the runner.os, shell ...
 [^1]: if aren't set
-[^2]: run command inside shell-x
-[^3]: together with the command
-[^4]: options depend on the runner.os, shell ...
+[^2]: default Github runners and workflow syntax
+[^3]: run command inside shell-x
+[^4]: together with the command
 
 
