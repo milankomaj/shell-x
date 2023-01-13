@@ -27,7 +27,7 @@ jobs:
           timezone: Central Europe Standard Time
           comand: |
             Get-TimeZone
-            Get-Date -UFormat '%A %d/%m/%Y %R %Z'
+            && Get-Date -UFormat '%A %d/%m/%Y %R %Z'
 
 
       - name: inputs-outputs
