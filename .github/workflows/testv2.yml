@@ -12,7 +12,7 @@ jobs:
     strategy:
       max-parallel: 3
       matrix:
-       os: [windows-latest]
+       os: [ubuntu-latest]
 
     runs-on: ${{ matrix.os }}
     steps:
@@ -22,10 +22,8 @@ jobs:
         id: v2
         uses: milankomaj/shell-x@v0.2
         with:
-          shell: pwsh
-          locale: sk_SK
-          timezone: Central Europe Standard Time
-          comand: Get-TimeZone && Get-Date -UFormat '%A %m/%d/%Y %R %Z'
+          shell: python
+          comand: python3 -c $'import os, time, locale\nprint(time.strftime("%c %B %z"))'
           run: true
 
 
