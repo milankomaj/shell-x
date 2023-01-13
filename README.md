@@ -1,4 +1,5 @@
 # shell-x
+##### for example: need time and date in your timezone, localized terminal outputs, sort files or strings alfabeticaly...
 > #### Composite action for localized github runners.
 > ``` - uses: milankomaj/shell-x@v0.2 ```
 
