@@ -2,6 +2,9 @@ name: test v0.3
 run-name: ${{ github.workflow }} ✅ ${{ github.actor }} ✅ ${{ github.event_name}}
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - 'testv3'
 jobs:
   Shell:
     name: Shell
@@ -12,9 +15,9 @@ jobs:
        os: [ubuntu-latest]
     runs-on: ${{ matrix.os }}
     steps:
-      - name: shell-x@v0.3
+      - name: shell-x@v0.2
         id: v3
-        uses: milankomaj/shell-x@v0.3
+        uses: milankomaj/shell-x@v0.2
         with:
           shell: bash
           locale: sk_SK.utf8
