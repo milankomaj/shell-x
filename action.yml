@@ -60,7 +60,6 @@ runs:
       id: values
       run: |
         echo "::group::Inputs"
-        date && timedatectl
         echo "Actor: ${{ inputs.actor }}"
         echo "Shell: ${{ inputs.shell }}"
         echo "Locale: ${{ inputs.locale }}"
