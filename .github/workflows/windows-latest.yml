@@ -18,14 +18,11 @@ jobs:
       - id: foo
         uses: milankomaj/shell-x@v0.2
         with:
-          who-to-greet: '${{ github.actor }}'
-          neofetch: 'true'
           shell: 'cmd'
           locale: 'sk-SK'
           timezone: 'Central Europe Standard Time'
 
-      - run: echo 💡 ${{ steps.foo.outputs.random-number }}
-        shell: cmd
+
       - run: echo 💡 ${{ steps.foo.outputs.inputs-outputs }}
         shell: cmd
       - name: date-time
@@ -46,14 +43,10 @@ jobs:
       - id: foo
         uses: milankomaj/shell-x@v0.2
         with:
-          who-to-greet: '${{ github.actor }}'
-          neofetch: 'true'
           shell: 'powershell'
           locale: 'sk_SK'
           timezone: 'Central Europe Standard Time'
 
-      - run: echo ${{ steps.foo.outputs.random-number }}
-        shell: powershell
       - run: echo ${{ steps.foo.outputs.inputs-outputs }}
         shell: powershell
       - run: |
@@ -75,14 +68,10 @@ jobs:
       - id: foo
         uses: milankomaj/shell-x@v0.2
         with:
-          who-to-greet: '${{ github.actor }}'
-          neofetch: 'true'
           shell: 'pwsh'
           locale: 'sk_SK'
           timezone: 'Central Europe Standard Time'
 
-      - run: echo 💡 ${{ steps.foo.outputs.random-number }}
-        shell: pwsh
       - run: echo 💡 ${{ steps.foo.outputs.inputs-outputs }}
         shell: pwsh
       - run: Get-Date
