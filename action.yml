@@ -125,5 +125,7 @@ runs:
       id: is-run-comand
       if: inputs.comand != '' && inputs.shell != ''
       run: |
+        echo "::group:: run ${{ inputs.comand }}"
         ${{ inputs.comand }}
+        echo "::endgroup::"
       shell: ${{ inputs.shell }}
