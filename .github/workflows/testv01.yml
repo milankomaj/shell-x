@@ -23,15 +23,11 @@ jobs:
       - id: foo
         uses: milankomaj/shell-x@v0.2
         with:
-          who-to-greet: ${{ github.actor }}
-          neofetch: false
           shell: pwsh
           locale: sk_SK
           timezone: Central Europe Standard Time
           comand: $(echo "Get-Date -UFormat '%Y%m%d' && Get-Date -Format F")
 
-      - run: echo ${{ steps.foo.outputs.random-number }}
-        shell: powershell
 
       - run: echo ${{ steps.foo.outputs.inputs-outputs }}
         shell: powershell
