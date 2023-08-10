@@ -59,8 +59,10 @@ runs:
     - name: inputs values
       id: values
       run: |
-        echo "::group::Inputs"
+        echo "::group::date && timedatectl"
         date && timedatectl
+        echo "::endgroup::"
+        echo "::group::Inputs"
         echo "Actor: ${{ inputs.actor }}"
         echo "Shell: ${{ inputs.shell }}"
         echo "Locale: ${{ inputs.locale }}"
