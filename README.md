@@ -9,8 +9,8 @@ actor:       | false  | `${{ github.actor }}` | ✅
 shell:       | false  | [^2] | ✅
 locale:      | false  | [^2] | ✅
 timezone:    | false  | [^2] | ✅
-comand:      | false  |         | ✅
-run: [^3]    | false  | false   | ✅
+comand: [^3] | false  | false   | ✅
+
 
 
 os:⬇️ shell:➡️| *bash*  | *sh*  | *pwsh*  | *cmd*  | *powershell*| *custom*  [^4]
@@ -72,7 +72,6 @@ jobs:
           locale: sk_SK.utf8
           timezone: Europe/Bratislava
           comand: date && timedatectl
-          run: true
 
       # optional
       - name: inputs-outputs
@@ -91,4 +90,4 @@ jobs:
 [^1]: if aren't set
 [^2]: default Github runners and workflow syntax
 [^3]: run command inside shell-x
-[^4]: together with the command
+
