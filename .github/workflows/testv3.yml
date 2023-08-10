@@ -25,4 +25,3 @@ jobs:
           locale: sk_SK.utf8
           timezone: Europe/Bratislava
           comand: date && timedatectl
-          run: false
