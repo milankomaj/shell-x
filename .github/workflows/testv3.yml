@@ -12,8 +12,8 @@ jobs:
        os: [ubuntu-latest]
     runs-on: ${{ matrix.os }}
     steps:
-      - name: shell-x@v0.2
-        id: v2
+      - name: shell-x@v0.3
+        id: v3
         uses: milankomaj/shell-x@v0.3
         with:
           shell: bash
