@@ -26,11 +26,7 @@ inputs:
     description: 'Use comand'
     required: false
     default: ""
-  run:  # id of input
-    description: 'Run command inside shell-x'
-    required: false
-    default: false
-    type: boolean
+
 
 outputs:
   inputs-outputs:
@@ -39,9 +35,7 @@ outputs:
   shell-outputs:
     description: "shell-outputs"
     value: "${{ steps.shell-outputs.outputs.shell-outputs }}"
-  comand-outputs:
-    description: "comand-outputs"
-    value: "${{ steps.comand-outputs.outputs.comand-outputs }}"
+
 
 
 runs:
@@ -50,7 +44,7 @@ runs:
 
     - name: inputs exists
       id: exists
-      if: inputs.shell == '' && inputs.locale == '' && inputs.timezone == '' && inputs.comand == ''
+      if: inputs.shell == '' && inputs.locale == '' && inputs.timezone == ''
       run: |
        echo "::warning::Hey ${{ inputs.actor }}, add some inputs"
        exit
@@ -127,9 +121,9 @@ runs:
         tzutil /s "${{ inputs.timezone }}"
       shell: ${{ inputs.shell }}
 
-    - name: is-run-true
-      id: is-run-true
-      if: inputs.run == 'true' && inputs.comand != '' && inputs.shell != ''
+    - name: is-run-comand
+      id: is-run-comand
+      if: inputs.comand != '' && inputs.shell != ''
       run: |
         ${{ inputs.comand }}
       shell: ${{ inputs.shell }}

@@ -25,12 +25,12 @@ os:⬇️ shell:➡️| *bash*  | *sh*  | *pwsh*  | *cmd*  | *powershell*| *cust
 
 > ###### minimal example
 ```YAML
-      - uses: milankomaj/shell-x@v0.2
+      - uses: milankomaj/shell-x@v0.3
 ```
 
 > ###### example for [windows-latest]
 ```YAML
-      - uses: milankomaj/shell-x@v0.2
+      - uses: milankomaj/shell-x@v0.3
         with:
           shell: pwsh
           locale: sk_SK
@@ -40,7 +40,7 @@ os:⬇️ shell:➡️| *bash*  | *sh*  | *pwsh*  | *cmd*  | *powershell*| *cust
 
 > ###### example for [ubuntu-latest]
 ```YAML
-      - uses: milankomaj/shell-x@v0.2
+      - uses: milankomaj/shell-x@v0.3
         with:
           shell: bash
           locale: sk_SK.utf8
@@ -64,9 +64,9 @@ jobs:
        os: [ubuntu-latest]
     runs-on: ${{ matrix.os }}
     steps:
-      - name: shell-x@v0.2
+      - name: shell-x@v0.3
         id: v2
-        uses: milankomaj/shell-x@v0.2
+        uses: milankomaj/shell-x@v0.3
         with:
           shell: bash
           locale: sk_SK.utf8
