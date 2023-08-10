@@ -1,7 +1,7 @@
 # shell-x
 ##### for example [^note] : need time and date in your timezone, localized terminal outputs, sort files or values alfabeticaly...
 > #### Composite action for localized github runners.
-> ``` - uses: milankomaj/shell-x@v0.2 ```
+> ``` - uses: milankomaj/shell-x@v0.3 ```
 
 **with:** | *required*  | *default* [^1] | *optional*
 ---: | :---: | :---: | :---:
@@ -90,4 +90,3 @@ jobs:
 [^1]: if aren't set
 [^2]: default Github runners and workflow syntax
 [^3]: run command inside shell-x
-
