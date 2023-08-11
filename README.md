@@ -9,11 +9,11 @@ actor:       | false  | `${{ github.actor }}` | ✅
 shell:       | false  | [^2] | ✅
 locale:      | false  | [^2] | ✅
 timezone:    | false  | [^2] | ✅
-comand: [^3] | false  | false   | ✅
+comand: [^3] | false  |    | ✅
 
 
 
-os:⬇️ shell:➡️| *bash*  | *sh*  | *pwsh*  | *cmd*  | *powershell*| *custom*  [^4]
+os:⬇️ shell:➡️| *bash*  | *sh*  | *pwsh*  | *cmd*  | *powershell*| *custom*
 :--- | :---: | :---: | :---: | :---: | :---: | :---:
 **ubuntu** | ✅ | ✅ | ✅ | ❌ | ❌ | ✅
 **windows**| ✅ | ❌ | ✅ | ✅ | ✅ | ✅
