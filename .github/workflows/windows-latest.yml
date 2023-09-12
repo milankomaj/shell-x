@@ -16,7 +16,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - id: foo
-        uses: milankomaj/shell-x@v0.2
+        uses: milankomaj/shell-x@v0.3
         with:
           shell: 'cmd'
           locale: 'sk-SK'
@@ -41,7 +41,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - id: foo
-        uses: milankomaj/shell-x@v0.2
+        uses: milankomaj/shell-x@v0.3
         with:
           shell: 'powershell'
           locale: 'sk_SK'
@@ -66,7 +66,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - id: foo
-        uses: milankomaj/shell-x@v0.2
+        uses: milankomaj/shell-x@v0.3
         with:
           shell: 'pwsh'
           locale: 'sk_SK'
