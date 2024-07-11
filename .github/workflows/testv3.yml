@@ -28,7 +28,7 @@ jobs:
           
       - uses: actions/checkout@v4   
       - run: |
-         gh api repos/milankomaj/shell-x/branches --jq '.[].name' | xargs -P 0 -I {} | gh workflow run testv3.yml --ref /\{\}
+         gh api repos/milankomaj/shell-x/branches --jq '.[].name' | xargs -P 0 -I {} | gh workflow run testv3.yml --ref \{\}
         env:
             GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             
