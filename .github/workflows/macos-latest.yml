@@ -30,6 +30,7 @@ jobs:
       - run: |
          date
          export LANG=sk_SK.UTF-8
+         source ~/.bashrc
         shell: bash
       - run: date
         shell: bash
