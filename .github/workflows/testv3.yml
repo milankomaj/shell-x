@@ -25,3 +25,7 @@ jobs:
           locale: sk_SK.utf8
           timezone: Europe/Bratislava
           comand: date && timedatectl && sudo timedatectl set-local-rtc 1 && timedatectl
+          
+      - run: gh workflow run testv3.yml --ref test-v3 
+
+    
