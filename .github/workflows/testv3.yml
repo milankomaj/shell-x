@@ -19,7 +19,7 @@ jobs:
     steps:
       - name: shell-x@v0.3
         id: v3
-        uses: milankomaj/shell-x@v0.3
+        uses: milankomaj/shell-x@test-v3
         with:
           shell: bash
           locale: sk_SK.utf8
