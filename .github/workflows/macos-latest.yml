@@ -47,6 +47,7 @@ jobs:
          LANG=sk_SK.UTF-8 date
          LC_TIME=sk_SK.UTF-8 date -R
          date
+         echo $LANG
         shell: bash
      
   sh:
