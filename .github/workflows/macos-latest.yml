@@ -19,8 +19,6 @@ jobs:
       - id: foo
         uses: milankomaj/shell-x@v0.3
         with:
-          who-to-greet: '${{ github.actor }}'
-          neofetch: 'true'
           shell: 'bash'
           locale: 'sk_SK.utf8'
           timezone: 'Europe/Bratislava'
@@ -50,8 +48,6 @@ jobs:
       - id: foo
         uses: milankomaj/shell-x@v0.3
         with:
-          who-to-greet: '${{ github.actor }}'
-          neofetch: 'true'
           shell: 'sh'
           locale: 'sk_SK.utf8'
           timezone: 'Europe/Bratislava'
@@ -76,8 +72,6 @@ jobs:
       - id: foo
         uses: milankomaj/shell-x@v0.3
         with:
-          who-to-greet: '${{ github.actor }}'
-          neofetch: 'true'
           shell: 'pwsh'
           locale: 'sk_SK.utf8'
           timezone: 'Europe/Bratislava'
