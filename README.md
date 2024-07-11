@@ -1,7 +1,7 @@
 # shell-x
 ##### for example [^note] : need time and date in your timezone, localized terminal outputs, sort files or values alfabeticaly...
 > #### Composite action for localized github runners.
-> ``` - uses: milankomaj/shell-x@v0.2 ```
+> ``` - uses: milankomaj/shell-x@v0.3 ```
 
 **with:** | *required*  | *default* [^1] | *optional*
 ---: | :---: | :---: | :---:
@@ -9,11 +9,11 @@ actor:       | false  | `${{ github.actor }}` | ✅
 shell:       | false  | [^2] | ✅
 locale:      | false  | [^2] | ✅
 timezone:    | false  | [^2] | ✅
-comand:      | false  |         | ✅
-run: [^3]    | false  | false   | ✅
+comand: [^3] | false  |    | ✅
 
 
-os:⬇️ shell:➡️| *bash*  | *sh*  | *pwsh*  | *cmd*  | *powershell*| *custom*  [^4]
+
+os:⬇️ shell:➡️| *bash*  | *sh*  | *pwsh*  | *cmd*  | *powershell*| *custom*
 :--- | :---: | :---: | :---: | :---: | :---: | :---:
 **ubuntu** | ✅ | ✅ | ✅ | ❌ | ❌ | ✅
 **windows**| ✅ | ❌ | ✅ | ✅ | ✅ | ✅
@@ -25,12 +25,12 @@ os:⬇️ shell:➡️| *bash*  | *sh*  | *pwsh*  | *cmd*  | *powershell*| *cust
 
 > ###### minimal example
 ```YAML
-      - uses: milankomaj/shell-x@v0.2
+      - uses: milankomaj/shell-x@v0.3
 ```
 
 > ###### example for [windows-latest]
 ```YAML
-      - uses: milankomaj/shell-x@v0.2
+      - uses: milankomaj/shell-x@v0.3
         with:
           shell: pwsh
           locale: sk_SK
@@ -40,7 +40,7 @@ os:⬇️ shell:➡️| *bash*  | *sh*  | *pwsh*  | *cmd*  | *powershell*| *cust
 
 > ###### example for [ubuntu-latest]
 ```YAML
-      - uses: milankomaj/shell-x@v0.2
+      - uses: milankomaj/shell-x@v0.3
         with:
           shell: bash
           locale: sk_SK.utf8
@@ -64,15 +64,14 @@ jobs:
        os: [ubuntu-latest]
     runs-on: ${{ matrix.os }}
     steps:
-      - name: shell-x@v0.2
+      - name: shell-x@v0.3
         id: v2
-        uses: milankomaj/shell-x@v0.2
+        uses: milankomaj/shell-x@v0.3
         with:
           shell: bash
           locale: sk_SK.utf8
           timezone: Europe/Bratislava
           comand: date && timedatectl
-          run: true
 
       # optional
       - name: inputs-outputs
@@ -91,4 +90,3 @@ jobs:
 [^1]: if aren't set
 [^2]: default Github runners and workflow syntax
 [^3]: run command inside shell-x
-[^4]: together with the command
