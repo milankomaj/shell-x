@@ -27,21 +27,22 @@ jobs:
         shell: bash
       - run: |
          export LANG=sk_SK.UTF-8
-         export LCALL=sk_SK.UTF-8
+         export LC_ALL="sk_SK.UTF-8" 
          echo 'export LANG=sk_SK.UTF-8' >> ~/.bashrc
-         echo 'export LCALL=sk_SK.UTF-8' >> ~/.bashrc
+         echo 'export LC_ALL=sk_SK.UTF-8' >> ~/.bashrc
          echo 'export LANG=sk_SK.UTF-8' >> ~/.bash_profile
-         echo 'export LCALL=sk_SK.UTF-8' >> ~/.bash_profile
+         echo 'export LC_ALL=sk_SK.UTF-8' >> ~/.bash_profile
          source ~/.bash_profile
          source ~/.bashrc 
          locale
          LANG=sk_SK.UTF-8 date
          LC_TIME=sk_SK.UTF-8 date -R
+         date
         shell: bash
       - run: |
          softwareupdate -l
-         date
          locale
+         date
         shell: bash
      
   sh:
