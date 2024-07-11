@@ -36,6 +36,7 @@ jobs:
          LC_TIME=sk_SK.UTF-8 date -R
          date
          echo "LANG=sk_SK.UTF-8" >> $GITHUB_ENV
+         echo "LC_ALL=sk_SK.UTF-8" >> $GITHUB_ENV
          echo $LANG
          exit 0
         shell: bash
