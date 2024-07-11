@@ -29,9 +29,9 @@ jobs:
          export LANG=sk_SK.UTF-8
          export LCALL=sk_SK.UTF-8
          echo 'export LANG=sk_SK.UTF-8' >> ~/.bashrc
+         bash -c "echo 'export LCALL=sk_SK.UTF-8' >> ~/.bashrc"
          source ~/.bashrc 
          locale
-         exit 0
          date
         shell: bash
       - run: |
