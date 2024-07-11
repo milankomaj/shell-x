@@ -1,5 +1,5 @@
 name: tests "test-" branches
-run-name: ${{ github.workflow }} ✅ ${{ github.actor }} ✅ ${{ github.event_name}} ✅ ${{ github.ref }}
+run-name: ${{ github.workflow }} ✅ ${{ github.ref }} ✅ ${{ github.event_name}} ✅ ${{ github.actor }}
 on:
   workflow_dispatch:
   push:
