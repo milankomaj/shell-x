@@ -26,6 +26,8 @@ jobs:
       - run: echo 💡 ${{ steps.foo.outputs.inputs-outputs }}
         shell: bash
       - run: |
+         sudo localedef -i /usr/share/locale/sk_SK /usr/lib/locale/sk_SK.UTF-8
+         sudo install -m 0644 sk_SK.utf8 /usr/share/locale/sk_SK.utf8
          export LANG=sk_SK.UTF-8
          export LC_ALL="sk_SK.UTF-8" 
          echo 'export LANG=sk_SK.UTF-8' >> ~/.bashrc
@@ -35,7 +37,6 @@ jobs:
          source ~/.bash_profile
          source ~/.bashrc 
          locale
-         sudo locale-gen sk_SK
          LANG=sk_SK.UTF-8 date
          LC_TIME=sk_SK.UTF-8 date -R
          date
