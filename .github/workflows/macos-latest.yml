@@ -37,7 +37,7 @@ jobs:
          date
          echo "LANG=sk_SK.UTF-8" >> $GITHUB_ENV
          echo $LANG
-         exitb 0
+         exit 0
         shell: bash
       - run: |
          softwareupdate -l
