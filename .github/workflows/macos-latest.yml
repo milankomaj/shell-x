@@ -25,15 +25,16 @@ jobs:
 
       - run: echo 💡 ${{ steps.foo.outputs.inputs-outputs }}
         shell: bash
-      - run: |
+      - run: 
          date
          sudo su
          export LANG=sk_SK.UTF-8
          echo 'export LANG=sk_SK.UTF-8' >> ~/.bashrc
-         apt update
          exit 0
         shell: bash
-      - run: date
+      - run: |
+         date
+         softwareupdate -l
         shell: bash
      
   sh:
