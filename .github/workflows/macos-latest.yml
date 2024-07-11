@@ -38,12 +38,14 @@ jobs:
          LANG=sk_SK.UTF-8 date
          LC_TIME=sk_SK.UTF-8 date -R
          date
-         softwareupdate -l
+         echo "LANG=$($LANG)" >> $GITHUB_ENV
          echo $LANG
         shell: bash
       - run: |
          softwareupdate -l
          locale
+         LANG=sk_SK.UTF-8 date
+         LC_TIME=sk_SK.UTF-8 date -R
          date
         shell: bash
      
