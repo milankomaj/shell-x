@@ -1,4 +1,4 @@
-name: tests on all branches contain test "testv3.yaml"
+name: tests "test-" branches
 run-name: ${{ github.workflow }} ✅ ${{ github.actor }} ✅ ${{ github.event_name}} ✅ ${{ github.ref }}
 on:
   workflow_dispatch:
