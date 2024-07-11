@@ -21,7 +21,7 @@ jobs:
         shell: powershell
 
       - id: foo
-        uses: milankomaj/shell-x@v0.2
+        uses: milankomaj/shell-x@v0.3
         with:
           shell: pwsh
           locale: sk_SK
