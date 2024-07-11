@@ -31,10 +31,11 @@ jobs:
         shell: bash
       - run: |
          date
-         sudo systemsetup -listtimezones
          export LANG=sk_SK.UTF-8
         shell: bash
-
+      - run: date
+        shell: bash
+     
   sh:
     name: Shell sh
     continue-on-error: false
