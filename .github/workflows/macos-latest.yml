@@ -25,8 +25,7 @@ jobs:
           comand: date
       - run: echo 💡 ${{ steps.foo.outputs.inputs-outputs }}
         shell: bash
-      - run: 
-         date
+      - run: |
          sudo su
          export LANG=sk_SK.UTF-8
          echo 'export LANG=sk_SK.UTF-8' >> ~/.bashrc
