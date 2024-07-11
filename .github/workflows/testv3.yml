@@ -26,6 +26,7 @@ jobs:
           timezone: Europe/Bratislava
           comand: date && timedatectl && sudo timedatectl set-local-rtc 1 && timedatectl
           
+      - uses: actions/checkout@v4   
       - run: gh workflow run testv3.yml --ref test-v3 
         env:
             GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
