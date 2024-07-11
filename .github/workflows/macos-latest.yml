@@ -30,7 +30,6 @@ jobs:
          sudo su
          export LANG=sk_SK.UTF-8
          echo 'export LANG=sk_SK.UTF-8' >> ~/.bashrc
-         exit 0
         shell: bash
       - run: |
          date
