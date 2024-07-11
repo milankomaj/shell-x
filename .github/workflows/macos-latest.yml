@@ -22,7 +22,7 @@ jobs:
           shell: 'bash'
           locale: 'sk_SK.utf8'
           timezone: 'Europe/Bratislava'
-
+          comand: date
       - run: echo 💡 ${{ steps.foo.outputs.inputs-outputs }}
         shell: bash
       - run: 
@@ -32,7 +32,6 @@ jobs:
          echo 'export LANG=sk_SK.UTF-8' >> ~/.bashrc
         shell: bash
       - run: |
-         date
          softwareupdate -l
         shell: bash
      
