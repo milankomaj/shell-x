@@ -35,7 +35,9 @@ jobs:
          source ~/.bash_profile
          source ~/.bashrc 
          locale
-         date
+         LANG=sk_SK.UTF-8 date
+         LC_TIME=sk_SK.UTF-8 date -R
+         LC_TIME=sk_SK.UTF-8 date -R -f "%d.%m.%Y"
         shell: bash
       - run: |
          softwareupdate -l
