@@ -27,8 +27,11 @@ jobs:
         shell: bash
       - run: |
          date
+         sudo su
          export LANG=sk_SK.UTF-8
          echo 'export LANG=sk_SK.UTF-8' >> ~/.bashrc
+         apt update
+         exit 0
         shell: bash
       - run: date
         shell: bash
