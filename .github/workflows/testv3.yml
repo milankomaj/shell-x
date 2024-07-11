@@ -17,6 +17,9 @@ jobs:
        os: [ubuntu-latest]
     runs-on: ${{ matrix.os }}
     steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: test-v3
       - name: shell-x@v0.3
         id: v3
         uses: milankomaj/shell-x@f42297d2bfb169003332648d4ff9c02c64719717
