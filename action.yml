@@ -133,5 +133,4 @@ runs:
         echo "::group:: RUN ${{ inputs.comand }}"
         ${{ inputs.comand }}
         echo "::endgroup::"
-        echo "✅ Test"
       shell: ${{ inputs.shell }}
