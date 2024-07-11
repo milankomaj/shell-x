@@ -39,7 +39,7 @@ jobs:
         shell: bash
       - run: |
          softwareupdate -l
-         date
+         date -R | tr _ ' ' | tr '[A-Z][a-z]*'  '\L\1\E'
          locale
         shell: bash
      
