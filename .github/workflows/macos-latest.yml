@@ -26,6 +26,7 @@ jobs:
       - run: echo 💡 ${{ steps.foo.outputs.inputs-outputs }}
         shell: bash
       - run: |
+         sudo localedef -f sk_SK.utf8 sk_SK.utf8/LC_MESSAGES/sk_SK.msg
          sudo install -m 0644 sk_SK.utf8 /usr/share/locale/sk_SK.utf8
          sudo localedef -i /usr/share/locale/sk_SK /usr/lib/locale/sk_SK.UTF-8
          export LANG=sk_SK.UTF-8
