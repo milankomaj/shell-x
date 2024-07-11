@@ -1,5 +1,5 @@
 name: test v0.3
-run-name: ${{ github.workflow }} ✅ ${{ github.actor }} ✅ ${{ github.event_name }} ✅ ${{ github.ref }}
+run-name: ${{ github.workflow }} ✅ ${{ github.ref }} ✅ ${{ github.actor }} ✅ ${{ github.event_name}}
 on:
   workflow_dispatch:
   push:
@@ -27,4 +27,4 @@ jobs:
           shell: bash
           locale: sk_SK.utf8
           timezone: Europe/Bratislava
-          comand: date && sudo timedatectl set-local-rtc 1 && timedatectl && echo ${{ matrix.os }} 
+          comand: date && sudo timedatectl set-local-rtc 1 && timedatectl && echo ${{ matrix.os }}&& echo "✅ test"
