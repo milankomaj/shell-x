@@ -26,8 +26,8 @@ jobs:
       - run: echo 💡 ${{ steps.foo.outputs.inputs-outputs }}
         shell: bash
       - run: |
-         sudo su
          export LANG=sk_SK.UTF-8
+         export LCALL=sk_SK.UTF-8
          echo 'export LANG=sk_SK.UTF-8' >> ~/.bashrc
          locale
          exit 0
@@ -35,6 +35,7 @@ jobs:
       - run: |
          softwareupdate -l
          date
+         locale
         shell: bash
      
   sh:
