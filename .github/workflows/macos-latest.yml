@@ -29,7 +29,10 @@ jobs:
          export LANG=sk_SK.UTF-8
          export LCALL=sk_SK.UTF-8
          echo 'export LANG=sk_SK.UTF-8' >> ~/.bashrc
-         bash -c "echo 'export LCALL=sk_SK.UTF-8' >> ~/.bashrc"
+         echo 'export LCALL=sk_SK.UTF-8' >> ~/.bashrc
+         echo 'export LANG=sk_SK.UTF-8' >> ~/.bash_profile
+         echo 'export LCALL=sk_SK.UTF-8' >> ~/.bash_profile
+         source ~/.bash_profile
          source ~/.bashrc 
          locale
          date
