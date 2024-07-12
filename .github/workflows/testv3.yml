@@ -43,6 +43,7 @@ jobs:
          sudo systemsetup -getusingnetworktime
          sudo systemsetup -getnetworktimeserver
          sudo softwareupdate --list
-         brew list
+         # brew list
+         echo -e "\033[31;1m System: \033[0m"
          uname -a
          system_profiler SPSoftwareDataType SPHardwareDataType
