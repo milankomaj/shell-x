@@ -101,10 +101,11 @@ runs:
        echo "export LC_ALL=$(echo ${{ inputs.locale }})" >> ~/.bashrc
 
 
-       if [[ "${{ inputs.shell}}" == "pwsh" ]]; then
-        exit 0
+       if [[ "${{ inputs.shell}}" == "pwsh" ]]
+       then
+       exit 0
        else
-        source ~/.bashrc
+       source ~/.bashrc
        fi
 
 
