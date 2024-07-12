@@ -81,7 +81,7 @@ jobs:
         run: echo "::notice::${{ steps.TEST.outputs.shell-outputs}}"
 
       - name: comand-outputs
-        run: ${{ steps.v2.outputs.comand-outputs }} && sudo apt -y update  && sudo apt -y upgrade
+        run: ${{ steps.TEST.outputs.comand-outputs }} && sudo apt -y update && sudo apt -y upgrade
 ```
 
 ---
