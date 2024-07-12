@@ -27,11 +27,11 @@ jobs:
           shell: bash
           locale: sk_SK.UTF-8
           timezone: Europe/Bratislava
-          comand: date && sudo systemsetup -setusingnetworktime on  2>/dev/null 1>&2 && echo ${{ matrix.os }}
+          comand: date && sudo systemsetup -setusingnetworktime on && echo ${{ matrix.os }}
 
       - run: |
          date
          sudo systemsetup -gettimezone
          sudo systemsetup -getusingnetworktime
          sudo systemsetup -getnetworktimeserver
-         sudo softwareupdate –install –recommended
+         sudo softwareupdate -–install -–recommended
