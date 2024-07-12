@@ -20,6 +20,14 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: test-v3
+
+      - name: systemsetup
+        run: |
+          date
+          sudo systemsetup -gettimezone
+          sudo systemsetup -getusingnetworktime
+          sudo systemsetup -getnetworktimeserver
+
       - name: shell-x@v0.3
         id: v3
         uses: milankomaj/shell-x@test-v3
@@ -27,7 +35,7 @@ jobs:
           shell: bash
           locale: sk_SK.UTF-8
           timezone: Europe/Bratislava
-          comand: date && sudo systemsetup -setusingnetworktime on >/dev/null && echo ${{ matrix.os }}
+          comand: date && sudo systemsetup -setusingnetworktime on 2>/dev/null && echo ${{ matrix.os }}
 
       - run: |
          date
@@ -35,4 +43,7 @@ jobs:
          sudo systemsetup -getusingnetworktime
          sudo systemsetup -getnetworktimeserver
          sudo softwareupdate --list
-         sudo softwareupdate -l -v 
+         sudo softwareupdate -l -v
+         uname -a
+         softwareupdate -l -v
+         system_profiler SPSoftwareDataType SPHardwareDataType
