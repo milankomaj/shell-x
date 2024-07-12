@@ -23,9 +23,9 @@ jobs:
       - id: foo
         uses: milankomaj/shell-x@v0.3
         with:
-          shell: 'bash'
-          locale: 'sk_SK.UTF-8'
-          timezone: 'Europe/Bratislava'
+          shell: bash
+          locale: sk_SK.UTF-8
+          timezone: Europe/Bratislava
           comand: locale
 
       - run: echo 💡 ${{ steps.foo.outputs.inputs-outputs }}
