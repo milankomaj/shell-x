@@ -96,7 +96,7 @@ runs:
       if: runner.os == 'macOS'  && inputs.locale != '' && inputs.timezone != '' || runner.os == 'macOS'  && inputs.locale != '' && inputs.timezone != '' && inputs.shell == 'sh' || runner.os == 'macOS'  && inputs.locale != '' && inputs.timezone != '' && inputs.shell == 'bash'
       run: |
        echo "::group:: EXECUTING SHELL COMANDS"
-       sudo systemsetup -settimezone ${{ inputs.timezone }} > /dev/null
+       sudo systemsetup -settimezone ${{ inputs.timezone }} >/dev/null
        echo "export LANG=$(echo ${{ inputs.locale }})" >> ~/.bashrc
        echo "export LC_ALL=$(echo ${{ inputs.locale }})" >> ~/.bashrc
        source ~/.bashrc
