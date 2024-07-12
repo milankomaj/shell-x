@@ -7,7 +7,7 @@ jobs:
 
   Shell:
     name: 💡 Shell bash & pwsh
-    continue-on-error: true
+    continue-on-error: false
     strategy:
       fail-fast: false
       max-parallel: 3
