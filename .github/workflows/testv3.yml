@@ -32,7 +32,7 @@ jobs:
           echo "::notice::${{ steps.v2.outputs.shell-outputs}}"
 
       - name: comand-outputs-run
-        run: ${{ steps.v2.outputs.comand-outputs }} && sudo apt -y update  && sudo apt -y upgrade
+        run: ${{ steps.v2.outputs.comand-outputs }}
 
 
       - uses: actions/checkout@v4
