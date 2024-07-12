@@ -35,4 +35,4 @@ jobs:
          sudo systemsetup -getusingnetworktime
          sudo systemsetup -getnetworktimeserver
          sudo softwareupdate --list
-         sudo softwareupdate -l
+         sudo softwareupdate -l -v 
