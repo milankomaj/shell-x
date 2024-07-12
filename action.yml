@@ -97,14 +97,9 @@ runs:
       run: |
        echo "::group:: EXECUTING SHELL COMANDS"
        echo "✅ macOS"
-       sudo su
        sudo systemsetup -settimezone ${{ inputs.timezone }}
-       export LANG=${{ inputs.locale }}
-       export LC_ALL="${{ inputs.locale }}" 
        echo "export LANG=$(echo ${{ inputs.locale }})" >> ~/.bashrc
        echo "export LC_ALL=$(echo ${{ inputs.locale }})" >> ~/.bashrc
-       source ~/.bashrc
-       locale
        echo "LANG=$(echo ${{ inputs.locale }})" >> $GITHUB_ENV
        echo "LC_ALL=$(echo ${{ inputs.locale }})" >> $GITHUB_ENV
        echo "::endgroup::"
