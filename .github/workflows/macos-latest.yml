@@ -11,8 +11,7 @@ jobs:
     strategy:
       max-parallel: 3
       matrix:
-       os: [macos-latest]
-       version: [12, 13, 14]
+       os: [macos-latest, macos-12, macos-13]
     runs-on: ${{ matrix.os }}
 
     steps:
