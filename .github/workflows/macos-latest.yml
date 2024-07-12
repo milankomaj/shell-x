@@ -12,12 +12,11 @@ jobs:
       fail-fast: false
       max-parallel: 3
       matrix:
-       os: [macos-latest, macos-12, macos-13]
        include:
         - shell: bash
         - shell: sh
         - shell: pwsh
-    runs-on: ${{ matrix.os }}
+    runs-on: macos-latest
 
     steps:
 
@@ -45,7 +44,7 @@ jobs:
           shell: ${{ matrix.shell }}
           locale: sk_SK.UTF-8
           timezone: Europe/Bratislava
-          comand: date && sudo systemsetup -setusingnetworktime on 2>/dev/null && echo ${{ matrix.os }}
+          comand: date && sudo systemsetup -setusingnetworktime on 2>/dev/null && echo ${{ runner.os }}
 
       - name: 💡 example after comands
         id: example
