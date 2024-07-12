@@ -104,8 +104,8 @@ runs:
        echo "::endgroup::"
       shell: ${{ inputs.shell }}
 
-    - name: is-macOS-!pwsh
-      id: is-macOS-!pwsh
+    - name: is-macOS-NOTpwsh
+      id: is-macOS-NOTpwsh
       if: runner.os == 'macOS' && inputs.shell != 'pwsh' && steps.is-macOS.outcome == 'success'
       run: |
         source ~/.bashrc
