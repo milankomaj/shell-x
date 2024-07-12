@@ -1,0 +1,24 @@
+name: tests "test-" branche's
+run-name: ${{ github.workflow }} ✅ ${{ github.ref }} ✅ ${{ github.actor }} ✅ ${{ github.event_name}}
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - 'test-v3'
+    paths:
+      - ".github/workflows/testv3.yaml"
+jobs:
+  Shell:
+    name: Shell
+    continue-on-error: false
+    strategy:
+      max-parallel: 3
+      matrix:
+       os: [ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+         gh api repos/milankomaj/shell-x/branches --cache "20s" --jq '.[].name | select(test("test"))' | xargs -P 0 -I {} gh workflow run testv3.yml --ref \{\}
+        env:
+            GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

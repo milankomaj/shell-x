@@ -50,7 +50,7 @@ os:⬇️ shell:➡️| *bash*  | *sh*  | *pwsh*  | *cmd*  | *powershell*| *cust
 
 > ###### example full workflow [ubuntu-latest]
 ```YAML
-name: test v0.2
+name: test
 run-name: ${{ github.workflow }} ✅ ${{ github.actor }} ✅ ${{ github.event_name}}
 on:
   workflow_dispatch:
@@ -65,7 +65,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - name: shell-x@v0.3
-        id: v2
+        id: TEST
         uses: milankomaj/shell-x@v0.3
         with:
           shell: bash
@@ -75,10 +75,10 @@ jobs:
 
       # optional
       - name: inputs-outputs
-        run: echo "::notice::${{ steps.v2.outputs.inputs-outputs }}"
+        run: echo "::notice::${{ steps.TEST.outputs.inputs-outputs }}"
 
       - name: shell-outputs
-        run: echo "::notice::${{ steps.v2.outputs.shell-outputs}}"
+        run: echo "::notice::${{ steps.TEST.outputs.shell-outputs}}"
 
       - name: comand-outputs
         run: ${{ steps.v2.outputs.comand-outputs }} && sudo apt -y update  && sudo apt -y upgrade
