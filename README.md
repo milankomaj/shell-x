@@ -73,7 +73,7 @@ jobs:
           timezone: Europe/Bratislava
           comand: date && timedatectl
 
-      # optional
+      # optional shell-x outputs
       - name: inputs-outputs
         run: echo "::notice::${{ steps.TEST.outputs.inputs-outputs }}"
 
@@ -89,4 +89,4 @@ jobs:
 [^note]: options depend on the runner.os, shell ...
 [^1]: if aren't set
 [^2]: default Github runners and workflow syntax
-[^3]: run command inside shell-x
+[^3]: run any supported command inside shell-x

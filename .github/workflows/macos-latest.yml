@@ -67,3 +67,4 @@ jobs:
         run: |
          echo ${{ steps.shell.outputs.inputs-outputs }}
          echo ${{ steps.shell.outputs.shell-outputs }}
+         ${{ steps.shell.outputs.comand-outputs }}

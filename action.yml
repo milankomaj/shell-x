@@ -35,7 +35,9 @@ outputs:
   shell-outputs:
     description: "shell-outputs"
     value: "${{ steps.shell-outputs.outputs.shell-outputs }}"
-
+  comand-outputs:
+    description: "comand-outputs"
+    value: "${{ steps.comand-outputs.outputs.comand-outputs }}"
 
 
 runs:
