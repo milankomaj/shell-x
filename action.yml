@@ -93,17 +93,23 @@ runs:
 
     - name: is-macOS
       id: is-macOS
-      if: runner.os == 'macOS'  && inputs.locale != '' && inputs.timezone != '' || runner.os == 'macOS'  && inputs.locale != '' && inputs.timezone != '' && inputs.shell == 'sh' || runner.os == 'macOS'  && inputs.locale != '' && inputs.timezone != '' && inputs.shell == 'bash'
+      if: runner.os == 'macOS' && inputs.locale != '' && inputs.timezone != '' || runner.os == 'macOS'  && inputs.locale != '' && inputs.timezone != '' && inputs.shell == 'sh' || runner.os == 'macOS'  && inputs.locale != '' && inputs.timezone != '' && inputs.shell == 'bash'
       run: |
        echo "::group:: EXECUTING SHELL COMANDS"
        sudo systemsetup -settimezone ${{ inputs.timezone }} 2>/dev/null
        echo "export LANG=$(echo ${{ inputs.locale }})" >> ~/.bashrc
        echo "export LC_ALL=$(echo ${{ inputs.locale }})" >> ~/.bashrc
-       source ~/.bashrc || exit 0
        echo "LANG=$(echo ${{ inputs.locale }})" >> $GITHUB_ENV
        echo "LC_ALL=$(echo ${{ inputs.locale }})" >> $GITHUB_ENV
        echo "::endgroup::"
       shell: ${{ inputs.shell }}
+
+     - name: is-macOS-not-pwsh
+       id: is-macOS-not-pwsh
+       if: runner.os == 'macOS' && inputs.shell != 'pwsh'
+       run: |
+        source ~/.bashrc
+       shell: ${{ inputs.shell }}
 
     - name: is-Windows
       id: is-Windows
