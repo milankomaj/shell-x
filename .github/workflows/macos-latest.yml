@@ -6,30 +6,34 @@ on:
 jobs:
 
   Shell:
-    name: Shell bash
+    name: 💡 Shell bash
     continue-on-error: false
     strategy:
       max-parallel: 3
       matrix:
-       os: [macos-latest]
+       os: [macos-latest, macos-latest-large]
+       version: [12, 13, 14]
     runs-on: ${{ matrix.os }}
 
     steps:
 
-      - name: checkout ${{ github.ref }}
+      - name: 💡 checkout ${{ github.ref }}
+        id: checkout
         uses: actions/checkout@v4
         with:
           ref: ${{ github.ref }}
 
-      - name: systemsetup
+      - name: 💡 systemsetup
+        id: systemsetup
         run: |
+          echo ${{ github.ref }} | cut -d "/" -f3-
           date
           sudo systemsetup -gettimezone
           sudo systemsetup -getusingnetworktime
           sudo systemsetup -getnetworktimeserver
 
-      - name: shell-x@v0.3
-        id: v3
+      - name: 💡 unpublished version shell-x@v0.3
+        id: shell
         uses: milankomaj/shell-x@test-v3
         with:
           shell: bash
@@ -37,21 +41,22 @@ jobs:
           timezone: Europe/Bratislava
           comand: date && sudo systemsetup -setusingnetworktime on 2>/dev/null && echo ${{ matrix.os }}
 
-      - name: example after comands
+      - name: 💡 example after comands
+        id: example
         run: |
-         echo ${{ github.ref }} | cut -d "/" -f2
          date
          sudo systemsetup -gettimezone
          sudo systemsetup -getusingnetworktime
          sudo systemsetup -getnetworktimeserver
-         sudo softwareupdate --list
+         # sudo softwareupdate --list
          # brew list
          echo -e "\033[31;1m System: \033[0m"
          uname -a
          system_profiler SPSoftwareDataType SPHardwareDataType
 
-      - name: ${{ steps.v3.outputs.inputs-outputs }}
+      - name: 💡 ${{ steps.shell.outputs.inputs-outputs }}
+        id: composite-outputs
         run: |
-         echo 💡 ${{ steps.v3.outputs.inputs-outputs }}
-         echo 💡 ${{ steps.v3.outputs.shell-outputs }}
+         ${{ steps.shell.outputs.inputs-outputs }}
+         ${{ steps.shell.outputs.shell-outputs }}
         shell: bash
