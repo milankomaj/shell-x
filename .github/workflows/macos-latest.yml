@@ -6,13 +6,17 @@ on:
 jobs:
 
   Shell:
-    name: Shell bash & sh
+    name: Shell bash & sh & pwsh
     continue-on-error: false
     strategy:
       fail-fast: false
       max-parallel: 3
       matrix:
        os: [macos-latest, macos-12, macos-13]
+       include:
+        - shell: bash
+        - shell: sh
+        - shell: pwsh
     runs-on: ${{ matrix.os }}
 
     steps:
@@ -38,7 +42,7 @@ jobs:
         continue-on-error: true
         uses: milankomaj/shell-x@test-v3
         with:
-          shell: bash
+          shell: ${{ matrix.shell }}
           locale: sk_SK.UTF-8
           timezone: Europe/Bratislava
           comand: date && sudo systemsetup -setusingnetworktime on 2>/dev/null && echo ${{ matrix.os }}
