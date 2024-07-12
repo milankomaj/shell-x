@@ -44,7 +44,7 @@ jobs:
           shell: ${{ matrix.shell }}
           locale: sk_SK.UTF-8
           timezone: Europe/Bratislava
-          comand: date && sudo systemsetup -setusingnetworktime on 2>/dev/null && echo ${{ runner.os }}
+          comand: date && ${{ runner.os }}
 
       - name: 💡 example after comands
         id: example
@@ -55,6 +55,7 @@ jobs:
          sudo systemsetup -gettimezone
          sudo systemsetup -getusingnetworktime
          sudo systemsetup -getnetworktimeserver
+         sudo systemsetup -setusingnetworktime on 2>/dev/null
          # sudo softwareupdate --list
          # brew list
          uname -a
