@@ -2,8 +2,12 @@ name: macos-latest
 run-name: ${{ github.workflow }} ✅ ${{ github.ref }} ✅ ${{ github.actor }} ✅ ${{ github.event_name}}
 on:
   workflow_dispatch:
-
-
+  push:
+    branches:
+      - 'testv3'
+    paths:
+      - ".github/workflows/testv3.yaml"
+      
 jobs:
   bash:
     name: Shell bash
