@@ -12,10 +12,14 @@ jobs:
       max-parallel: 3
       matrix:
        os: [macos-latest]
-
     runs-on: ${{ matrix.os }}
+
     steps:
+
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+
       - id: foo
         uses: milankomaj/shell-x@v0.3
         with:
@@ -23,8 +27,10 @@ jobs:
           locale: 'sk_SK.UTF-8'
           timezone: 'Europe/Bratislava'
           comand: locale
+
       - run: echo 💡 ${{ steps.foo.outputs.inputs-outputs }}
         shell: bash
+
       - run: |
           date
           sudo systemsetup -gettimezone
