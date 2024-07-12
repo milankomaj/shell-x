@@ -57,6 +57,6 @@ jobs:
       - name: 💡 ${{ steps.shell.outputs.inputs-outputs }}
         id: composite-outputs
         run: |
-         ${{ steps.shell.outputs.inputs-outputs }}
-         ${{ steps.shell.outputs.shell-outputs }}
+         echo ${{ steps.shell.outputs.inputs-outputs }}
+         echo ${{ steps.shell.outputs.shell-outputs }}
         shell: bash
