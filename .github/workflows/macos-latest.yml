@@ -6,9 +6,10 @@ on:
 jobs:
 
   Shell:
-    name: 💡 Shell bash
+    name: 💡 Shell bash & sh
     continue-on-error: false
     strategy:
+      fail-fast: false
       max-parallel: 3
       matrix:
        os: [macos-latest, macos-12, macos-13]
@@ -24,6 +25,7 @@ jobs:
 
       - name: 💡 example before comands
         id: systemsetup
+        shell: sh
         run: |
           echo ${{ github.ref }} | cut -d "/" -f3-
           date
@@ -42,6 +44,7 @@ jobs:
 
       - name: 💡 example after comands
         id: example
+        shell: sh
         run: |
          echo "::group::example"
          date
@@ -57,7 +60,7 @@ jobs:
 
       - name: 💡 ${{ steps.shell.outputs.inputs-outputs }}
         id: composite-outputs
+        shell: sh
         run: |
          echo ${{ steps.shell.outputs.inputs-outputs }}
          echo ${{ steps.shell.outputs.shell-outputs }}
-        shell: bash
