@@ -22,7 +22,7 @@ jobs:
         with:
           ref: ${{ github.ref }}
 
-      - name: 💡 systemsetup
+      - name: 💡 example before comands
         id: systemsetup
         run: |
           echo ${{ github.ref }} | cut -d "/" -f3-
@@ -35,7 +35,7 @@ jobs:
         id: shell
         uses: milankomaj/shell-x@test-v3
         with:
-          shell: bash
+          shell: sh
           locale: sk_SK.UTF-8
           timezone: Europe/Bratislava
           comand: date && sudo systemsetup -setusingnetworktime on 2>/dev/null && echo ${{ matrix.os }}
@@ -43,6 +43,7 @@ jobs:
       - name: 💡 example after comands
         id: example
         run: |
+         echo "::group::example"
          date
          sudo systemsetup -gettimezone
          sudo systemsetup -getusingnetworktime
@@ -52,6 +53,7 @@ jobs:
          echo -e "\033[31;1m System: \033[0m"
          uname -a
          system_profiler SPSoftwareDataType SPHardwareDataType
+         echo "::endgroup::"
 
       - name: 💡 ${{ steps.shell.outputs.inputs-outputs }}
         id: composite-outputs
