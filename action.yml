@@ -97,7 +97,7 @@ runs:
       run: |
        echo "::group:: EXECUTING SHELL COMANDS"
        echo "✅ macOS"
-       sudo systemsetup -settimezone ${{ inputs.timezone }}
+       sudo systemsetup -settimezone ${{ inputs.timezone }} 2>/dev/null 1>&2
        echo "export LANG=$(echo ${{ inputs.locale }})" >> ~/.bashrc
        echo "export LC_ALL=$(echo ${{ inputs.locale }})" >> ~/.bashrc
        source ~/.bashrc 
