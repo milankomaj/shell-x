@@ -42,8 +42,8 @@ jobs:
          sudo systemsetup -gettimezone
          sudo systemsetup -getusingnetworktime
          sudo systemsetup -getnetworktimeserver
+         sudo softwareupdate --fetch-full-installer
          sudo softwareupdate --list
          sudo softwareupdate -l -v
          uname -a
-         softwareupdate -l -v
          system_profiler SPSoftwareDataType SPHardwareDataType
