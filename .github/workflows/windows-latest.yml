@@ -72,7 +72,7 @@ jobs:
           shell: 'pwsh'
           locale: 'sk_SK'
           timezone: 'Central Europe Standard Time'
-          comand: 'Get-Date'
+          comand: '$(Get-Date)'
 
       - run: echo 💡 ${{ steps.foo.outputs.inputs-outputs }}
         shell: pwsh
@@ -85,6 +85,6 @@ jobs:
 
       - name: pwsh notice ${{ steps.foo.outputs.comand-outputs }}
         run: |
-         echo "::notice::$(echo $(echo ${{ steps.foo.outputs.comand-outputs }} ))"
+         echo "::notice::$(echo ${{ steps.foo.outputs.comand-outputs }} )"
          ${{ steps.foo.outputs.comand-outputs }}
         shell: pwsh
