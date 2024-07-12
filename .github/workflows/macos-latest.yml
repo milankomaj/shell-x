@@ -17,21 +17,40 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - id: foo
-        uses: milankomaj/shell-x@v0.2
+        uses: milankomaj/shell-x@v0.3
         with:
-          who-to-greet: '${{ github.actor }}'
-          neofetch: 'true'
           shell: 'bash'
           locale: 'sk_SK.utf8'
           timezone: 'Europe/Bratislava'
-
-      - run: echo 💡 ${{ steps.foo.outputs.random-number }}
-        shell: bash
+          comand: locale
       - run: echo 💡 ${{ steps.foo.outputs.inputs-outputs }}
         shell: bash
-      - run: date
+      - run: |
+         export LANG=sk_SK.UTF-8
+         export LC_ALL="sk_SK.UTF-8" 
+         echo 'export LANG=sk_SK.UTF-8' >> ~/.bashrc
+         echo 'export LC_ALL=sk_SK.UTF-8' >> ~/.bashrc
+         source ~/.bashrc 
+         locale
+         LANG=sk_SK.UTF-8 date
+         LC_TIME=sk_SK.UTF-8 date -R
+         date
+         echo "LANG=sk_SK.UTF-8" >> $GITHUB_ENV
+         echo "LC_ALL=sk_SK.UTF-8" >> $GITHUB_ENV
+         echo $LANG
+         exit 0
         shell: bash
-
+      - run: |
+         sudo softwareupdate --list
+         sudo softwareupdate --download
+         sudo softwareupdate -i -a
+         locale
+         LANG=sk_SK.UTF-8 date
+         LC_TIME=sk_SK.UTF-8 date -R
+         date
+         echo $LANG
+        shell: bash
+     
   sh:
     name: Shell sh
     continue-on-error: false
@@ -44,16 +63,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - id: foo
-        uses: milankomaj/shell-x@v0.2
+        uses: milankomaj/shell-x@v0.3
         with:
-          who-to-greet: '${{ github.actor }}'
-          neofetch: 'true'
           shell: 'sh'
           locale: 'sk_SK.utf8'
           timezone: 'Europe/Bratislava'
 
-      - run: echo 💡 ${{ steps.foo.outputs.random-number }}
-        shell: sh
+
       - run: echo 💡 ${{ steps.foo.outputs.inputs-outputs }}
         shell: sh
       - run: date
@@ -71,10 +87,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - id: foo
-        uses: milankomaj/shell-x@v0.2
+        uses: milankomaj/shell-x@v0.3
         with:
-          who-to-greet: '${{ github.actor }}'
-          neofetch: 'true'
           shell: 'pwsh'
           locale: 'sk_SK.utf8'
           timezone: 'Europe/Bratislava'
