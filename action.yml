@@ -100,12 +100,12 @@ runs:
        echo "export LANG=$(echo ${{ inputs.locale }})" >> ~/.bashrc
        echo "export LC_ALL=$(echo ${{ inputs.locale }})" >> ~/.bashrc
 
-       if (( "${{ inputs.shell}}" == "pwsh" )){
+       if [[ "${{ inputs.shell}}" -eq "pwsh" ]]
        then
        exit 0
-       }else{
+       else
        source ~/.bashrc
-       }fi
+       fi
 
        echo "LANG=$(echo ${{ inputs.locale }})" >> $GITHUB_ENV
        echo "LC_ALL=$(echo ${{ inputs.locale }})" >> $GITHUB_ENV
