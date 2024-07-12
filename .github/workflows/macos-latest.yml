@@ -52,7 +52,7 @@ jobs:
         run: |
          echo "::group::example"
          date
-         echo -n ${{ steps.shell.outputs.comand-outputs }} | cut -d " " -f2
+         $(echo ${{ steps.shell.outputs.comand-outputs }}) | cut -d " " -f2
          sudo systemsetup -gettimezone
          sudo systemsetup -setusingnetworktime on 2>/dev/null
          sudo systemsetup -getusingnetworktime
