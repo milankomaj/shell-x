@@ -99,6 +99,7 @@ runs:
        echo "✅ macOS"
        sudo su
        sudo systemsetup -settimezone ${{ inputs.timezone }}
+       locale
        echo "LANG=$(echo ${{ inputs.locale }})" >> $GITHUB_ENV
        echo "LC_ALL=$(echo ${{ inputs.locale }})" >> $GITHUB_ENV
        echo "::endgroup::"
