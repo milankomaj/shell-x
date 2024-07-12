@@ -6,7 +6,7 @@ on:
 jobs:
 
   Shell:
-    name: 💡 Shell bash & pwsh
+    name: Shell bash & pwsh
     continue-on-error: false
     strategy:
       fail-fast: false
@@ -17,7 +17,7 @@ jobs:
 
     steps:
 
-      - name: 💡 checkout ${{ github.ref }}
+      - name: checkout ${{ github.ref }}
         id: checkout
         uses: actions/checkout@v4
         with:
