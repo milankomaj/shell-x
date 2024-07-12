@@ -27,8 +27,6 @@ jobs:
           shell: bash
           locale: sk_SK.UTF-8
           timezone: Europe/Bratislava
-          comand: date && echo ${{ matrix.os }}
+          comand: date && sudo systemsetup -gettimezone && echo ${{ matrix.os }}
 
       - run: date
-
-      
