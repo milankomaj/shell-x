@@ -51,6 +51,7 @@ jobs:
 
       - name: internal
         run: |
+         echo ${{ github.ref }} | cut -d "/" -f2
          echo 💡 ${{ steps.v3.outputs.inputs-outputs }}
          echo 💡 ${{ steps.v3.outputs.shell-outputs }}
         shell: bash
