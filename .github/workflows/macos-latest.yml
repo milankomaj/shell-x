@@ -52,6 +52,7 @@ jobs:
         run: |
          echo "::group::example"
          date
+         ${{ steps.shell.outputs.comand-outputs }} | cut -d "-" -f1-
          sudo systemsetup -gettimezone
          sudo systemsetup -getusingnetworktime
          sudo systemsetup -getnetworktimeserver
@@ -69,3 +70,4 @@ jobs:
          echo ${{ steps.shell.outputs.inputs-outputs }}
          echo ${{ steps.shell.outputs.shell-outputs }}
          echo ${{ steps.shell.outputs.comand-outputs }}
+         ${{ steps.shell.outputs.comand-outputs }}
