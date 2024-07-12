@@ -21,7 +21,7 @@ jobs:
           shell: 'cmd'
           locale: 'sk-SK'
           timezone: 'Central Europe Standard Time'
-
+          comand: 'systeminfo | findstr ;'
 
       - run: echo 💡 ${{ steps.foo.outputs.inputs-outputs }}
         shell: cmd
