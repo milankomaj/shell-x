@@ -6,7 +6,7 @@ on:
 jobs:
 
   Shell:
-    name: 💡 Shell bash & sh
+    name: 💡 Shell bash & pwsh
     continue-on-error: false
     strategy:
       fail-fast: false
@@ -25,7 +25,7 @@ jobs:
 
       - name: 💡 example before comands
         id: systemsetup
-        shell: sh
+        shell: pwsh
         run: |
           echo ${{ github.ref }} | cut -d "/" -f3-
           date
@@ -37,14 +37,14 @@ jobs:
         id: shell
         uses: milankomaj/shell-x@test-v3
         with:
-          shell: sh
+          shell: pwsh
           locale: sk_SK.UTF-8
           timezone: Europe/Bratislava
           comand: date && sudo systemsetup -setusingnetworktime on 2>/dev/null && echo ${{ matrix.os }}
 
       - name: 💡 example after comands
         id: example
-        shell: sh
+        shell: pwsh
         run: |
          echo "::group::example"
          date
@@ -53,14 +53,13 @@ jobs:
          sudo systemsetup -getnetworktimeserver
          # sudo softwareupdate --list
          # brew list
-         echo -e "\033[31;1m System: \033[0m"
          uname -a
          system_profiler SPSoftwareDataType SPHardwareDataType
          echo "::endgroup::"
 
       - name: 💡 ${{ steps.shell.outputs.inputs-outputs }}
         id: composite-outputs
-        shell: sh
+        shell: pwsh
         run: |
          echo ${{ steps.shell.outputs.inputs-outputs }}
          echo ${{ steps.shell.outputs.shell-outputs }}
