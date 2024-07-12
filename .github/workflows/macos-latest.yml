@@ -1,4 +1,4 @@
-name: macos-latest
+name: macos-latest - unpublished version
 run-name: ${{ github.workflow }} ✅ ${{ github.ref }} ✅ ${{ github.actor }} ✅ ${{ github.event_name}}
 on:
   workflow_dispatch:
