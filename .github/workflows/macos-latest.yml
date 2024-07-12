@@ -6,7 +6,7 @@ on:
 jobs:
 
   Shell:
-    name: Shell
+    name: Shell ${{ github.ref }}
     continue-on-error: false
     strategy:
       fail-fast: false
