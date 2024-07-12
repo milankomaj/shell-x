@@ -2,11 +2,11 @@ name: macos-latest
 run-name: ${{ github.workflow }} ✅ ${{ github.ref }} ✅ ${{ github.actor }} ✅ ${{ github.event_name}}
 on:
   workflow_dispatch:
-  push:
 
 jobs:
+
   Shell:
-    name: Shell
+    name: Shell bash
     continue-on-error: false
     strategy:
       max-parallel: 3
