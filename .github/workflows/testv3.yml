@@ -29,4 +29,8 @@ jobs:
           timezone: Europe/Bratislava
           comand: date && sudo systemsetup -gettimezone && echo ${{ matrix.os }}
 
-      - run: date
+      - run: |
+         date
+         sudo systemsetup -gettimezone
+         sudo systemsetup -getusingnetworktime
+         sudo systemsetup -getnetworktimeserver
