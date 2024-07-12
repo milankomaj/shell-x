@@ -80,7 +80,7 @@ jobs:
       - run: Get-Date && Get-Date -Format F
         shell: pwsh
 
-      - run: echo "$(echo ${{ steps.foo.outputs.comand-outputs }} )"
+      - run: echo "$(echo ${{steps.foo.outputs.comand-outputs }})"
         shell: pwsh
 
       - name: pwsh notice ${{ steps.foo.outputs.comand-outputs }}
