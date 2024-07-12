@@ -21,7 +21,7 @@ jobs:
 
 
   Test:
-    uses: milankomaj/shell-x/.github/workflows/testv3.yml@test-v3
+    uses: milankomaj/shell-x/action.yml@test-v3
     with:
       shell: bash
       locale: sk_SK.utf8
