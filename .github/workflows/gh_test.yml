@@ -17,10 +17,13 @@ jobs:
        os: [ubuntu-latest]
     runs-on: ${{ matrix.os }}
     steps:
-
-
       - uses: actions/checkout@v4
-      - run: |
-         gh api repos/milankomaj/shell-x/branches --cache "20s" --jq '.[].name | select(test("test"))' | xargs -P 0 -I {} gh workflow run testv3.yml --ref \{\}
-        env:
-            GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+
+  Test:
+    uses: milankomaj/shell-x/.github/workflows/testv3.yml@test-v3
+    with:
+      shell: bash
+      locale: sk_SK.utf8
+      timezone: Europe/Bratislava
+      comand: date && timedatectl && timedatectl && echo "⏹️ Test"
