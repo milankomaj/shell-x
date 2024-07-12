@@ -39,6 +39,7 @@ jobs:
 
       - name: example after comands
         run: |
+         echo ${{ github.ref }} | cut -d "/" -f2
          date
          sudo systemsetup -gettimezone
          sudo systemsetup -getusingnetworktime
@@ -49,9 +50,8 @@ jobs:
          uname -a
          system_profiler SPSoftwareDataType SPHardwareDataType
 
-      - name: internal
+      - name: ${{ steps.v3.outputs.inputs-outputs }}
         run: |
-         echo ${{ github.ref }} | cut -d "/" -f2
          echo 💡 ${{ steps.v3.outputs.inputs-outputs }}
          echo 💡 ${{ steps.v3.outputs.shell-outputs }}
         shell: bash
