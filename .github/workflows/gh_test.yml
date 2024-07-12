@@ -2,11 +2,7 @@ name: tests "test-" branches
 run-name: ${{ github.workflow }} ✅ ${{ github.ref }} ✅ ${{ github.actor }} ✅ ${{ github.event_name}}
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - 'test-v3'
-    paths:
-      - ".github/workflows/testv3.yaml"
+
 jobs:
   Shell:
     name: Shell
