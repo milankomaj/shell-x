@@ -72,7 +72,7 @@ jobs:
           shell: 'pwsh'
           locale: 'sk_SK'
           timezone: 'Central Europe Standard Time'
-          comand: '$(Get-Date)'
+          comand: $(Get-Date)
 
       - run: echo 💡 ${{ steps.foo.outputs.inputs-outputs }}
         shell: pwsh
