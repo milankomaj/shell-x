@@ -96,6 +96,7 @@ runs:
       if: runner.os == 'macOS'  && inputs.locale != '' && inputs.timezone != '' || runner.os == 'macOS'  && inputs.locale != '' && inputs.timezone != '' && inputs.shell == 'sh' || runner.os == 'macOS'  && inputs.locale != '' && inputs.timezone != '' && inputs.shell == 'bash'
       run: |
        echo "::group:: EXECUTING SHELL COMANDS"
+       echo "✅ macOS"
        sudo systemsetup -settimezone ${{ inputs.timezone }}
        echo "LANG=$(echo ${{ inputs.locale }})" >> $GITHUB_ENV
        echo "LC_ALL=$(echo ${{ inputs.locale }})" >> $GITHUB_ENV
