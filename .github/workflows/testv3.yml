@@ -38,6 +38,6 @@ jobs:
       - uses: actions/checkout@v4
       - run: |
          gh api repos/milankomaj/shell-x/branches --jq '.[].name'
-         gh workflow run testv3.yml --ref test-v3
+         gh workflow run macos-latest.yml --ref test-v3
         env:
             GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
