@@ -3,10 +3,7 @@ run-name: ${{ github.workflow }} ✅ ${{ github.ref }} ✅ ${{ github.actor }} �
 on:
   workflow_dispatch:
   push:
-    branches:
-      - 'testv3'
-    paths:
-      - ".github/workflows/testv3.yaml"
+
 jobs:
   Shell:
     name: Shell
