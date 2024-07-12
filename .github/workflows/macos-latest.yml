@@ -54,9 +54,9 @@ jobs:
          date
          ${{ steps.shell.outputs.comand-outputs }} | cut -d "-" -f1-
          sudo systemsetup -gettimezone
+         sudo systemsetup -setusingnetworktime on 2>/dev/null
          sudo systemsetup -getusingnetworktime
          sudo systemsetup -getnetworktimeserver
-         sudo systemsetup -setusingnetworktime on 2>/dev/null
          # sudo softwareupdate --list
          # brew list
          uname -a
