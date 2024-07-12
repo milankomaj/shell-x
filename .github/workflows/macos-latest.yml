@@ -35,6 +35,7 @@ jobs:
 
       - name: 💡 unpublished version shell-x@v0.3
         id: shell
+        continue-on-error: true
         uses: milankomaj/shell-x@test-v3
         with:
           shell: pwsh
