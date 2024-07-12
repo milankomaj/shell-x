@@ -6,7 +6,7 @@ on:
 jobs:
 
   Shell:
-    name: Shell bash & sh & pwsh
+    name: Shell
     continue-on-error: false
     strategy:
       fail-fast: false
