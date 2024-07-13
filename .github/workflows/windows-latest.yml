@@ -54,7 +54,7 @@ jobs:
         run: |
          date
          systeminfo
-         echo
+  
 
       - name: 💡 ${{ steps.shell.outputs.inputs-outputs }}
         id: composite-outputs
