@@ -31,7 +31,6 @@ jobs:
 
       - name: 💡 example before comands
         id: systemsetup
-        shell: bash
         run: |
           echo ${{ github.ref }} | cut -d "/" -f3-
           date
@@ -51,7 +50,6 @@ jobs:
 
       - name: 💡 example after comands
         id: example
-        shell: bash
         run: |
          echo "::group::example"
          date
@@ -67,7 +65,6 @@ jobs:
 
       - name: 💡 ${{ steps.shell.outputs.inputs-outputs }}
         id: composite-outputs
-        shell: bash
         run: |
          echo -n ${{ steps.shell.outputs.inputs-outputs }}
          echo -n ${{ steps.shell.outputs.shell-outputs }}
