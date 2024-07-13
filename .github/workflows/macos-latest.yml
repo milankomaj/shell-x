@@ -44,7 +44,7 @@ jobs:
           shell: ${{ matrix.shell }}
           locale: sk_SK.UTF-8
           timezone: Europe/Bratislava
-          comand: date && echo ${{ runner.os }} && Get-Content LICENSE
+          comand: date && echo ${{ runner.os }} && $command = Get-Content LICENSE
 
       - name: 💡 example after comands
         id: example
