@@ -1,4 +1,4 @@
-name: Mixed inputs
+name: Dropdown
 
 on:
     workflow_dispatch:
