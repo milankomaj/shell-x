@@ -16,7 +16,7 @@ jobs:
         - shell: bash
         - shell: sh
         - shell: pwsh
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     defaults:
       run:
         shell: ${{ matrix.shell }}
