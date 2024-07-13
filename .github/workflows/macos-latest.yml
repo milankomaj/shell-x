@@ -46,7 +46,7 @@ jobs:
           shell: ${{ matrix.shell }}
           locale: sk_SK.UTF-8
           timezone: Europe/Bratislava
-          comand: date && echo ${{ runner.os }} && date +%s
+          comand: date && echo ${{ runner.os }} && Write-Output 12345
 
       - name: 💡 example after comands
         id: example
