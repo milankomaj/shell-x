@@ -105,7 +105,7 @@ runs:
        echo "LANG=$(echo ${{ inputs.locale }})" >> $GITHUB_ENV
        echo "LC_ALL=$(echo ${{ inputs.locale }})" >> $GITHUB_ENV
        echo "::endgroup::"
-      shell: ${{ inputs.shell }}
+      shell: bash
 
     - name: is-Windows
       id: is-Windows
