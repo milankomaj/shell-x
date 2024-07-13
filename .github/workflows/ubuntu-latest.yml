@@ -1,77 +1,64 @@
-name: ubuntu-latest
-run-name: ${{ github.workflow }} ✅ ${{ github.actor }} ✅ ${{ github.event_name}}
+name: ubuntu-latest - unpublished version
+run-name: ${{ github.workflow }} ✅ ${{ github.ref }} ✅ ${{ github.actor }} ✅ ${{ github.event_name}}
 on:
   workflow_dispatch:
 
-
 jobs:
-  bash:
-    name: Shell bash
+
+  Shell:
+    name: Shell
     continue-on-error: false
     strategy:
+      fail-fast: false
       max-parallel: 3
       matrix:
-       os: [ubuntu-latest]
+       include:
+        - shell: bash
+        - shell: sh
+        - shell: pwsh
+    runs-on: macos-latest
+    defaults:
+      run:
+        shell: ${{ matrix.shell }}
 
-    runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v4
-      - id: foo
-        uses: milankomaj/shell-x@v0.3
+
+      - name: checkout ${{ github.ref }}
+        id: checkout
+        uses: actions/checkout@v4
         with:
-          shell: 'bash'
-          locale: 'sk_SK.utf8'
-          timezone: 'Europe/Bratislava'
+          ref: ${{ github.ref }}
 
+      - name: 💡 example before comands
+        id: systemsetup
+        run: |
+          echo ${{ github.ref }} | cut -d "/" -f3-
+          date
+          timedatectl
 
-      - run: echo 💡 ${{ steps.foo.outputs.inputs-outputs }}
-        shell: bash
-      - run: date
-        shell: bash
-
-
-  sh:
-    name: Shell sh
-    continue-on-error: false
-    strategy:
-      max-parallel: 3
-      matrix:
-       os: [ubuntu-latest]
-
-    runs-on: ${{ matrix.os }}
-    steps:
-      - uses: actions/checkout@v4
-      - id: foo
-        uses: milankomaj/shell-x@v0.3
+      - name: 💡 unpublished version shell-x@v0.3
+        id: shell
+        continue-on-error: true
+        uses: milankomaj/shell-x@test-v3
         with:
-          shell: 'sh'
-          locale: 'sk_SK.utf8'
-          timezone: 'Europe/Bratislava'
+          shell: ${{ matrix.shell }}
+          locale: sk_SK.utf8
+          timezone: Europe/Bratislava
+          comand: date && echo ${{ runner.os }}
 
-      - run: echo 💡 ${{ steps.foo.outputs.inputs-outputs }}
-        shell: sh
-      - run: date
-        shell: sh
+      - name: 💡 example after comands
+        id: example
+        run: |
+         echo "::group::example"
+         date
+         timedatectl
+         uname -a
+         echo "::endgroup::"
 
-  pwsh:
-    name: Shell pwsh
-    continue-on-error: false
-    strategy:
-      max-parallel: 3
-      matrix:
-       os: [ubuntu-latest]
-
-    runs-on: ${{ matrix.os }}
-    steps:
-      - uses: actions/checkout@v4
-      - id: foo
-        uses: milankomaj/shell-x@v0.3
-        with:
-          shell: 'pwsh'
-          locale: 'sk_SK.utf8'
-          timezone: 'Europe/Bratislava'
-
-      - run: echo 💡 ${{ steps.foo.outputs.inputs-outputs }}
-        shell: pwsh
-      - run: date
-        shell: pwsh
+      - name: 💡 ${{ steps.shell.outputs.inputs-outputs }}
+        id: composite-outputs
+        run: |
+         echo ${{ steps.shell.outputs.inputs-outputs }}
+         echo ${{ steps.shell.outputs.shell-outputs }}
+         echo ${{ steps.shell.outputs.comand-outputs }}
+         ${{ steps.shell.outputs.comand-outputs }}
