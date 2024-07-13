@@ -27,6 +27,6 @@ jobs:
       - name: Send greeting
         run: |
          echo "${{ github.event.inputs.message }}""
-         echo "${{ fromJSON('["🎉", "🥳"]')[github.event.inputs.use-emoji == 'true'] }}"
+         echo "${{ fromJSON('["💡", "🥳"]')[github.event.inputs.use-emoji == 'true'] }}"
          echo "${{ github.event.inputs.name }}"
          echo "boolean is ${{ github.event.inputs.boolean }}" / ${{ inputs.boolean }}
