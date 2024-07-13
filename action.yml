@@ -99,13 +99,14 @@ runs:
       run: |
        echo "::group:: EXECUTING SHELL COMANDS"
        sudo systemsetup -settimezone ${{ inputs.timezone }} 2>/dev/null
-       bash -c 'echo "export LANG=$(echo ${{ inputs.locale }})"' >> ~/.bashrc
-       bash -c 'echo "export LC_ALL=$(echo ${{ inputs.locale }})"' >> ~/.bashrc
-       bash -c "source ~/.bashrc; exec bash"
-       bash -c 'echo "LANG=$(echo ${{ inputs.locale }})"' >> $GITHUB_ENV
-       bash -c 'echo "LC_ALL=$(echo ${{ inputs.locale }})"' >> $GITHUB_ENV
+       echo "export LANG=$(echo ${{ inputs.locale }})" >> ~/.bashrc
+       echo "export LC_ALL=$(echo ${{ inputs.locale }})" >> ~/.bashrc
+       bash source ~/.bashrc
+       echo "LANG=$(echo ${{ inputs.locale }})" >> $GITHUB_ENV
+       echo "LC_ALL=$(echo ${{ inputs.locale }})" >> $GITHUB_ENV
        echo "::endgroup::"
-      shell: pwsh
+      shell: bash
+
 
     - name: is-Windows
       id: is-Windows
