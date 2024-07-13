@@ -23,8 +23,8 @@ jobs:
   greet:
     runs-on: ubuntu-latest
     environment:
-      name: steps
-      url: ${{ steps.send.outcome }}
+      name: "steps"
+      url: "https://${{ steps.send.outcome }}.com"
 
     steps:
       - name: Send greeting
