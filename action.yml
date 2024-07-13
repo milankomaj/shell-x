@@ -139,7 +139,7 @@ runs:
       id: is-run-comand
       if: inputs.comand != '' && inputs.shell != ''
       run: |
-        echo "::group:: RUN ${{ inputs.comand }}"
+        echo "::group:: RUN ${{ inputs.comand }}^^"
         ${{ inputs.comand }}
         echo "::endgroup::"
       shell: ${{ inputs.shell }}
