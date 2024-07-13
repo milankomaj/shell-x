@@ -52,10 +52,9 @@ jobs:
       - name: 💡 example after comands
         id: example
         run: |
-         echo "::group::example"
          date
          systeminfo
-         echo "::endgroup::"
+         echo
 
       - name: 💡 ${{ steps.shell.outputs.inputs-outputs }}
         id: composite-outputs
@@ -64,3 +63,4 @@ jobs:
          echo ${{ steps.shell.outputs.shell-outputs }}
          echo ${{ steps.shell.outputs.comand-outputs }}
          ${{ steps.shell.outputs.comand-outputs }}
+         echo
