@@ -127,7 +127,9 @@ runs:
       if: inputs.shell == 'cmd' && inputs.timezone != ''
       run: |
         echo "::group:: EXECUTING SHELL COMANDS"
+        tzutil /g
         tzutil /s "${{ inputs.timezone }}"
+        systeminfo
         echo "::endgroup::"
       shell: ${{ inputs.shell }}
 

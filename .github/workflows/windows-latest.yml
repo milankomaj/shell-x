@@ -1,78 +1,66 @@
-name: windows-latest
-run-name: ${{ github.workflow }} ✅ ${{ github.actor }} ✅ ${{ github.event_name}}
+name: windows-latest - unpublished version
+run-name: ${{ github.workflow }} ✅ ${{ github.ref }} ✅ ${{ github.actor }} ✅ ${{ github.event_name}}
 on:
   workflow_dispatch:
 
 jobs:
-  cmd:
-    name: Shell cmd
+
+  Shell:
+    name: Shell
     continue-on-error: false
     strategy:
+      fail-fast: false
       max-parallel: 3
       matrix:
-       os: [windows-latest]
+       include:
+        - shell: bash
+        - shell: sh
+        - shell: pwsh
+        - shell: powershell
+        - shell: cmd
 
-    runs-on: ${{ matrix.os }}
+    runs-on: windows-latest
+    defaults:
+      run:
+        shell: ${{ matrix.shell }}
+
     steps:
-      - uses: actions/checkout@v4
-      - id: foo
-        uses: milankomaj/shell-x@v0.2
+
+      - name: checkout ${{ github.ref }}
+        id: checkout
+        uses: actions/checkout@v4
         with:
-          shell: 'cmd'
-          locale: 'sk-SK'
-          timezone: 'Central Europe Standard Time'
+          ref: ${{ github.ref }}
 
+      - name: 💡 example before comands
+        id: systemsetup
+        run: |
+          echo ${{ github.ref }} | cut -d "/" -f3-
+          date
+          systeminfo
 
-      - run: echo 💡 ${{ steps.foo.outputs.inputs-outputs }}
-        shell: cmd
-      - name: date-time
-        run: echo 💡 %date%-%time%
-        shell: cmd
-
-  powershell:
-    name: Shell powershell
-    continue-on-error: false
-    strategy:
-      max-parallel: 3
-      matrix:
-       os: [windows-latest]
-
-    runs-on: ${{ matrix.os }}
-    steps:
-      - uses: actions/checkout@v4
-      - id: foo
-        uses: milankomaj/shell-x@v0.2
+      - name: 💡 unpublished version shell-x@v0.3
+        id: shell
+        continue-on-error: true
+        uses: milankomaj/shell-x@test-v3
         with:
-          shell: 'powershell'
-          locale: 'sk_SK'
-          timezone: 'Central Europe Standard Time'
+          shell: ${{ matrix.shell }}
+          locale: sk_SK
+          timezone: Central Europe Standard Time
+          comand: date && echo ${{ runner.os }}
 
-      - run: echo ${{ steps.foo.outputs.inputs-outputs }}
-        shell: powershell
-      - run: |
-         Get-TimeZone
-         Get-Date -UFormat "%A %m/%d/%Y %R %Z"
-        shell: powershell
+      - name: 💡 example after comands
+        id: example
+        run: |
+         echo "::group::example"
+         date
+         systeminfo
+         echo "::endgroup::"
 
-  pwsh:
-    name: Shell pwsh
-    continue-on-error: false
-    strategy:
-      max-parallel: 3
-      matrix:
-       os: [windows-latest]
-
-    runs-on: ${{ matrix.os }}
-    steps:
-      - uses: actions/checkout@v4
-      - id: foo
-        uses: milankomaj/shell-x@v0.2
-        with:
-          shell: 'pwsh'
-          locale: 'sk_SK'
-          timezone: 'Central Europe Standard Time'
-
-      - run: echo 💡 ${{ steps.foo.outputs.inputs-outputs }}
-        shell: pwsh
-      - run: Get-Date
-        shell: pwsh
+      - name: 💡 ${{ steps.shell.outputs.inputs-outputs }}
+        id: composite-outputs
+        run: |
+         echo ${{ steps.shell.outputs.inputs-outputs }}
+         echo ${{ steps.shell.outputs.shell-outputs }}
+         echo ${{ steps.shell.outputs.comand-outputs }}
+         ${{ steps.shell.outputs.comand-outputs }}
