@@ -111,7 +111,11 @@ runs:
 
     - name: is-Windows
       id: is-Windows
-      if: runner.os == 'Windows' && ( inputs.shell != 'cmd' || inputs.shell != 'bash' || inputs.shell != 'sh' ) && inputs.locale != '' && inputs.timezone != ''
+      if: runner.os == 'Windows' && inputs.shell != 'cmd' && inputs.locale != '' && inputs.timezone != '' ||
+      runner.os == 'Windows' && inputs.shell != 'cmd' && inputs.locale != '' && inputs.timezone != '' && inputs.shell == 'powershell' ||
+      runner.os == 'Windows' && inputs.shell != 'cmd' && inputs.locale != '' && inputs.timezone != '' && inputs.shell == 'pwsh' ||
+      runner.os == 'Windows' && inputs.shell != 'cmd' && inputs.locale != '' && inputs.timezone != '' && inputs.shell != 'bash' ||
+      runner.os == 'Windows' && inputs.shell != 'cmd' && inputs.locale != '' && inputs.timezone != '' && inputs.shell != 'sh'
       run: |
        echo "::group:: EXECUTING SHELL COMANDS"
        Set-WinSystemLocale ${{ inputs.locale }}
@@ -126,11 +130,13 @@ runs:
       id: is-Windows-cmd
       if: inputs.shell == 'cmd' && inputs.timezone != ''
       run: |
-        echo "::group:: EXECUTING SHELL COMANDS"
-        tzutil /g ;
-        tzutil /s "${{ inputs.timezone }}" ;
-        tzutil /g ;
-        echo "::endgroup::"
+        echo "::group:: EXECUTING SHELL COMANDS";
+        tzutil /g;
+        time /t | date /t;
+        tzutil /s "${{ inputs.timezone }}";
+        tzutil /g;
+        time /t | date /t;
+        echo "::endgroup::";
       shell: ${{ inputs.shell }}
 
     - name: is-run-comand
