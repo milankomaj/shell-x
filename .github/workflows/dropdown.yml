@@ -26,9 +26,9 @@ jobs:
     steps:
       - name: Send greeting
         run: |
+         echo 'Job context is ${{ toJSON(job) }}'
          echo "${{ github.event.inputs.message }} ${{ fromJSON('["","💡"]')[github.event.inputs.use-emoji == 'true'] }} ${{ github.event.inputs.name }}"
          echo "${{ github.event.inputs.message }}"
-         echo "${{ fromJSON('{"FAVORITE_FRUIT": "APPLE", "FAVORITE_COLOR": "BLUE"}')[github.event.inputs.use-emoji == 'true'] }}"
          echo "${{ github.event.inputs.name }}"
          echo "boolean is ${{ github.event.inputs.boolean }}"
          echo "${{ inputs.boolean }}"
