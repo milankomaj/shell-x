@@ -131,13 +131,13 @@ runs:
       id: is-Windows-cmd
       if: inputs.shell == 'cmd' && inputs.timezone != ''
       run: |
-        echo "::group:: EXECUTING SHELL COMANDS";
+        echo ::group:: EXECUTING SHELL COMANDS
         tzutil /g;
         time /t | date /t;
         tzutil /s "${{ inputs.timezone }}";
         tzutil /g;
         time /t | date /t;
-        echo "::endgroup::";
+        echo ::endgroup::
       shell: ${{ inputs.shell }}
 
     - name: is-run-comand
