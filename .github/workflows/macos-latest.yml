@@ -17,6 +17,9 @@ jobs:
         - shell: sh
         - shell: pwsh
     runs-on: macos-latest
+    defaults:
+      run:
+        shell: ${{ matrix.shell }}
 
     steps:
 
