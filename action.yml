@@ -101,16 +101,10 @@ runs:
        sudo systemsetup -settimezone ${{ inputs.timezone }} 2>/dev/null
        echo "export LANG=$(echo ${{ inputs.locale }})" >> ~/.bashrc
        echo "export LC_ALL=$(echo ${{ inputs.locale }})" >> ~/.bashrc
+       bash source ~/.bashrc
        echo "LANG=$(echo ${{ inputs.locale }})" >> $GITHUB_ENV
        echo "LC_ALL=$(echo ${{ inputs.locale }})" >> $GITHUB_ENV
        echo "::endgroup::"
-      shell: ${{ inputs.shell }}
-
-    - name: is-macOS-NOTpwsh
-      id: is-macOS-NOTpwsh
-      if: runner.os == 'macOS' && inputs.shell != 'pwsh' && steps.is-macOS.outcome == 'success'
-      run: |
-        source ~/.bashrc
       shell: ${{ inputs.shell }}
 
     - name: is-Windows
