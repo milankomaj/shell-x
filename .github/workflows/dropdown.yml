@@ -11,10 +11,13 @@ on:
           - cschleiden
         message:
           required: true
+          default: "default"
         use-emoji:
           type: boolean
           description: Include 🎉🤣 emojis
-
+        boolean:
+          type: boolean
+          description: True or False
 
 jobs:
   greet:
@@ -26,3 +29,4 @@ jobs:
          echo "${{ github.event.inputs.message }}""
          echo "${{ fromJSON('["🎉", "🥳"]')[github.event.inputs.use-emoji == 'true'] }}"
          echo "${{ github.event.inputs.name }}"
+         echo "boolean is ${{ github.event.inputs.boolean }}" / ${{ inputs.boolean }}
