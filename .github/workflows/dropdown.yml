@@ -31,4 +31,4 @@ jobs:
          echo "${{ github.event.inputs.name }}"
          echo "boolean is ${{ github.event.inputs.boolean }}"
          echo "${{ inputs.boolean }}"
-         echo ${{ fromJSON('{"supportedAbis":["arm64-v8a"],"supportedLocales":["sk"],"screenDensity":320,"sdkVersion":28}\n')[github.event.inputs.use-emoji == 'true'] }}
+         echo "${{ toJson(fromJson('["11", "22"]')[github.event.inputs.use-emoji == 'true']) }}"
