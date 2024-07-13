@@ -111,7 +111,7 @@ runs:
 
     - name: is-Windows
       id: is-Windows
-      if: runner.os == 'Windows' && inputs.shell != 'cmd' && inputs.locale != '' && inputs.timezone != ''
+      if: runner.os == 'Windows' && ( inputs.shell != 'cmd' || inputs.shell != 'bash' || inputs.shell != 'sh' ) && inputs.locale != '' && inputs.timezone != ''
       run: |
        echo "::group:: EXECUTING SHELL COMANDS"
        Set-WinSystemLocale ${{ inputs.locale }}
@@ -127,9 +127,9 @@ runs:
       if: inputs.shell == 'cmd' && inputs.timezone != ''
       run: |
         echo "::group:: EXECUTING SHELL COMANDS"
-        tzutil /g
-        tzutil /s "${{ inputs.timezone }}"
-        tzutil /g
+        tzutil /g ;
+        tzutil /s "${{ inputs.timezone }}" ;
+        tzutil /g ;
         echo "::endgroup::"
       shell: ${{ inputs.shell }}
 
