@@ -22,9 +22,13 @@ on:
 jobs:
   greet:
     runs-on: ubuntu-latest
+    environment:
+      name: steps
+      url: ${{ steps.send.outcome }}
 
     steps:
       - name: Send greeting
+        id: send
         run: |
          echo "${{ github.event.inputs.message }} ${{ fromJSON('["","💡"]')[github.event.inputs.use-emoji == 'true'] }} ${{ github.event.inputs.name }}"
          echo "${{ github.event.inputs.message }}"
