@@ -86,12 +86,11 @@ jobs:
         if: ${{ matrix.shell == 'bash' || matrix.shell == 'sh' }}
         id: mixed
         run: |
-          date +"%T, timezone %Z (%z)"
-          tzset
-          export TZ="Europe/Bratislava"
-          tzset
-          date +"%T, timezone %Z (%z)"
           uname -a
+          date +"%T, timezone %Z (%z)"
+          tzset
+          TZ=Europe/Bratislava date +"%T, timezone %Z (%z)"
+          time
 
 
       - name: 💡 outcome steps
