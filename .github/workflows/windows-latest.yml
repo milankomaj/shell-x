@@ -89,7 +89,7 @@ jobs:
           uname -a
           date
           tzset
-          
+          locale
 
 
 
