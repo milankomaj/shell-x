@@ -44,7 +44,7 @@ jobs:
         id: toJSON
         run: |
           echo 'JSON<<EOF
-          ${{ toJson('["Trunk", "6.X"]') }}
+          ${{ toJson('["aa":"11", "bb":"22"]') }}
           EOF' >> $GITHUB_OUTPUT
 
 
@@ -52,4 +52,4 @@ jobs:
         id: fromJSON
         run: |
          echo ${{ fromJSON(steps.toJSON.outputs.JSON) }}
-         echo ${{ fromJSON(steps.toJSON.outputs.JSON) }} | jq
+         echo ${{ fromJSON(steps.toJSON.outputs.JSON) }}
