@@ -53,9 +53,10 @@ jobs:
         run: |
          Get-TimeZone
          Get-Date -UFormat "%A %m/%d/%Y %R %Z"
+         wsl --status
 
       - name: 💡 example after pwsh comands
-        if: ${{ matrix.shell== 'pwsh' }}
+        if: ${{ matrix.shell == 'pwsh' }}
         id: pwsh
         run: |
           Get-Date && Get-Date -Format F
