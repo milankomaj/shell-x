@@ -54,7 +54,7 @@ jobs:
           shell: 'powershell'
           locale: 'sk_SK'
           timezone: 'Central Europe Standard Time'
-          comand: $(echo "Get-Date -UFormat '%Y%m%d' && Get-Date -Format F")
+          comand: Get-Date -UFormat "%A %m/%d/%Y %R %Z"
 
       - run: echo ${{ steps.foo.outputs.inputs-outputs }}
         shell: powershell
@@ -81,10 +81,10 @@ jobs:
       - id: foo
         uses: milankomaj/shell-x@test-v3
         with:
-          shell: 'pwsh'
-          locale: 'sk_SK'
-          timezone: 'Central Europe Standard Time'
-          comand: $(Get-Date)
+          shell: pwsh
+          locale: sk_SK
+          timezone: Central Europe Standard Time
+          comand: Get-Date
 
       - run: echo 💡 ${{ steps.foo.outputs.inputs-outputs }}
         shell: pwsh
@@ -93,10 +93,4 @@ jobs:
         shell: pwsh
 
       - run: ${{steps.foo.outputs.comand-outputs}}
-        shell: pwsh
-
-      - name: pwsh notice ${{ steps.foo.outputs.comand-outputs }}
-        run: |
-         echo "::notice::{{ steps.foo.outputs.comand-outputs }}"
-         ${{ steps.foo.outputs.comand-outputs }}
         shell: pwsh
