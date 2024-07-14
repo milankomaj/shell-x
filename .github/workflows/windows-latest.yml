@@ -87,7 +87,8 @@ jobs:
           uname -a
           date
           date +"%T, timezone %Z (%z)"
-          pacman -Su
+          export TZ=CET-2CEST
+          date
 
       - name: 💡 outcome steps
         if: ${{ always() }}
