@@ -44,11 +44,12 @@ jobs:
         id: toJSON
         run: |
           echo 'JSON<<EOF
-          ${{ toJson(fromJson('{"Trunk", "6.X"}')) }}
+          ${{ toJson(fromJson('[{"Trunk", "6.X"}]')) }}
           EOF' >> $GITHUB_OUTPUT
 
 
       - name: fromJSON
         id: fromJSON
         run: |
+         echo ${{ fromJSON(steps.toJSON.outputs.JSON) }}
          echo ${{ fromJSON(steps.toJSON.outputs.JSON) }} | jq
