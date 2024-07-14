@@ -63,4 +63,5 @@ jobs:
          echo ${{ steps.shell.outputs.comand-outputs }}
          ${{ steps.shell.outputs.comand-outputs }}
          echo ${{ steps.shell.outputs.comand-outputs != ''}}
-         echo ${{ contains((steps.shell.outputs.comand-outputs), '')}}
+         [ -z ${{ steps.shell.outputs.comand-outputs }} ] && echo "Empty" || echo "Not empty"
+         echo ${{ contains((steps.shell.outputs.comand-outputs), runner.os)}}
