@@ -88,9 +88,9 @@ jobs:
           date
           date +"%T, timezone %Z (%z)"
           export TZ=CET-2CEST
-          export TZ=Europe/Bratislava
           date
           date +"%T, timezone %Z (%z)"
+          timedatectl
 
       - name: 💡 outcome steps
         if: ${{ always() }}
