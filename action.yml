@@ -94,6 +94,7 @@ runs:
        sudo update-locale LANG=${{ inputs.locale }}
        sudo timedatectl set-timezone ${{ inputs.timezone }}
        echo "LANG=$(echo ${{ inputs.locale }})" >> $GITHUB_ENV
+       echo "LANG=$(echo ${{ inputs.locale }})" >> $env:GITHUB_ENV
        echo "::endgroup::"
       shell: ${{ inputs.shell }}
 
