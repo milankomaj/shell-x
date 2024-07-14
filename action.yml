@@ -133,7 +133,7 @@ runs:
         echo.
         date /t
         echo.
-        tzutil /s ${{ inputs.timezone }}
+        tzutil /s "${{ inputs.timezone }}"
         echo.
         tzutil /g
         echo.
