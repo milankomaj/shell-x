@@ -20,6 +20,8 @@ jobs:
     defaults:
       run:
         shell: ${{ matrix.shell }}
+    env:
+     env_var: ${{ vars.ENV_CONTEXT_VAR }}
 
     steps:
 
@@ -48,7 +50,6 @@ jobs:
 
       - name: 💡 example after comands
         id: example
-        shell: ${{ steps.shell.outputs.shell-outputs }}
         run: |
          echo "::group::example"
          date
@@ -63,3 +64,4 @@ jobs:
          echo ${{ steps.shell.outputs.shell-outputs }}
          echo ${{ steps.shell.outputs.comand-outputs }}
          ${{ steps.shell.outputs.comand-outputs }}
+         ${{ contains(steps.shell.outputs.comand-outputs, '**')}}
