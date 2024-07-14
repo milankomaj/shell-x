@@ -43,9 +43,11 @@ jobs:
         if: ${{ matrix.shell == 'cmd' }}
         id: cmd
         run: |
+         echo ::group::example
          tzutil /g & echo.
          echo %date%-%time% & echo.
          systeminfo & echo.
+         echo ::endgroup::
 
       - name: 💡 example after powershell comands
         if: ${{ matrix.shell == 'powershell' }}
