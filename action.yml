@@ -116,7 +116,10 @@ runs:
 
     - name: is-Windows
       id: is-Windows
-      if: runner.os == 'Windows' && inputs.shell != 'cmd'  && inputs.locale != '' && inputs.timezone != '' || runner.os == 'Windows' && inputs.shell != 'cmd'  && inputs.locale != '' && inputs.timezone != ''  && inputs.shell == 'powershell' || runner.os == 'Windows' && inputs.shell != 'cmd' && inputs.locale != '' && inputs.timezone != '' && inputs.shell == 'pwsh'
+      if: |
+      runner.os == 'Windows' && inputs.shell != 'cmd'  && inputs.locale != '' && inputs.timezone != '' ||
+       runner.os == 'Windows' && inputs.shell != 'cmd'  && inputs.locale != '' && inputs.timezone != ''  && inputs.shell == 'powershell'
+       || runner.os == 'Windows' && inputs.shell != 'cmd' && inputs.locale != '' && inputs.timezone != '' && inputs.shell == 'pwsh'
       run: |
        echo "::group:: EXECUTING SHELL COMANDS"
        Set-WinSystemLocale ${{ inputs.locale }}
