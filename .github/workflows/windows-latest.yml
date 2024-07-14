@@ -40,7 +40,7 @@ jobs:
 
 
       - name: 💡 example after cmd comands
-        if: ${{ matrix.shell }} == 'cmd'
+        if: ${{ matrix.shell == 'cmd' }}
         id: cmd
         run: |
          tzutil /g
@@ -48,14 +48,14 @@ jobs:
          systeminfo
 
       - name: 💡 example after powershell comands
-        if: ${{ matrix.shell }} == 'powershell'
+        if: ${{ matrix.shell == 'powershell' }}
         id: powershell
         run: |
          Get-TimeZone
          Get-Date -UFormat "%A %m/%d/%Y %R %Z"
 
       - name: 💡 example after pwsh comands
-        if: ${{ matrix.shell }} == 'pwsh'
+        if: ${{ matrix.shell== 'pwsh' }} 
         id: pwsh
         run: |
           Get-Date && Get-Date -Format F
