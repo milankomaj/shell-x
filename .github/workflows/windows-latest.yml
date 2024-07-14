@@ -16,8 +16,6 @@ jobs:
         - shell: cmd
         - shell: powershell
         - shell: pwsh
-        - shell: bash
-        - shell: sh
     runs-on: windows-latest
     defaults:
       run:
