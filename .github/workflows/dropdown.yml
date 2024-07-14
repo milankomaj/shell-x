@@ -49,4 +49,4 @@ jobs:
       - name: fromJSON
         id: fromJSON
         run: |
-         ${{ fromJSON(steps.toJSON.outputs.JSON) }}
+         echo ${{ fromJSON(steps.toJSON.outputs.JSON) }}
