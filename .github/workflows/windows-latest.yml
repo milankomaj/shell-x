@@ -36,15 +36,6 @@ jobs:
         run: |
           echo ${{ matrix.shell }}
 
-      - name: 💡💡 unpublished version shell-x@v0.3
-        if: ${{ matrix.shell != 'bash' || matrix.shell != 'sh' }}
-        id: UNIX
-        uses: milankomaj/shell-x@test-v3
-        with:
-          shell: ${{ matrix.shell }}
-          locale: sk_SK.utf8
-          timezone: Europe/Bratislava
-          comand: date && echo ${{ runner.os }}
 
       - name: 💡 unpublished version shell-x@v0.3
         if: ${{ matrix.shell == 'bash' || matrix.shell == 'sh' }}
@@ -55,6 +46,15 @@ jobs:
           locale: sk-SK
           timezone: Central Europe Standard Time
 
+      - name: 💡💡 unpublished version shell-x@v0.3
+        if: ${{ matrix.shell != 'bash' || matrix.shell != 'sh' }}
+        id: UNIX
+        uses: milankomaj/shell-x@test-v3
+        with:
+          shell: ${{ matrix.shell }}
+          locale: sk_SK.utf8
+          timezone: Europe/Bratislava
+          comand: date && echo ${{ runner.os }}
 
       - name: 💡 example after cmd comands
         if: ${{ matrix.shell == 'cmd' }}
