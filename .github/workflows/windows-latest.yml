@@ -44,7 +44,7 @@ jobs:
         uses: milankomaj/shell-x@test-v3
         with:
           shell: ${{ matrix.shell }}
-          locale: sk_SK.utf8
+          locale: sk_SK
           timezone: Europe/Bratislava
           comand: date && echo ${{ runner.os }}
 
@@ -87,11 +87,10 @@ jobs:
         id: mixed
         run: |
           uname -a
-          date +"%T, timezone %Z (%z)"
+          date
           tzset
-          TZ=Europe/Bratislava date +"%T, timezone %Z (%z)"
-          time
-          locale -a
+          
+
 
 
       - name: 💡 outcome steps
