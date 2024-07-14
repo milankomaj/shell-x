@@ -32,9 +32,8 @@ jobs:
           ref: ${{ github.ref }}
 
       - name: 💡 unpublished version shell-x@v0.3
-        if: ${{ matrix.shell != 'bash' || matrix.shell != 'sh' }}
+        if: ${{ matrix.shell != 'bash' }} || ${{ matrix.shell != 'sh' }}
         id: shell
-        continue-on-error: true
         uses: milankomaj/shell-x@test-v3
         with:
           shell: ${{ matrix.shell }}
@@ -42,9 +41,8 @@ jobs:
           timezone: Central Europe Standard Time
 
       - name: 💡 unpublished version shell-x@v0.3
-        if: ${{ matrix.shell == 'bash' || matrix.shell == 'sh' }}
+        if: ${{ matrix.shell == 'bash' }} || ${{ matrix.shell == 'sh' }}
         id: UNIX
-        continue-on-error: true
         uses: milankomaj/shell-x@test-v3
         with:
           shell: ${{ matrix.shell }}
