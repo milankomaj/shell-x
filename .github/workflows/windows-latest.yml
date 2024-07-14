@@ -44,7 +44,7 @@ jobs:
         uses: milankomaj/shell-x@test-v3
         with:
           shell: ${{ matrix.shell }}
-          locale: sk_SK
+          locale: sk_SK.utf8
           timezone: Europe/Bratislava
           comand: date && echo ${{ runner.os }}
 
@@ -90,8 +90,8 @@ jobs:
           date
           tzset
           locale
-
-
+          echo "LANG=$(echo 'sk_SK.utf8')" >> $GITHUB_ENV
+          locale
 
       - name: 💡 outcome steps
         if: ${{ always() }}
