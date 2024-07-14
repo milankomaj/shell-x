@@ -49,6 +49,7 @@ jobs:
           comand: |
            echo "LANG=$(echo 'sk_SK.utf8')" >> $GITHUB_ENV
            echo "LC_ALL=$(echo 'sk_SK.utf8')" >> $GITHUB_ENV
+           echo "TZ=$(echo 'Europe/Bratislava')" >> $GITHUB_ENV
 
 
       - name: 💡 unpublished version shell-x@v0.3
