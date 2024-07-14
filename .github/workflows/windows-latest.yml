@@ -87,6 +87,7 @@ jobs:
         id: mixed
         run: |
           date
+          tzset
           uname -a
 
 
