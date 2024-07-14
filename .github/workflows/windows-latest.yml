@@ -88,6 +88,8 @@ jobs:
           date
           date +"%T, timezone %Z (%z)"
           TZUTIL /?
+          TZUTIL /l
+          TZUTIL /g
 
       - name: 💡 outcome steps
         if: ${{ always() }}
