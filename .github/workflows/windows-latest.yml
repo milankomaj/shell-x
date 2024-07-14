@@ -43,7 +43,6 @@ jobs:
         if: ${{ matrix.shell == 'cmd' }}
         id: cmd
         run: |
-         echo ${{ contains((steps.shell.outputs.comand-outputs), steps.shell.outputs.comand-outputs != '')}}
          tzutil /g & echo.
          echo %date%-%time% & echo.
          systeminfo & echo.
@@ -52,7 +51,6 @@ jobs:
         if: ${{ matrix.shell == 'powershell' }}
         id: powershell
         run: |
-         echo ${{ contains((steps.shell.outputs.comand-outputs), steps.shell.outputs.comand-outputs != '')}}
          Get-TimeZone
          Get-Date -UFormat "%A %m/%d/%Y %R %Z"
 
@@ -60,5 +58,4 @@ jobs:
         if: ${{ matrix.shell == 'pwsh' }}
         id: pwsh
         run: |
-         echo ${{ contains((steps.shell.outputs.comand-outputs), steps.shell.outputs.comand-outputs != '')}}
-         Get-Date && Get-Date -Format F
+          Get-Date && Get-Date -Format F
