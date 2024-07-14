@@ -84,11 +84,10 @@ runs:
     - name: is-Linux
       id: is-Linux
       if: |
-       runner.os == 'Linux' && inputs.locale != '' && inputs.timezone != '' ||
-        runner.os == 'Linux'  && inputs.locale != '' && inputs.timezone != '' && inputs.shell == 'pwsh'
-        || runner.os == 'Linux'  && inputs.locale != '' && inputs.timezone != '' && inputs.shell == 'bash'
-        || runner.os == 'Linux' && inputs.shell != ''  && inputs.timezone != '' && inputs.shell == 'pwsh'
-        || runner.os == 'Linux'  && inputs.locale != '' && inputs.timezone != '' && inputs.shell == 'sh'
+       runner.os == 'Linux' && inputs.locale != '' && inputs.timezone != '' && (
+        inputs.shell == 'pwsh'
+        || inputs.shell == 'bash'
+        || && inputs.shell == 'sh')
       run: |
        echo "::group:: EXECUTING SHELL COMANDS"
        sudo locale-gen ${{ inputs.locale }}
@@ -100,7 +99,9 @@ runs:
 
     - name: is-macOS
       id: is-macOS
-      if: runner.os == 'macOS' && inputs.locale != '' && inputs.timezone != '' || runner.os == 'macOS'  && inputs.locale != '' && inputs.timezone != '' && inputs.shell == 'sh' || runner.os == 'macOS'  && inputs.locale != '' && inputs.timezone != '' && inputs.shell == 'bash'
+      if: |
+       runner.os == 'macOS' && inputs.locale != '' && inputs.timezone != '' && (
+        inputs.shell == 'sh' || inputs.shell == 'bash' || inputs.shell == 'pwsh')
       run: |
        echo "::group:: EXECUTING SHELL COMANDS"
        sudo systemsetup -settimezone ${{ inputs.timezone }} 2>/dev/null
