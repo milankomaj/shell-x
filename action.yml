@@ -87,7 +87,7 @@ runs:
        runner.os == 'Linux' && inputs.locale != '' && inputs.timezone != '' && (
         inputs.shell == 'pwsh'
         || inputs.shell == 'bash'
-        || && inputs.shell == 'sh')
+        || inputs.shell == 'sh')
       run: |
        echo "::group:: EXECUTING SHELL COMANDS"
        sudo locale-gen ${{ inputs.locale }}
