@@ -47,7 +47,7 @@ jobs:
           locale: sk_SK.utf8
           timezone: Europe/Bratislava
           comand: |
-           echo "LANG=$(echo 'sk_SK.utf8')" >> $GITHUB_ENV
+           echo "LANG=$(echo 'sk_SK.utf8')" >> $GITHUB_ENV \
            echo "LC_ALL=$(echo 'sk_SK.utf8'})" >> $GITHUB_ENV
 
 
