@@ -38,7 +38,7 @@ jobs:
 
 
       - name: 💡 unpublished version shell-x@v0.3
-        if: ${{ matrix.shell == 'bash' || matrix.shell == 'sh' }}
+        if: ${{ matrix.shell != 'bash' || matrix.shell != 'sh' }}
         id: shell
         uses: milankomaj/shell-x@test-v3
         with:
@@ -47,7 +47,7 @@ jobs:
           timezone: Central Europe Standard Time
 
       - name: 💡💡 unpublished version shell-x@v0.3
-        if: ${{ matrix.shell != 'bash' || matrix.shell != 'sh' }}
+        if: ${{ matrix.shell == 'bash' || matrix.shell == 'sh' }}
         id: UNIX
         uses: milankomaj/shell-x@test-v3
         with:
@@ -78,3 +78,14 @@ jobs:
         id: pwsh
         run: |
           Get-Date && Get-Date -Format F
+
+      - name: 💡 example after pwsh comands
+        if: ${{ always() }}
+        shell: bash
+        id: outcome
+        run: |
+         echo "shell-outcome = ${{ steps.shell.outcome }}"
+         echo "UNIX-outcome = ${{ steps.UNIX.outcome }}"
+         echo "cmd-outcome = ${{ steps.cmd.outcome }}"
+         echo "powershell-outcome = ${{ steps.powershell.outcome }}"
+         echo "pwsh-outcome = ${{ steps.pwsh.outcome }}"
