@@ -15,8 +15,12 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
+        with:
+         ref: ${{ github.ref }}
+
+
       - id: foo
-        uses: milankomaj/shell-x@v0.3
+        uses: milankomaj/shell-x@test-v3
         with:
           shell: 'cmd'
           locale: 'sk-SK'
@@ -40,8 +44,12 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
+        with:
+         ref: ${{ github.ref }}
+
+
       - id: foo
-        uses: milankomaj/shell-x@v0.3
+        uses: milankomaj/shell-x@test-v3
         with:
           shell: 'powershell'
           locale: 'sk_SK'
@@ -66,8 +74,12 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
+        with:
+         ref: ${{ github.ref }}
+
+
       - id: foo
-        uses: milankomaj/shell-x@v0.3
+        uses: milankomaj/shell-x@test-v3
         with:
           shell: 'pwsh'
           locale: 'sk_SK'
