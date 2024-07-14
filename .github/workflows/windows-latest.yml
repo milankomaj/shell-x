@@ -86,8 +86,8 @@ jobs:
         if: ${{ matrix.shell == 'bash' || matrix.shell == 'sh' }}
         id: mixed
         run: |
-          bash timedatectl
           date
+          ls
 
       - name: 💡 outcome steps
         if: ${{ always() }}
