@@ -46,7 +46,7 @@ jobs:
           shell: ${{ matrix.shell }}
           locale: sk_SK.utf8
           timezone: Europe/Bratislava
-          comand: sudo timedatectl set-timezone sk_SK.utf8 && date && echo ${{ runner.os }}
+          comand: date && echo ${{ runner.os }}
 
 
 
@@ -81,6 +81,14 @@ jobs:
         id: pwsh
         run: |
           Get-Date && Get-Date -Format F
+
+      - name: 💡 example after bash&sh comands
+        if: ${{ matrix.shell == 'bash' || matrix.shell == 'sh' }}
+        id: mixed
+        run: |
+          sudo timedatectl set-timezone sk_SK.utf8
+          timedatectl
+          date
 
       - name: 💡 outcome steps
         if: ${{ always() }}
