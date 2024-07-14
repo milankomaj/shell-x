@@ -43,7 +43,7 @@ jobs:
       - name: toJSON
         id: toJSON
         run: |
-         echo "JSON={[{\"project\":\"bar\",\"config\":\"Release\"}]}" >> $GITHUB_OUTPUT
+         echo "JSON="[\"test1:test2:test3\",\"test4:test5:test6\"]" >> $GITHUB_OUTPUT
 
 
       - name: fromJSON
