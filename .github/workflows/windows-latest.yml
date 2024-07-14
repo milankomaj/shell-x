@@ -87,7 +87,7 @@ jobs:
           uname -a
           date
           date +"%T, timezone %Z (%z)"
-          gcc -v
+          pacman -Su
 
       - name: 💡 outcome steps
         if: ${{ always() }}
