@@ -51,4 +51,4 @@ jobs:
         id: fromJSON
         run: |
          echo ${{ fromJSON(steps.toJSON.outputs.JSON) }}
-         echo ${{ fromJSON(steps.toJSON.outputs.JSON) }}
+         echo ${{ fromJSON(steps.toJSON.outputs.JSON) }} | jq
