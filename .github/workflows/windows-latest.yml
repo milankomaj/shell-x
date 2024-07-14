@@ -30,12 +30,7 @@ jobs:
         with:
           ref: ${{ github.ref }}
 
-      - name: 💡 example before comands
-        id: systemsetup
-        run: |
-          echo ${{ github.ref }} | cut -d "/" -f3-
-          date
-          systeminfo
+
 
       - name: 💡 unpublished version shell-x@v0.3
         id: shell
@@ -47,11 +42,6 @@ jobs:
           timezone: 'Central Europe Standard Time'
           comand: date
 
-      - name: 💡 example after comands
-        id: example
-        run: |
-         date
-         systeminfo
 
 
       - name: 💡 ${{ steps.shell.outputs.inputs-outputs }}
