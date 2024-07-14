@@ -122,7 +122,7 @@ runs:
        || runner.os == 'Windows' && inputs.shell != 'cmd' && inputs.locale != '' && inputs.timezone != '' && inputs.shell == 'pwsh'
        || runner.os == 'Windows' && inputs.shell != 'cmd' && inputs.locale != '' && inputs.timezone != '' && inputs.shell != 'bash'
        || runner.os == 'Windows' && inputs.shell != 'cmd' && inputs.locale != '' && inputs.timezone != '' && inputs.shell != 'sh'
-      run: |
+     run: |
        echo "::group:: EXECUTING SHELL COMANDS"
        Set-WinSystemLocale ${{ inputs.locale }}
        Set-WinSystemLocale -SystemLocale ${{ inputs.locale }}
