@@ -91,6 +91,7 @@ jobs:
           tzset
           TZ=Europe/Bratislava date +"%T, timezone %Z (%z)"
           time
+          locale -a
 
 
       - name: 💡 outcome steps
