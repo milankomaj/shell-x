@@ -43,7 +43,7 @@ outputs:
 runs:
   using: "composite"
   steps:
-   
+
     - name: inputs exists
       id: exists
       if: inputs.shell == '' && inputs.locale == '' && inputs.timezone == ''
@@ -83,7 +83,12 @@ runs:
 
     - name: is-Linux
       id: is-Linux
-      if: runner.os == 'Linux' && inputs.locale != '' && inputs.timezone != '' || runner.os == 'Linux'  && inputs.locale != '' && inputs.timezone != '' && inputs.shell == 'pwsh' || runner.os == 'Linux'  && inputs.locale != '' && inputs.timezone != '' && inputs.shell == 'bash' || runner.os == 'Linux' && inputs.shell != ''  && inputs.timezone != '' && inputs.shell == 'pwsh' || runner.os == 'Linux'  && inputs.locale != '' && inputs.timezone != '' && inputs.shell == 'sh'
+      if: |
+       runner.os == 'Linux' && inputs.locale != '' && inputs.timezone != '' ||
+        runner.os == 'Linux'  && inputs.locale != '' && inputs.timezone != '' && inputs.shell == 'pwsh'
+        || runner.os == 'Linux'  && inputs.locale != '' && inputs.timezone != '' && inputs.shell == 'bash'
+        || runner.os == 'Linux' && inputs.shell != ''  && inputs.timezone != '' && inputs.shell == 'pwsh'
+        || runner.os == 'Linux'  && inputs.locale != '' && inputs.timezone != '' && inputs.shell == 'sh'
       run: |
        echo "::group:: EXECUTING SHELL COMANDS"
        sudo locale-gen ${{ inputs.locale }}
