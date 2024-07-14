@@ -51,7 +51,7 @@ jobs:
 
 
       - name: 💡 unpublished version shell-x@v0.3
-        if: ${{ matrix.shell != 'bash' || matrix.shell != 'sh' }}
+        if: ${{ steps.UNIX.outcome == 'skipped'}}
         id: shell
         uses: milankomaj/shell-x@test-v3
         with:
