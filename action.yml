@@ -128,11 +128,17 @@ runs:
       run: |
         echo ::group:: EXECUTING SHELL COMANDS
         tzutil /g
+        echo.
         time /t
+        echo.
         date /t
-        tzutil /s "${{ inputs.timezone }}"
+        echo.
+        tzutil /s ${{ inputs.timezone }}
+        echo.
         tzutil /g
+        echo.
         time /t
+        echo.
         date /t
         echo ::endgroup::
       shell: ${{ inputs.shell }}
