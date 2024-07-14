@@ -137,7 +137,7 @@ runs:
        runner.os == 'Windows' && inputs.shell != 'cmd' && inputs.locale != '' && inputs.timezone != '' && (
         inputs.shell == 'bash' ||  inputs.shell == 'sh')
       run: |
-       tzutil /s "${{ inputs.timezone }}"
+       tzutil /s "${{ inputs.timezone }}" & echo.
        echo "LANG=$(echo ${{ inputs.locale }})" >> $GITHUB_ENV
        echo "LC_ALL=$(echo 'sk_SK.utf8')" >> $GITHUB_ENV
       shell: ${{ inputs.shell }}
