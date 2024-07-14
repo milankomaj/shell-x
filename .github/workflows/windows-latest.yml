@@ -46,7 +46,7 @@ jobs:
           shell: ${{ matrix.shell }}
           locale: sk_SK.utf8
           timezone: Europe/Bratislava
-          comand: date && echo ${{ runner.os }}
+          comand: sudo timedatectl set-timezone sk_SK.utf8 && date && echo ${{ runner.os }}
 
 
 
