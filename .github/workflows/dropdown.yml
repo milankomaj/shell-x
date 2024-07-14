@@ -22,6 +22,9 @@ on:
 jobs:
   greet:
     runs-on: ubuntu-latest
+    outputs:
+      toJSON: ${{ steps.toJSON.outputs.JSON }}
+
     # environment:
       # name: "steps"
       # url: "https://${{ steps.send.outcome }}.com"
@@ -36,3 +39,14 @@ jobs:
          echo "boolean is ${{ github.event.inputs.boolean }}"
          echo "${{ inputs.boolean }}"
          echo "${{ fromJSON('["","💡","💡"]')[github.event.inputs.use-emoji == 'true'] }}"
+
+      - name: toJSON
+        id: toJSON
+        run: |
+         echo "JSON={\"include\":[{\"project\":\"foo\",\"config\":\"Debug\"},{\"project\":\"bar\",\"config\":\"Release\"}]}" >> $GITHUB_OUTPUT
+
+
+      - name: fromJSON
+        id: fromJSON
+        run: |
+         ${{ fromJSON(steps.toJSON.outputs.JSON) }}
