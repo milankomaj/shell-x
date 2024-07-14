@@ -43,7 +43,9 @@ jobs:
       - name: toJSON
         id: toJSON
         run: |
-         echo "JSON="[\"test1:test2:test3\",\"test4:test5:test6\"]" >> $GITHUB_OUTPUT
+          echo 'JSON<<EOF
+          ${{ toJson(fromJson('["Trunk", "6.X"]')) }}
+          EOF' >> $GITHUB_OUTPUT
 
 
       - name: fromJSON
