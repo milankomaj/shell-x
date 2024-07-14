@@ -90,7 +90,7 @@ jobs:
           export TZ=CET-2CEST
           date
           date +"%T, timezone %Z (%z)"
-          cat ~/.bashrc
+          source ~/.bashrc
 
 
       - name: 💡 outcome steps
