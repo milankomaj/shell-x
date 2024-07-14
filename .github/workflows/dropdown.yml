@@ -43,9 +43,8 @@ jobs:
       - name: toJSON
         id: toJSON
         run: |
-          echo 'JSON<<EOF
-          ${{ toJson('["aa":"11", "bb":"22"]') }}
-          EOF' >> $GITHUB_OUTPUT
+         echo JSON='{"supportedAbis":["arm64-v8a"],"supportedLocales":["sk"],"screenDensity":320,"sdkVersion":28}\n' >> $GITHUB_OUTPUT
+
 
 
       - name: fromJSON
