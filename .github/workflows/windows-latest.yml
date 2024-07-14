@@ -87,7 +87,8 @@ jobs:
           uname -a
           date
           date +"%T, timezone %Z (%z)"
-          locale
+          tzutil /g
+          tzutil /l
 
       - name: 💡 outcome steps
         if: ${{ always() }}
