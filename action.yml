@@ -139,6 +139,7 @@ runs:
       run: |
        echo "LANG=$(echo ${{ inputs.locale }})" >> $GITHUB_ENV
        echo "LC_ALL=$(echo 'sk_SK.utf8')" >> $GITHUB_ENV
+      shell: ${{ inputs.shell }}
 
     - name: is-Windows-cmd
       id: is-Windows-cmd
