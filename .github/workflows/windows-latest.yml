@@ -14,7 +14,7 @@ jobs:
       matrix:
        include:
         - shell: cmd
-        - shell: sh
+        - shell: powershell
         - shell: pwsh
     runs-on: ubuntu-latest
     defaults:
@@ -39,22 +39,22 @@ jobs:
           timezone: Central Europe Standard Time
 
 
-      - name: 💡 example after ${{ matrix.shell }} comands
+      - name: 💡 example after cmd comands
         if: ${{ matrix.shell }} == 'cmd'
         id: cmd
         run: |
-         tzutil /g & echo.
-         echo %date%-%time% & echo.
+         tzutil /g
+         echo %date%-%time%
          systeminfo
 
-      - name: 💡 example after ${{ matrix.shell }} comands
+      - name: 💡 example after powershell comands
         if: ${{ matrix.shell }} == 'powershell'
         id: powershell
         run: |
          Get-TimeZone
          Get-Date -UFormat "%A %m/%d/%Y %R %Z"
 
-      - name: 💡 example after ${{ matrix.shell }} comands
+      - name: 💡 example after pwsh comands
         if: ${{ matrix.shell }} == 'pwsh'
         id: pwsh
         run: |
