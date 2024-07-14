@@ -44,7 +44,7 @@ jobs:
         id: toJSON
         run: |
          JSON='{"supportedAbis":["arm64-v8a"],"supportedLocales":["sk"],"screenDensity":320,"sdkVersion":28}\n'
-         printf "$JSON" "$supportedAbis" "$supportedLocales" "$screenDensity" "$sdkVersion" >> $GITHUB_OUTPUT
+         echo "$JSON" "$supportedAbis" "$supportedLocales" "$screenDensity" "$sdkVersion" >> $GITHUB_OUTPUT
 
 
       - name: fromJSON
