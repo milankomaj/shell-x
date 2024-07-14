@@ -15,7 +15,7 @@ jobs:
        include:
         - shell: pwsh
         - shell: powershell
-        - shell: cmd
+
 
     runs-on: windows-latest
     defaults:
@@ -43,8 +43,8 @@ jobs:
         uses: milankomaj/shell-x@test-v3
         with:
           shell: ${{ matrix.shell }}
-          locale: sk_SK
-          timezone: Central Europe Standard Time
+          locale: 'sk_SK'
+          timezone: 'Central Europe Standard Time'
           comand: date
 
       - name: 💡 example after comands
