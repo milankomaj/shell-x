@@ -86,7 +86,6 @@ jobs:
         if: ${{ matrix.shell == 'bash' || matrix.shell == 'sh' }}
         id: mixed
         run: |
-          bash sudo timedatectl set-timezone sk_SK.utf8
           bash timedatectl
           date
 
