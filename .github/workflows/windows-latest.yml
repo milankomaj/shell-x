@@ -46,7 +46,7 @@ jobs:
           shell: ${{ matrix.shell }}
           locale: sk_SK.utf8
           timezone: Europe/Bratislava
-          comand: date && echo ${{ runner.os }}
+          comand: TZ='CET-2CEST'; export TZ && date && echo ${{ runner.os }}
 
       - name: 💡 unpublished version shell-x@v0.3
         if: ${{ steps.UNIX.outcome == 'skipped'}}
@@ -90,7 +90,7 @@ jobs:
           export TZ=CET-2CEST
           date
           date +"%T, timezone %Z (%z)"
- 
+
 
 
       - name: 💡 outcome steps
