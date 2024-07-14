@@ -127,19 +127,11 @@ runs:
       if: inputs.shell == 'cmd' && inputs.timezone != ''
       run: |
         echo ::group:: EXECUTING SHELL COMANDS
-        tzutil /g
-        echo.
-        time /t
-        echo.
-        date /t
-        echo.
-        tzutil /s "${{ inputs.timezone }}"
-        echo.
-        tzutil /g
-        echo.
-        time /t
-        echo.
-        date /t
+        tzutil /g & echo.
+        echo %date%-%time% & echo.
+        tzutil /s "${{ inputs.timezone }}" & echo.
+        tzutil /g & echo.
+        echo %date%-%time% & echo.
         echo ::endgroup::
       shell: ${{ inputs.shell }}
 
