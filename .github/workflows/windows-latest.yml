@@ -79,7 +79,7 @@ jobs:
         run: |
           Get-Date && Get-Date -Format F
 
-      - name: 💡 example after pwsh comands
+      - name: 💡 outcome steps
         if: ${{ always() }}
         shell: bash
         id: outcome
