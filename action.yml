@@ -137,6 +137,9 @@ runs:
        runner.os == 'Windows' && inputs.shell != 'cmd' && inputs.locale != '' && inputs.timezone != '' && (
         inputs.shell == 'bash' ||  inputs.shell == 'sh')
       run: |
+       echo "export LANG=$(echo ${{ inputs.locale }})" >> ~/.bashrc
+       echo "export LC_ALL=$(echo ${{ inputs.locale }})" >> ~/.bashrc
+       bash -c "source ~/.bashrc; exec bash"
        echo "LANG=$(echo ${{ inputs.locale }})" >> $GITHUB_ENV
        echo "LC_ALL=$(echo 'sk_SK.utf8')" >> $GITHUB_ENV
       shell: ${{ inputs.shell }}
