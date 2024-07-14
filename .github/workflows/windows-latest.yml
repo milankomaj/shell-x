@@ -13,8 +13,6 @@ jobs:
       max-parallel: 3
       matrix:
        include:
-        - shell: bash
-        - shell: sh
         - shell: pwsh
         - shell: powershell
         - shell: cmd
