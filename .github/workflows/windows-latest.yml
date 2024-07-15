@@ -87,7 +87,7 @@ jobs:
           uname -a
           date
           date +"%T, timezone %Z (%z)"
-          export TZ=CET-2CEST
+          export TZ=CET-1CEST
           date
           date +"%T, timezone %Z (%z)"
           export TZ=UTC

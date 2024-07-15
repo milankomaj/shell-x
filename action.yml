@@ -137,12 +137,15 @@ runs:
        runner.os == 'Windows' && inputs.shell != 'cmd' && inputs.locale != '' && inputs.timezone != '' && (
         inputs.shell == 'bash' ||  inputs.shell == 'sh')
       run: |
+       echo "::group:: EXECUTING SHELL COMANDS"
+       date +"%T, timezone %Z (%z)"
        echo "export LANG=$(echo ${{ inputs.locale }})" >> ~/.bashrc
        echo "export LC_ALL=$(echo ${{ inputs.locale }})" >> ~/.bashrc
        echo "export TZ=$(echo ${{ inputs.timezone }})" >> ~/.bashrc
        bash -c "source ~/.bashrc; exec bash"
        echo "LANG=$(echo ${{ inputs.locale }})" >> $GITHUB_ENV
        echo "LC_ALL=$(echo 'sk_SK.utf8')" >> $GITHUB_ENV
+       echo "::endgroup::"
       shell: ${{ inputs.shell }}
 
     - name: is-Windows-cmd
