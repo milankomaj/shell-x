@@ -142,9 +142,7 @@ runs:
        export LANG=$(echo ${{ inputs.locale }}) >> ~/.bashrc
        export LC_ALL=$(echo ${{ inputs.locale }}) >> ~/.bashrc
        export TZ=$(echo ${{ inputs.timezone }}) >> ~/.bashrc
-       bash -c "source ~/.bashrc; exec bash"
        echo "LANG=$(echo ${{ inputs.locale }})" >> $GITHUB_ENV
-       echo "LC_ALL=$(echo 'sk_SK.utf8')" >> $GITHUB_ENV
        echo "::endgroup::"
       shell: ${{ inputs.shell }}
 
