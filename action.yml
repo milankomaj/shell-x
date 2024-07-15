@@ -108,7 +108,7 @@ runs:
        sudo systemsetup -settimezone ${{ inputs.timezone }} 2>/dev/null
        echo "export LANG=$(echo ${{ inputs.locale }})" >> ~/.bashrc
        echo "export LC_ALL=$(echo ${{ inputs.locale }})" >> ~/.bashrc
-       bash -c "source ~/.bashrc; exec bash"
+       . ~/.bashrc
        echo "LANG=$(echo ${{ inputs.locale }})" >> $GITHUB_ENV
        echo "LC_ALL=$(echo ${{ inputs.locale }})" >> $GITHUB_ENV
        echo "LANG=$(echo ${{ inputs.locale }})" >> $env:GITHUB_ENV
