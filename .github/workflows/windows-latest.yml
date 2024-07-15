@@ -86,7 +86,6 @@ jobs:
         run: |
           uname -a
           locale
-          locale -a
           echo ----------
           date
           date +"%T, timezone %Z (%z)"
