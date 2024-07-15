@@ -90,7 +90,10 @@ jobs:
           export TZ=CET-1CEST
           date
           date +"%T, timezone %Z (%z)"
-          export TZ=CEST
+          export TZ=TZ=GMT0
+          date
+          date +"%T, timezone %Z (%z)"
+          export TZ=":Europe/Bratislava"
           date
           date +"%T, timezone %Z (%z)"
 
