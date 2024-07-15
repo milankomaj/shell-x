@@ -45,7 +45,7 @@ jobs:
         with:
           shell: ${{ matrix.shell }}
           locale: sk_SK.utf8
-          timezone: Europe/Bratislava
+          timezone: US/Central
           comand: date && echo ${{ runner.os }}
 
       - name: 💡 unpublished version shell-x@v0.3
