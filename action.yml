@@ -110,9 +110,7 @@ runs:
        echo "export LC_ALL=$(echo ${{ inputs.locale }})" >> ~/.bashrc
        bash -c "source ~/.bashrc; exec bash"
        echo "LANG=$(echo ${{ inputs.locale }})" >> $GITHUB_ENV
-       echo "LC_ALL=$(echo ${{ inputs.locale }})" >> $GITHUB_ENV
        echo "LANG=$(echo ${{ inputs.locale }})" >> $env:GITHUB_ENV
-       echo "LC_ALL=$(echo ${{ inputs.locale }})" >> $env:GITHUB_ENV
        echo "::endgroup::"
       shell: ${{ inputs.shell }}
 
