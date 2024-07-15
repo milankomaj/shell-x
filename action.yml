@@ -141,9 +141,9 @@ runs:
        date +"%T, timezone %Z (%z)"
        export LANG=$(echo ${{ inputs.locale }}) >> ~/.bashrc
        export LC_ALL=$(echo ${{ inputs.locale }}) >> ~/.bashrc
-       export TZ=MET-1MET DST,M3.5.0/2,M10.5.0/3 >> ~/.bashrc
+       export "TZ=MET-1MET DST,M3.5.0/2,M10.5.0/3" >> ~/.bashrc
        echo "LANG=$(echo ${{ inputs.locale }})" >> $GITHUB_ENV
-       echo 'TZ="MET-1MET DST,M3.5.0/2,M10.5.0/3"' >> $GITHUB_ENV
+       echo "TZ=MET-1MET DST,M3.5.0/2,M10.5.0/3" >> $GITHUB_ENV
        echo "::endgroup::"
       shell: ${{ inputs.shell }}
 
