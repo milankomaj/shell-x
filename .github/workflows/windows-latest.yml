@@ -90,7 +90,7 @@ jobs:
           export TZ=CET-1CEST
           date
           date +"%T, timezone %Z (%z)"
-          export TZ=UTC
+          export TZ=CEST
           date
           date +"%T, timezone %Z (%z)"
 
