@@ -139,11 +139,12 @@ runs:
       run: |
        echo "::group:: EXECUTING SHELL COMANDS"
        date +"%T, timezone %Z (%z)"
-       echo "export LANG=$(echo ${{ inputs.locale }})" >> ~/.bashrc
-       echo "export LC_ALL=$(echo ${{ inputs.locale }})" >> ~/.bashrc
-       echo "export TZ='MET-1MET DST,M3.5.0/2,M10.5.0/3'" >> ~/.bashrc
+       export LANG=$(echo ${{ inputs.locale }}) >> ~/.bashrc
+       export LC_ALL=$(echo ${{ inputs.locale }}) >> ~/.bashrc
+       export TZ=$(echo ${{ inputs.timezone }}) >> ~/.bashrc
        bash -c "source ~/.bashrc; exec bash"
        echo "LANG=$(echo ${{ inputs.locale }})" >> $GITHUB_ENV
+       echo "LC_ALL=$(echo 'sk_SK.utf8')" >> $GITHUB_ENV
        echo "::endgroup::"
       shell: ${{ inputs.shell }}
 
