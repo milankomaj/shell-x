@@ -4,7 +4,6 @@ on:
   workflow_dispatch:
 
 jobs:
-
   Shell:
     name: Shell
     continue-on-error: false
@@ -22,7 +21,6 @@ jobs:
         shell: ${{ matrix.shell }}
 
     steps:
-
       - name: checkout ${{ github.ref }}
         id: checkout
         uses: actions/checkout@v4
@@ -70,3 +68,4 @@ jobs:
          echo ${{ steps.shell.outputs.shell-outputs }}
          echo ${{ steps.shell.outputs.comand-outputs }}
          ${{ steps.shell.outputs.comand-outputs }}
+

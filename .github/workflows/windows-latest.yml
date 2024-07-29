@@ -24,7 +24,6 @@ jobs:
         shell: ${{ matrix.shell }}
 
     steps:
-
       - name: checkout ${{ github.ref }}
         id: checkout
         uses: actions/checkout@v4
@@ -35,8 +34,6 @@ jobs:
         id: systemsetup
         run: |
           echo ${{ matrix.shell }}
-
-
 
       - name: 💡💡 unpublished version shell-x@v0.3
         if: ${{ matrix.shell == 'bash' || matrix.shell == 'sh' }}
@@ -56,7 +53,7 @@ jobs:
           shell: ${{ matrix.shell }}
           locale: sk-SK
           timezone: Central Europe Standard Time
-
+          
       - name: 💡 example after cmd comands
         if: ${{ matrix.shell == 'cmd' }}
         id: cmd
@@ -108,7 +105,6 @@ jobs:
           echo ----------
           tzset
 
-
       - name: 💡 outcome steps
         if: ${{ always() }}
         shell: bash
@@ -119,3 +115,4 @@ jobs:
          echo "cmd-outcome = ${{ steps.cmd.outcome }}"
          echo "powershell-outcome = ${{ steps.powershell.outcome }}"
          echo "pwsh-outcome = ${{ steps.pwsh.outcome }}"
+
