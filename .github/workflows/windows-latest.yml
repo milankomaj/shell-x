@@ -87,7 +87,7 @@ jobs:
           date
           date +"%T, timezone %Z (%z)"
           echo ----------
-          export TZ=Europe/Bratislava
+          export TZ='Europe/Bratislava'
           date
           date +"%T, timezone %Z (%z)"
           echo ----------
