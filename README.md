@@ -50,7 +50,7 @@ os:⬇️ shell:➡️| *bash*  | *sh*  | *pwsh*  | *cmd*  | *powershell*| *cust
 
 > ###### example full workflow [ubuntu-latest]
 ```YAML
-name: test v0.2
+name: test
 run-name: ${{ github.workflow }} ✅ ${{ github.actor }} ✅ ${{ github.event_name}}
 on:
   workflow_dispatch:
@@ -65,7 +65,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - name: shell-x@v0.3
-        id: v2
+        id: TEST
         uses: milankomaj/shell-x@v0.3
         with:
           shell: bash
@@ -73,15 +73,15 @@ jobs:
           timezone: Europe/Bratislava
           comand: date && timedatectl
 
-      # optional
+      # optional shell-x outputs
       - name: inputs-outputs
-        run: echo "::notice::${{ steps.v2.outputs.inputs-outputs }}"
+        run: echo "::notice::${{ steps.TEST.outputs.inputs-outputs }}"
 
       - name: shell-outputs
-        run: echo "::notice::${{ steps.v2.outputs.shell-outputs}}"
+        run: echo "::notice::${{ steps.TEST.outputs.shell-outputs}}"
 
       - name: comand-outputs
-        run: ${{ steps.v2.outputs.comand-outputs }} && sudo apt -y update  && sudo apt -y upgrade
+        run: ${{ steps.TEST.outputs.comand-outputs }} && sudo apt -y update && sudo apt -y upgrade
 ```
 
 ---
@@ -89,5 +89,7 @@ jobs:
 [^note]: options depend on the runner.os, shell ...
 [^1]: if aren't set
 [^2]: default Github runners and workflow syntax
+[^3]: run any supported command inside shell-x
 [^3]: run command inside shell-x
+
 

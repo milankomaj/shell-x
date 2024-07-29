@@ -1,101 +1,71 @@
-name: macos-latest
-run-name: ${{ github.workflow }} ✅ ${{ github.actor }} ✅ ${{ github.event_name}}
+name: macos-latest - unpublished version
+run-name: ${{ github.workflow }} ✅ ${{ github.ref }} ✅ ${{ github.actor }} ✅ ${{ github.event_name}}
 on:
   workflow_dispatch:
 
-
 jobs:
-  bash:
-    name: Shell bash
+  Shell:
+    name: Shell
     continue-on-error: false
     strategy:
+      fail-fast: false
       max-parallel: 3
       matrix:
-       os: [macos-latest]
+       include:
+        - shell: bash
+        - shell: sh
+        - shell: pwsh
+    runs-on: macos-latest
+    defaults:
+      run:
+        shell: ${{ matrix.shell }}
 
-    runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v4
-      - id: foo
-        uses: milankomaj/shell-x@v0.3
+      - name: checkout ${{ github.ref }}
+        id: checkout
+        uses: actions/checkout@v4
         with:
-          shell: 'bash'
-          locale: 'sk_SK.utf8'
-          timezone: 'Europe/Bratislava'
-          comand: locale
-      - run: echo 💡 ${{ steps.foo.outputs.inputs-outputs }}
-        shell: bash
-      - run: |
-         export LANG=sk_SK.UTF-8
-         export LC_ALL="sk_SK.UTF-8" 
-         echo 'export LANG=sk_SK.UTF-8' >> ~/.bashrc
-         echo 'export LC_ALL=sk_SK.UTF-8' >> ~/.bashrc
-         source ~/.bashrc 
-         locale
-         LANG=sk_SK.UTF-8 date
-         LC_TIME=sk_SK.UTF-8 date -R
+          ref: ${{ github.ref }}
+
+      - name: 💡 example before comands
+        id: systemsetup
+        run: |
+          echo ${{ github.ref }} | cut -d "/" -f3-
+          date
+          sudo systemsetup -gettimezone
+          sudo systemsetup -getusingnetworktime
+          sudo systemsetup -getnetworktimeserver
+
+      - name: 💡 unpublished version shell-x@v0.3
+        id: shell
+        continue-on-error: true
+        uses: milankomaj/shell-x@test-v3
+        with:
+          shell: ${{ matrix.shell }}
+          locale: sk_SK.UTF-8
+          timezone: Europe/Bratislava
+          comand: date && echo ${{ runner.os }}
+
+      - name: 💡 example after comands
+        id: example
+        run: |
+         echo "::group::example"
          date
-         echo "LANG=sk_SK.UTF-8" >> $GITHUB_ENV
-         echo "LC_ALL=sk_SK.UTF-8" >> $GITHUB_ENV
-         echo $LANG
-         exit 0
-        shell: bash
-      - run: |
-         sudo softwareupdate --list
-         sudo softwareupdate --download
-         sudo softwareupdate -i -a
-         locale
-         LANG=sk_SK.UTF-8 date
-         LC_TIME=sk_SK.UTF-8 date -R
-         date
-         echo $LANG
-        shell: bash
-     
-  sh:
-    name: Shell sh
-    continue-on-error: false
-    strategy:
-      max-parallel: 3
-      matrix:
-       os: [macos-latest]
+         sudo systemsetup -gettimezone
+         sudo systemsetup -setusingnetworktime on 2>/dev/null
+         sudo systemsetup -getusingnetworktime
+         sudo systemsetup -getnetworktimeserver
+         # sudo softwareupdate --list
+         # brew list
+         uname -a
+         system_profiler SPSoftwareDataType SPHardwareDataType
+         echo "::endgroup::"
 
-    runs-on: ${{ matrix.os }}
-    steps:
-      - uses: actions/checkout@v4
-      - id: foo
-        uses: milankomaj/shell-x@v0.3
-        with:
-          shell: 'sh'
-          locale: 'sk_SK.utf8'
-          timezone: 'Europe/Bratislava'
+      - name: 💡 ${{ steps.shell.outputs.inputs-outputs }}
+        id: composite-outputs
+        run: |
+         echo ${{ steps.shell.outputs.inputs-outputs }}
+         echo ${{ steps.shell.outputs.shell-outputs }}
+         echo ${{ steps.shell.outputs.comand-outputs }}
+         ${{ steps.shell.outputs.comand-outputs }}
 
-
-      - run: echo 💡 ${{ steps.foo.outputs.inputs-outputs }}
-        shell: sh
-      - run: date
-        shell: sh
-
-  pwsh:
-    name: Shell pwsh
-    continue-on-error: false
-    strategy:
-      max-parallel: 3
-      matrix:
-       os: [macos-latest]
-
-    runs-on: ${{ matrix.os }}
-    steps:
-      - uses: actions/checkout@v4
-      - id: foo
-        uses: milankomaj/shell-x@v0.3
-        with:
-          shell: 'pwsh'
-          locale: 'sk_SK.utf8'
-          timezone: 'Europe/Bratislava'
-
-      - run: echo 💡 ${{ steps.foo.outputs.random-number }}
-        shell: pwsh
-      - run: echo 💡 ${{ steps.foo.outputs.inputs-outputs }}
-        shell: pwsh
-      - run: date
-        shell: pwsh

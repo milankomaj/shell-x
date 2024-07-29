@@ -1,90 +1,118 @@
-name: windows-latest
-run-name: ${{ github.workflow }} ✅ ${{ github.actor }} ✅ ${{ github.event_name}}
+name: windows-latest - unpublished version
+run-name: ${{ github.workflow }} ✅ ${{ github.ref }} ✅ ${{ github.actor }} ✅ ${{ github.event_name}}
 on:
   workflow_dispatch:
 
 jobs:
-  cmd:
-    name: Shell cmd
+
+  Shell:
+    name: Shell
     continue-on-error: false
     strategy:
+      fail-fast: false
       max-parallel: 3
       matrix:
-       os: [windows-latest]
+       include:
+        - shell: cmd
+        - shell: powershell
+        - shell: pwsh
+        - shell: bash
+        - shell: sh
+    runs-on: windows-latest
+    defaults:
+      run:
+        shell: ${{ matrix.shell }}
 
-    runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v4
-      - id: foo
-        uses: milankomaj/shell-x@v0.3
+      - name: checkout ${{ github.ref }}
+        id: checkout
+        uses: actions/checkout@v4
         with:
-          shell: 'cmd'
-          locale: 'sk-SK'
-          timezone: 'Central Europe Standard Time'
-          comand: 'systeminfo | findstr ;'
+          ref: ${{ github.ref }}
 
-      - run: echo 💡 ${{ steps.foo.outputs.inputs-outputs }}
-        shell: cmd
-      - name: date-time
-        run: echo 💡 %date%-%time%
-        shell: cmd
+      - name: 💡 example before comands
+        id: systemsetup
+        run: |
+          echo ${{ matrix.shell }}
 
-  powershell:
-    name: Shell powershell
-    continue-on-error: false
-    strategy:
-      max-parallel: 3
-      matrix:
-       os: [windows-latest]
-
-    runs-on: ${{ matrix.os }}
-    steps:
-      - uses: actions/checkout@v4
-      - id: foo
-        uses: milankomaj/shell-x@v0.3
+      - name: 💡💡 unpublished version shell-x@v0.3
+        if: ${{ matrix.shell == 'bash' || matrix.shell == 'sh' }}
+        id: UNIX
+        uses: milankomaj/shell-x@test-v3
         with:
-          shell: 'powershell'
-          locale: 'sk_SK'
-          timezone: 'Central Europe Standard Time'
-          comand: $(echo "Get-Date -UFormat '%Y%m%d' && Get-Date -Format F")
+          shell: ${{ matrix.shell }}
+          locale: sk_SK.utf8
+          timezone: Europe/Bratislava
+          comand: date && echo ${{ runner.os }}
 
-      - run: echo ${{ steps.foo.outputs.inputs-outputs }}
-        shell: powershell
-      - run: |
+      - name: 💡 unpublished version shell-x@v0.3
+        if: ${{ steps.UNIX.outcome == 'skipped'}}
+        id: shell
+        uses: milankomaj/shell-x@test-v3
+        with:
+          shell: ${{ matrix.shell }}
+          locale: sk-SK
+          timezone: Central Europe Standard Time
+          
+      - name: 💡 example after cmd comands
+        if: ${{ matrix.shell == 'cmd' }}
+        id: cmd
+        run: |
+         echo ::group::example
+         tzutil /g & echo.
+         echo %date%-%time% & echo.
+         systeminfo & echo.
+         echo ::endgroup::
+
+      - name: 💡 example after powershell comands
+        if: ${{ matrix.shell == 'powershell' }}
+        id: powershell
+        run: |
          Get-TimeZone
          Get-Date -UFormat "%A %m/%d/%Y %R %Z"
-        shell: powershell
 
-  pwsh:
-    name: Shell pwsh
-    continue-on-error: false
-    strategy:
-      max-parallel: 3
-      matrix:
-       os: [windows-latest]
-
-    runs-on: ${{ matrix.os }}
-    steps:
-      - uses: actions/checkout@v4
-      - id: foo
-        uses: milankomaj/shell-x@v0.3
-        with:
-          shell: 'pwsh'
-          locale: 'sk_SK'
-          timezone: 'Central Europe Standard Time'
-          comand: $(Get-Date)
-
-      - run: echo 💡 ${{ steps.foo.outputs.inputs-outputs }}
-        shell: pwsh
-
-      - run: Get-Date && Get-Date -Format F
-        shell: pwsh
-
-      - run: ${{steps.foo.outputs.comand-outputs}}
-        shell: pwsh
-
-      - name: pwsh notice ${{ steps.foo.outputs.comand-outputs }}
+      - name: 💡 example after pwsh comands
+        if: ${{ matrix.shell == 'pwsh' }}
+        id: pwsh
         run: |
-         echo "::notice::{{ steps.foo.outputs.comand-outputs }}"
-         ${{ steps.foo.outputs.comand-outputs }}
-        shell: pwsh
+          Get-Date && Get-Date -Format F
+
+      - name: 💡 example after bash&sh comands
+        if: ${{ matrix.shell == 'bash' || matrix.shell == 'sh' }}
+        id: mixed
+        run: |
+          uname -a
+          locale
+          echo ----------
+          date
+          date +"%T, timezone %Z (%z)"
+          echo ----------
+          export TZ=Europe/Bratislava
+          date
+          date +"%T, timezone %Z (%z)"
+          echo ----------
+          export TZ=CET-1CEST
+          date
+          date +"%T, timezone %Z (%z)"
+          echo ----------
+          export TZ=GMT0
+          date
+          date +"%T, timezone %Z (%z)"
+          echo ----------
+          export TZ='MET-1MET DST,M3.5.0/2,M10.5.0/3'
+          date
+          date +"%T, timezone %Z (%z)"
+          echo ----------
+          tzset
+
+      - name: 💡 outcome steps
+        if: ${{ always() }}
+        shell: bash
+        id: outcome
+        run: |
+         echo "shell-outcome = ${{ steps.shell.outcome }}"
+         echo "UNIX-outcome = ${{ steps.UNIX.outcome }}"
+         echo "cmd-outcome = ${{ steps.cmd.outcome }}"
+         echo "powershell-outcome = ${{ steps.powershell.outcome }}"
+         echo "pwsh-outcome = ${{ steps.pwsh.outcome }}"
+

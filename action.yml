@@ -35,7 +35,9 @@ outputs:
   shell-outputs:
     description: "shell-outputs"
     value: "${{ steps.shell-outputs.outputs.shell-outputs }}"
-
+  comand-outputs:
+    description: "comand-outputs"
+    value: "${{ steps.comand-outputs.outputs.comand-outputs }}"
 
 
 runs:
@@ -81,32 +83,44 @@ runs:
 
     - name: is-Linux
       id: is-Linux
-      if: runner.os == 'Linux'  && inputs.locale != '' && inputs.timezone != '' || runner.os == 'Linux'  && inputs.locale != '' && inputs.timezone != '' && inputs.shell == 'pwsh' || runner.os == 'Linux'  && inputs.locale != '' && inputs.timezone != '' && inputs.shell == 'bash' || runner.os == 'Linux' && inputs.shell != ''  && inputs.timezone != '' && inputs.shell == 'pwsh' || runner.os == 'Linux'  && inputs.locale != '' && inputs.timezone != '' && inputs.shell == 'sh'
+      if: |
+       runner.os == 'Linux' && inputs.locale != '' && inputs.timezone != '' && (
+        inputs.shell == 'pwsh'
+        || inputs.shell == 'bash'
+        || inputs.shell == 'sh')
       run: |
        echo "::group:: EXECUTING SHELL COMANDS"
        sudo locale-gen ${{ inputs.locale }}
        sudo update-locale LANG=${{ inputs.locale }}
        sudo timedatectl set-timezone ${{ inputs.timezone }}
        echo "LANG=$(echo ${{ inputs.locale }})" >> $GITHUB_ENV
+       echo "LANG=$(echo ${{ inputs.locale }})" >> $env:GITHUB_ENV
        echo "::endgroup::"
       shell: ${{ inputs.shell }}
 
     - name: is-macOS
       id: is-macOS
-      if: runner.os == 'macOS'  && inputs.locale != '' && inputs.timezone != '' || runner.os == 'macOS'  && inputs.locale != '' && inputs.timezone != '' && inputs.shell == 'sh' || runner.os == 'macOS'  && inputs.locale != '' && inputs.timezone != '' && inputs.shell == 'bash'
+      if: |
+       runner.os == 'macOS' && inputs.locale != '' && inputs.timezone != '' && (
+        inputs.shell == 'sh' || inputs.shell == 'bash' || inputs.shell == 'pwsh')
       run: |
        echo "::group:: EXECUTING SHELL COMANDS"
-       sudo su
-       sudo systemsetup -settimezone ${{ inputs.timezone }}
-       cd ~
-       sudo sed -i -e 's/en_US.UTF-8/${{ inputs.locale }}/g' .bashrc
-       exit
+       sudo systemsetup -settimezone ${{ inputs.timezone }} 2>/dev/null
+       echo "export LANG=$(echo ${{ inputs.locale }})" >> ~/.bashrc
+       echo "export LC_ALL=$(echo ${{ inputs.locale }})" >> ~/.bashrc
+       exit 0
+       echo "LANG=$(echo ${{ inputs.locale }})" >> $GITHUB_ENV
+       echo "LC_ALL=$(echo ${{ inputs.locale }})" >> $GITHUB_ENV
+       echo "LANG=$(echo ${{ inputs.locale }})" >> $env:GITHUB_ENV
+       echo "LC_ALL=$(echo ${{ inputs.locale }})" >> $env:GITHUB_ENV
        echo "::endgroup::"
       shell: ${{ inputs.shell }}
 
     - name: is-Windows
       id: is-Windows
-      if: runner.os == 'Windows' && inputs.shell != 'cmd'  && inputs.locale != '' && inputs.timezone != '' || runner.os == 'Windows' && inputs.shell != 'cmd'  && inputs.locale != '' && inputs.timezone != ''  && inputs.shell == 'powershell' || runner.os == 'Windows' && inputs.shell != 'cmd' && inputs.locale != '' && inputs.timezone != ''  && inputs.shell == 'pwsh'
+      if: |
+       runner.os == 'Windows' && inputs.shell != 'cmd' && inputs.locale != '' && inputs.timezone != '' && (
+        inputs.shell == 'powershell' ||  inputs.shell == 'pwsh')
       run: |
        echo "::group:: EXECUTING SHELL COMANDS"
        Set-WinSystemLocale ${{ inputs.locale }}
@@ -117,13 +131,33 @@ runs:
        echo "::endgroup::"
       shell: ${{ inputs.shell }}
 
+    - name: is-Windows-bash-sh
+      id: is-Windows-bash-sh
+      if: |
+       runner.os == 'Windows' && inputs.shell != 'cmd' && inputs.locale != '' && inputs.timezone != '' && (
+        inputs.shell == 'bash' ||  inputs.shell == 'sh')
+      run: |
+       echo "::group:: EXECUTING SHELL COMANDS"
+       date +"%T, timezone %Z (%z)"
+       export LANG=$(echo ${{ inputs.locale }}) >> ~/.bashrc
+       export LC_ALL=$(echo ${{ inputs.locale }}) >> ~/.bashrc
+       export TZ=$(echo ${{ inputs.timezone }}) >> ~/.bashrc
+       echo "LANG=$(echo ${{ inputs.locale }})" >> $GITHUB_ENV
+       echo "TZ=$(echo ${{ inputs.timezone }})" >> $GITHUB_ENV
+       echo "::endgroup::"
+      shell: ${{ inputs.shell }}
+
     - name: is-Windows-cmd
       id: is-Windows-cmd
       if: inputs.shell == 'cmd' && inputs.timezone != ''
       run: |
-        echo "::group:: EXECUTING SHELL COMANDS"
-        tzutil /s "${{ inputs.timezone }}"
-        echo "::endgroup::"
+        echo ::group:: EXECUTING SHELL COMANDS
+        tzutil /g & echo.
+        echo %date%-%time% & echo.
+        tzutil /s "${{ inputs.timezone }}" & echo.
+        tzutil /g & echo.
+        echo %date%-%time% & echo.
+        echo ::endgroup::
       shell: ${{ inputs.shell }}
 
     - name: is-run-comand
