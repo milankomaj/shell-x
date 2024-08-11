@@ -105,8 +105,8 @@ jobs:
           echo ----------
           tzset
           echo ----------
-          echo ~/.bash_profile
-          cat ~/.bash_profile
+          echo bash.bashrc
+          cat /etc/bash.bashrc
           echo ----------
           echo lang.sh
           cat /etc/profile.d/lang.sh
