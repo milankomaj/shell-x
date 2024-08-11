@@ -123,8 +123,8 @@ jobs:
           echo bash_profile.sh
           cat /etc/profile.d/bash_profile.sh
           echo ----------
-          echo bash_profile
-          cat ~/.bash_profile
+          echo bashrc
+          cat ~/.bashrc
 
       - name: 💡 outcome steps
         if: ${{ always() }}
