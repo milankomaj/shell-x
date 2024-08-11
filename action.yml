@@ -145,6 +145,7 @@ runs:
        export TZ=$(echo ${{ inputs.timezone }}) >> ~/.bashrc
        echo "LANG=$(echo ${{ inputs.locale }})" >> $GITHUB_ENV
        echo "TZ=$(echo ${{ inputs.timezone }})" >> $GITHUB_ENV
+       exit 0
        echo "::endgroup::"
       shell: ${{ inputs.shell }}
 
