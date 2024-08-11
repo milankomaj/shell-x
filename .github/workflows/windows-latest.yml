@@ -119,6 +119,9 @@ jobs:
           echo ----------
           echo profile
           cat /etc/profile
+          echo ----------
+          echo bash_profile.sh
+          cat /etc/profile.d/bash_profile.sh
 
       - name: 💡 outcome steps
         if: ${{ always() }}
