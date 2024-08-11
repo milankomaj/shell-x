@@ -123,8 +123,7 @@ jobs:
           echo bash_profile.sh
           cat /etc/profile.d/bash_profile.sh
           echo ----------
-          echo config.site
-          ls /etc/config.site
+
 
       - name: 💡 outcome steps
         if: ${{ always() }}

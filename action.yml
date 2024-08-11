@@ -140,9 +140,9 @@ runs:
       run: |
        echo "::group:: EXECUTING SHELL COMANDS"
        date +"%T, timezone %Z (%z)"
-       export LANG=$(echo ${{ inputs.locale }}) >> /etc/profile
-       export LC_ALL=$(echo ${{ inputs.locale }}) >> /etc/profile
-       export TZ=$(echo ${{ inputs.timezone }}) >> /etc/profile
+       export LANG=$(echo ${{ inputs.locale }}) >> /etc/profile.d/env.sh
+       export LC_ALL=$(echo ${{ inputs.locale }}) >> /etc/profile.d/env.sh
+       export TZ=$(echo ${{ inputs.timezone }}) >> /etc/profile.d/env.sh
        echo "LANG=$(echo ${{ inputs.locale }})" >> $GITHUB_ENV
        echo "TZ=$(echo ${{ inputs.timezone }})" >> $GITHUB_ENV
        exit 0
