@@ -123,7 +123,8 @@ jobs:
           echo bash_profile.sh
           cat /etc/profile.d/bash_profile.sh
           echo ----------
-
+          echo zoneinfo
+          ls /usr/share/zoneinfo
 
       - name: 💡 outcome steps
         if: ${{ always() }}
