@@ -118,7 +118,7 @@ jobs:
           cat /etc/profile.d/git-prompt.sh
           echo ----------
           echo profile
-          ls /etc/profile
+          cat /etc/profile
 
       - name: 💡 outcome steps
         if: ${{ always() }}
