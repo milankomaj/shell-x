@@ -43,7 +43,7 @@ jobs:
           shell: ${{ matrix.shell }}
           locale: sk_SK.utf8
           timezone: Europe/Bratislava
-          comand: export TZ='MET-1MET DST,M3.5.0/2,M10.5.0/3' && logout && tzset && date && echo ${{ runner.os }}
+          comand: export TZ='MET-1MET DST,M3.5.0/2,M10.5.0/3' && exit && tzset && date && echo ${{ runner.os }}
 
       - name: 💡 unpublished version shell-x@v0.3
         if: ${{ steps.UNIX.outcome == 'skipped'}}
