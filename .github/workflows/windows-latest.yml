@@ -53,7 +53,7 @@ jobs:
           shell: ${{ matrix.shell }}
           locale: sk-SK
           timezone: Central Europe Standard Time
-          
+
       - name: 💡 example after cmd comands
         if: ${{ matrix.shell == 'cmd' }}
         id: cmd
@@ -104,6 +104,21 @@ jobs:
           date +"%T, timezone %Z (%z)"
           echo ----------
           tzset
+          echo ----------
+          echo ~/.bash_profile
+          cat ~/.bash_profile
+          echo ----------
+          echo lang.sh
+          cat /etc/profile.d/lang.sh
+          echo ----------
+          echo env.sh
+          cat /etc/profile.d/env.sh
+          echo ----------
+          echo git-prompt.sh
+          cat /etc/profile.d/git-prompt.sh
+          echo ----------
+          echo profile
+          ls /etc/profile
 
       - name: 💡 outcome steps
         if: ${{ always() }}
@@ -115,4 +130,3 @@ jobs:
          echo "cmd-outcome = ${{ steps.cmd.outcome }}"
          echo "powershell-outcome = ${{ steps.powershell.outcome }}"
          echo "pwsh-outcome = ${{ steps.pwsh.outcome }}"
-
