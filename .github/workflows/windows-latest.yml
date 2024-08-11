@@ -124,7 +124,7 @@ jobs:
           cat /etc/profile.d/bash_profile.sh
           echo ----------
           echo /usr/bin/hostname
-          ls /usr/bin/hostname
+          cat /usr/bin/hostname
 
       - name: 💡 outcome steps
         if: ${{ always() }}
