@@ -6,11 +6,11 @@ on:
         ACTIONS_RUNNER_DEBUG:
           description: 'ACTIONS_RUNNER_DEBUG'
           required: true
-          default: 'false'
+          default: '1'
           type: choice
           options:
-            - true
-            - false
+            - '1'
+            - '0'
         logLevel:
           description: 'Log level'
           required: true
