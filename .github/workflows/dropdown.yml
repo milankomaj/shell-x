@@ -3,8 +3,8 @@ name: Dropdown
 on:
     workflow_dispatch:
       inputs:
-        ACTIONS_STEP_DEBUG:
-          description: 'ACTIONS_STEP_DEBUG'
+        ACTIONS_RUNNER_DEBUG:
+          description: 'ACTIONS_RUNNER_DEBUG'
           required: true
           default: 'false'
           type: choice
@@ -40,7 +40,7 @@ jobs:
   greet:
     runs-on: ubuntu-latest
     env:
-      ACTIONS_STEP_DEBUG: ${{ github.event.inputs.ACTIONS_STEP_DEBUG }}
+      ACTIONS_RUNNER_DEBUG: ${{ github.event.inputs.ACTIONS_RUNNER_DEBUG }}
     outputs:
       toJSON: ${{ steps.toJSON.outputs.JSON }}
 
