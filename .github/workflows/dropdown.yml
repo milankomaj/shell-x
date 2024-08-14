@@ -3,6 +3,14 @@ name: Dropdown
 on:
     workflow_dispatch:
       inputs:
+        ACTIONS_STEP_DEBUG:
+          description: 'ACTIONS_STEP_DEBUG'
+          required: true
+          default: 'false'
+          type: choice
+          options:
+            - true
+            - false
         logLevel:
           description: 'Log level'
           required: true
@@ -31,6 +39,8 @@ on:
 jobs:
   greet:
     runs-on: ubuntu-latest
+    env:
+      ACTIONS_STEP_DEBUG: ${{ github.event.inputs.ACTIONS_STEP_DEBUG }}
     outputs:
       toJSON: ${{ steps.toJSON.outputs.JSON }}
 
