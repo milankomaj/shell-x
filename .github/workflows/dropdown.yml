@@ -65,6 +65,7 @@ jobs:
 
 
       - name: fromJSON
+        if: steps.send.conclusion == 'success'
         id: fromJSON
         run: |
          echo
