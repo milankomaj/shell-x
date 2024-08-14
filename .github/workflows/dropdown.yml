@@ -6,11 +6,11 @@ on:
         ACTIONS_RUNNER_DEBUG:
           description: 'ACTIONS_RUNNER_DEBUG'
           required: true
-          default: '1'
+          default: 'TRUE'
           type: choice
           options:
-            - '1'
-            - '0'
+            - 'TRUE'
+            - 'FALSE'
         logLevel:
           description: 'Log level'
           required: true
@@ -40,7 +40,7 @@ jobs:
   greet:
     runs-on: ubuntu-latest
     env:
-      ACTIONS_RUNNER_DEBUG: ${{ github.event.inputs.ACTIONS_RUNNER_DEBUG }}
+      ACTIONS_RUNNER_DEBUG: ${{ github.event.inputs.boolean }}
     outputs:
       toJSON: ${{ steps.toJSON.outputs.JSON }}
 
