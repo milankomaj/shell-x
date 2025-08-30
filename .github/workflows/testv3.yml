@@ -17,7 +17,7 @@ jobs:
        os: [macos-latest]
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           ref: ${{ github.ref }}
 
@@ -49,7 +49,7 @@ jobs:
          system_profiler SPSoftwareDataType SPHardwareDataType
 
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - run: |
          gh api repos/milankomaj/shell-x/branches --jq '.[].name'
          gh workflow run "testv3.yml" --ref test-v3

@@ -17,7 +17,7 @@ jobs:
        os: [ubuntu-latest]
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - run: |
          gh api repos/milankomaj/shell-x/branches --cache "20s" --jq '.[].name | select(test("test"))' | xargs -P 0 -I {} gh workflow run testv3.yml --ref \{\}
         env:
